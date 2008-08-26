@@ -1,0 +1,2 @@
+class BathroomN < AttrValue
+end

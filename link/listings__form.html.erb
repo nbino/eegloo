@@ -1,0 +1,30 @@
+<% form_for(@listing) do |f| %>
+<ul class="smalltext" style="padding-left:100px">
+
+  <li class="whole"><%=f.label :address, 'Street Address'%> <%=f.text_field :address, :class => 'text required', :size => '15' %>*</li>  
+
+  <li class="whole"><%=f.label :cross_street, 'Cross Street:'%> <%=f.text_field :cross_street,:class => 'text', :size => '15'%>*</li>
+
+  <li class="whole"><%=f.label :nhood_id, 'Neighborhood:'%> <%= f.collection_select :nhood_id, @nhoods, :id, :name, {:include_blank=>'Select'} %>*</li>
+
+  <li class="whole"><%=f.label :apt_type_id, 'Apartment Type'%> <%= f.collection_select :apt_type_id, @apt_types, :id, :name, {:include_blank=>'Select', :class=>'required'}, :width =>'10' %>*</li>
+
+  <li class="whole"><%=f.label :avail_date, 'Date Available'%>               
+  
+  <%= f.calendar_date_select :avail_date, :size => 9, :time=>false, :popup => "force"%>*</li> 
+
+  <li class="whole"><%=f.label :rent_range_id, 'Rent'%> <%= f.collection_select :rent_range_id, @rent_ranges, :id, :name, {:include_blank=>'Select'}, {:value => 11, :class => 'required'} %>*</li>
+  
+  <li class="whole">* - Required</li>
+  
+  <li class="whole"><label>&nbsp;</label><%= f.submit "Submit" %></li>
+</ul>
+
+<% end %>
+
+
+
+
+
+
+

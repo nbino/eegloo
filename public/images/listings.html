@@ -1,0 +1,599 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>freshpaint</title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+
+  <link href="/stylesheets/default.css?1205261208" media="screen" rel="stylesheet" type="text/css" />
+  <!-- <script src="/javascripts/mootools.js" type="text/javascript"></script> -->
+  <script src="/javascripts/prototype.js?1204780359" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1204780359" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1204780359" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1204780359" type="text/javascript"></script>
+<script src="/javascripts/application.js?1204780359" type="text/javascript"></script> 
+  <script src="/javascripts/calendar_date_select/calendar_date_select.js?1204780359" type="text/javascript"></script>
+<script src="/javascripts/calendar_date_select/american.js" type="text/javascript"></script>
+<link href="/stylesheets/calendar_date_select/default.css?1204780359" media="screen" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<!-- start header -->
+<div id="header">
+	<div id="logo">
+		<h1><a href="#"><span style="font-weight: bold;">fresh</span>paint<sup>alpha</sup></a></h1>
+		<h2>&nbsp; &nbsp; &nbsp;empowering renters since 2008.</h2>
+	</div>
+	<div id="menu">
+		<ul id="menuul">
+			
+		
+						
+						<li onclick="window.location='http://localhost:3000/listings'" onmouseout="this.setStyle('background-color:#F0F0F0')" onmouseover="this.setStyle('background-color:#FFF')">
+							 		<img alt="Chart_bar" src="/images/chart_bar.png?1205209016" /> Listings
+							</li><li onclick="window.location='http://localhost:3000/favorites'" onmouseout="this.setStyle('background-color:#F0F0F0')" onmouseover="this.setStyle('background-color:#FFF')">
+							 		<img alt="Folder_heart" src="/images/folder_heart.png?1205119218" /> My Favorites
+							</li><li onclick="window.location='http://localhost:3000/listings/1/edit'" onmouseout="this.setStyle('background-color:#F0F0F0')" onmouseover="this.setStyle('background-color:#FFF')">
+							 		<img alt="Pencil" src="/images/pencil.png?1205119305" /> My Listing
+							</li><li onclick="window.location='#'" onmouseout="this.setStyle('background-color:#F0F0F0')" onmouseover="this.setStyle('background-color:#FFF')">
+							 		<img alt="Group" src="/images/group.png?1205119228" /> My Friends
+							</li>
+		</ul>
+	</div>
+</div>
+
+<!-- end header -->
+<!-- start page -->
+<div id="page">
+		
+	<!-- start leftbar render :partial=>'search_form' -->
+	<div id="leftbar">
+		
+
+<form action="/listings" method="get">
+<ul>
+   <li id="search">
+	<h2><b>Search</b></h2>
+		<ul>
+			<li><input id="listing_info_comment" name="listing_info[comment]" size="15" type="text" value="Keywords" />
+			</li>
+			<li><select id="listing_info_nhood_id" name="listing_info[nhood_id]"><option value="">Neighborhood</option>
+<option value="51">Battery Park</option>
+<option value="52">Chelsea</option>
+<option value="53">Columbus Circle</option>
+<option value="54">East Village</option>
+<option value="55">Financial District</option>
+<option value="56">Flatiron</option>
+<option value="57">Gramercy/Flatiron</option>
+<option value="58">Greenwich Village</option>
+<option value="59">Harlem</option>
+<option value="60">Hell's Kitchen</option>
+<option value="61">Lincoln Center</option>
+<option value="62">Lower East Side</option>
+<option value="63">Meatpacking District</option>
+<option value="64">Midtown East</option>
+<option value="65">Midtown West</option>
+<option value="66">Murray Hill</option>
+<option value="67">NoHo</option>
+<option value="68">NoLita</option>
+<option value="69">Rockefeller Center</option>
+<option value="70">SoHo</option>
+<option value="71">Theater District</option>
+<option value="72">Times Square</option>
+<option value="73">TriBeCa</option>
+<option value="74">Union Square</option>
+<option value="75">Upper East Side</option>
+<option value="76">Upper West Side</option>
+<option value="77">West Village</option></select> 
+			</li>
+			<li><select id="listing_info_apt_type_id" name="listing_info[apt_type_id]"><option value="">Apartment Type</option>
+<option value="1">Studio</option>
+<option value="2">Alcove Studio</option>
+<option value="3">Jr. 1 Bedroom</option>
+<option value="4">1 Bedroom</option>
+<option value="5">Jr. 2 Bedroom</option>
+<option value="6">2 bedroom</option>
+<option value="7">3 bedroom</option>
+<option value="8">Jr. 3 bedroom</option>
+<option value="9">4 bedroom</option></select>
+			</li>
+			<li>Rent: <input id="listing_info_lbound" name="listing_info[lbound]" size="4" type="text" /> to <input id="listing_info_ubound" name="listing_info[ubound]" size="4" type="text" />
+			</li>
+			<li>Avail: <input id="listing_info_avail_date" name="listing_info[avail_date]" size="9" type="text" /> <img alt="Calendar" onclick="new CalendarDateSelect( $(this).previous(), {year_range:10} );" src="/images/calendar_date_select/calendar.gif?1204780323" style="border:0px; cursor:pointer;" />
+			</li>
+			<li>Sq Footage: <input id="listing_info_sq_footage" name="listing_info[sq_footage]" size="4" type="text" />
+			</li>
+			
+			
+			<li><select id="listing_info_maintenace_q_id" name="listing_info[maintenace_q_id]"><option value="">[Maintenace]</option>
+<option value="23">poor</option>
+<option value="28">average</option>
+<option value="33">excellent</option></select></li>
+			<li><select id="listing_info_appliance_q_id" name="listing_info[appliance_q_id]"><option value="">[Appliances Cond]</option>
+<option value="21">poor</option>
+<option value="26">average</option>
+<option value="31">excellent</option></select></li>
+			<li><select id="listing_info_bathroom_q_id" name="listing_info[bathroom_q_id]"><option value="">[Bathroom Cond]</option>
+<option value="20">poor</option>
+<option value="25">average</option>
+<option value="30">excellent</option></select> </li>
+
+			
+			<li><input id="listing_info_elevator" name="listing_info[elevator]" type="checkbox" value="1" /><input name="listing_info[elevator]" type="hidden" value="0" /> Elevator</li>
+			<li><input id="listing_info_laundry" name="listing_info[laundry]" type="checkbox" value="1" /><input name="listing_info[laundry]" type="hidden" value="0" /> Laundry</li>
+			<li><input id="listing_info_gym" name="listing_info[gym]" type="checkbox" value="1" /><input name="listing_info[gym]" type="hidden" value="0" /> Gym</li>
+			<li><input id="listing_info_doorman" name="listing_info[doorman]" type="checkbox" value="1" /><input name="listing_info[doorman]" type="hidden" value="0" /> Doorman</li>
+			<li><input id="listing_info_pets" name="listing_info[pets]" type="checkbox" value="1" /><input name="listing_info[pets]" type="hidden" value="0" /> Pets</li>
+
+			<li><select id="listing_info_heat_q_id" name="listing_info[heat_q_id]"><option value="">[Heat]</option>
+<option value="19">poor</option>
+<option value="24">average</option>
+<option value="29">excellent</option></select></li>
+			<li><select id="listing_info_ac_type_id" name="listing_info[ac_type_id]"><option value="">[A/C Type]</option>
+<option value="41">no</option>
+<option value="42">window</option>
+<option value="43">wall</option>
+<option value="44">central</option></select> </li>
+			
+	
+			<li><select id="listing_info_street_noise_level_id" name="listing_info[street_noise_level_id]"><option value="">[Street Noise]</option>
+<option value="2">a lot of</option>
+<option value="4">average</option>
+<option value="6">quiet</option></select> </li>
+			<li><select id="listing_info_nbors_noise_level_id" name="listing_info[nbors_noise_level_id]"><option value="">[Neighbor Noise]</option>
+<option value="1">a lot of</option>
+<option value="3">average</option>
+<option value="5">quiet</option></select> </li>
+						
+			<li><input id="listing_info_convertable" name="listing_info[convertable]" type="checkbox" value="1" /><input name="listing_info[convertable]" type="hidden" value="0" /> Convertible</li>
+			<li><input id="listing_info_multi_level" name="listing_info[multi_level]" type="checkbox" value="1" /><input name="listing_info[multi_level]" type="hidden" value="0" /> Multi-level</li>
+			<li><input id="listing_info_penthouse" name="listing_info[penthouse]" type="checkbox" value="1" /><input name="listing_info[penthouse]" type="hidden" value="0" /> Penthouse</li>
+			<li><input id="listing_info_no_of_patios" name="listing_info[no_of_patios]" type="checkbox" value="1" /><input name="listing_info[no_of_patios]" type="hidden" value="0" /> Patio</li>
+			<li><input id="listing_info_private_entrance" name="listing_info[private_entrance]" type="checkbox" value="1" /><input name="listing_info[private_entrance]" type="hidden" value="0" /> Private Entrance</li>
+			<li><input id="listing_info_balcony" name="listing_info[balcony]" type="checkbox" value="1" /><input name="listing_info[balcony]" type="hidden" value="0" /> Balcony</li>
+			<li><input id="listing_info_separate_kitchen" name="listing_info[separate_kitchen]" type="checkbox" value="1" /><input name="listing_info[separate_kitchen]" type="hidden" value="0" /> Separate Kitchen</li>
+			<li><select id="listing_info_back_yard_type_id" name="listing_info[back_yard_type_id]"><option value="">[Backyard]</option>
+<option value="46">none</option>
+<option value="48">private</option>
+<option value="50">public</option></select>  </li>
+			<li><select id="listing_info_roof_access_type_id" name="listing_info[roof_access_type_id]"><option value="">[Roof Access]</option>
+<option value="45">none</option>
+<option value="47">private</option>
+<option value="49">public</option></select></li>
+			<li><select id="listing_info_floor_type_id_id" name="listing_info[floor_type_id_id]"><option value="">[Floor Type]</option>
+<option value="38">linoleum</option>
+<option value="39">carpet</option>
+<option value="40">hardwood</option></select> </li>
+			<li>[# Bathrooms:]</li>
+			<li>Ceiling Height: <input id="listing_info_ceiling_height" name="listing_info[ceiling_height]" size="4" type="text" />
+			
+			<li><select id="listing_info_cellphone_q_id" name="listing_info[cellphone_q_id]"><option value="">[Cellphone]</option>
+<option value="22">poor</option>
+<option value="27">average</option>
+<option value="32">excellent</option></select> </li>
+			<li><input id="listing_info_broadband" name="listing_info[broadband]" type="checkbox" value="1" /><input name="listing_info[broadband]" type="hidden" value="0" /> Broadband-ready</li>
+			<li><input id="listing_info_roach" name="listing_info[roach]" type="checkbox" value="1" /><input name="listing_info[roach]" type="hidden" value="0" /> Roach-free</li>
+			<li><input id="listing_info_rodent" name="listing_info[rodent]" type="checkbox" value="1" /><input name="listing_info[rodent]" type="hidden" value="0" /> Rodent-free</li>
+			
+			<li><input id="listing_info_rent_controlled" name="listing_info[rent_controlled]" type="checkbox" value="1" /><input name="listing_info[rent_controlled]" type="hidden" value="0" /> Rent Controlled</li>
+			<li><input id="listing_info_rent_stabilized" name="listing_info[rent_stabilized]" type="checkbox" value="1" /><input name="listing_info[rent_stabilized]" type="hidden" value="0" /> Rent Stabilized</li>
+			
+			</li>
+			
+			<!-- Must Haves: Well Maintained, Nice Bathrooms, Nice Appliances, Well-heated, Elevator, Laundry, Gym, Doorman, Pets OK, Multi-level, Penthouse, Balcony, Backyard, Roach-free, Rodent-free, Broadband, Low Street Noise, Low Neighbor Noise, Good Cellphone Coverage, Convertible, Separate Kitchen, Rent Controlled, Rent Stabilized -->
+		</ul>
+	</li>
+</ul>
+<input id="listing_info_submit" name="commit" type="submit" value="Search" />
+</form>
+
+	</div>
+<!-- end leftbar -->
+
+<!-- start content -->
+	<div id="content">
+		<div class="post">
+	<span style="float:right;">
+		<select>
+			<option>Sort...</option>
+			<option value="rent">Rent</option>
+			<option value="popularity">Popularity</option>
+			<!--<option value="rating">Rating</option>  I doubt users will review/rate appartments. Also creates spamming target. We can add that if we see that users are publishing reviews-->
+		</select>
+	</span>
+	<div style="clear:both"></div>
+</div>
+
+<!-- [EP] Limiting this number to make refreshes faster -->
+
+<div class="post">
+
+	<div class="entry">
+ 			<div class="header" onclick="Element.toggle('listingshow_'+0)" style="cursor:pointer">
+			<ul>
+				<li style="margin-bottom:0px">
+					
+				
+						<span class="floatleft"><h2>[1] Jr. 1 Bedroom | Upper East Side | $650 - $800</h2></span><span class="floatright">[-]</span>
+						<div style="clear: both;"></div>	
+						1 1 st | <b>Available:</b> Jan 11, '08 | <b>Posted:</b> Mar 09, '08
+				</li>
+		
+    		</ul>
+			</div>
+			<div id="listingshow_0">
+				
+			<ul style="padding-top:3px">
+				<li>Popularity: 0 | Bogus flags: 0 | N/A flags:  0 | Broker flags: 0</li>
+				<li>
+					
+	        			<div class="lockedheader">
+							<img alt="Images" src="/images/images.png?1142218426" title="Images" /> <a href="#"><img alt="Lock" onmouseout="this.src='/images/lock.png'" onmouseover="this.src='/images/lock_open.png'" src="/images/lock.png?1142218458" title="Unlock Images" /></a>
+					
+						</div>
+	         			
+				<!-- end image -->
+				</li>
+	  	   		
+	          		 
+	              		
+          <li class="linenopad"><b>Basics:</b> 
+          
+          8000 sq feet, 11 ft ceilings, shared bathroom, 
+          kitchenette, no A/C, linoleum floors, no ok</li>
+          <li><b>Rooms:</b> 
+          
+            8 x 8, dim livingroom with street view, 
+          
+          
+            6 x 16, dim bedroom with street view 
+          
+          
+          </li>
+
+          <li><b>Building:</b> 
+            walkup
+           </li>
+          <li><span class="pluses"><b>Pluses:</b> 
+          private roof access
+            
+          </span></li>
+          <li><span class="minuses"><b>Minuses:</b> 
+          average cellphone signal (Sprint), poor bathroom, poor maintanance, poor heat, not broadband capable, average street noise, poor appliances, and average neighboor noise
+          </span></li>
+          
+	          		
+	        		
+   
+	        	<li><span id="favorites_info_1">
+	          		<a href="#" onclick="new Ajax.Updater('favorites_info_1', 'http://localhost:3000/listings/1/favorites', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('457854ccb51865f3ef5b601f1674a90ceff6cba3')}); return false;"><img alt="Star" src="/images/star.png?1142218662" title="Add to Favorites" /></a>
+	        		</span>	|
+	          		<span id="bogus_flag_1">
+	          		<a href="#" onclick="new Ajax.Updater('bogus_flag_1', 'http://localhost:3000/listings/1/bogus_flags', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('457854ccb51865f3ef5b601f1674a90ceff6cba3')}); return false;"><img alt="Exclamation" src="/images/exclamation.png?1142218368" title="Flag as Bogus" /></a>
+	          		</span>
+	          |
+	          		<span id="na_flag_1">
+			          <a href="#" onclick="new Ajax.Updater('na_flag_1', 'http://localhost:3000/listings/1/na_flags', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('457854ccb51865f3ef5b601f1674a90ceff6cba3')}); return false;"><img alt="Cancel" src="/images/cancel.png?1142218224" title="Flag as No Longer Available" /></a>
+			          </span>
+			          |
+			          <span id="broker_flag_1">
+			          <a href="#" onclick="new Ajax.Updater('broker_flag_1', 'http://localhost:3000/listings/1/broker_flags', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('457854ccb51865f3ef5b601f1674a90ceff6cba3')}); return false;"><img alt="Money_dollar" src="/images/money_dollar.png?1142218486" title="Flag as Broker Listing" /></a>
+			          </span>
+				</li>
+	      		  <li><b>Posted By:</b> user1</li>
+			      <li><b>Comments:</b></li>
+			      <li>
+						<div id="comments_block_1">
+				        
+
+user2: Leo sucks
+<br/><br/>
+
+user3: Long live Leo
+
+
+
+
+
+
+				        </div>
+				        <br/>
+						<a href="#" onclick="new Effect.SlideDown(&quot;add_comment_block_1&quot;,{duration:0.5});">Add comment</a>
+         
+            
+				        <div id="add_comment_block_1" style="display:none">
+				        <form action="/listings/1/listing_comments" class="new_listing_comment" id="new_listing_comment" method="post" onsubmit="new Ajax.Updater('comments_block_1', '/listings/1/listing_comments', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this) + '&amp;authenticity_token=' + encodeURIComponent('457854ccb51865f3ef5b601f1674a90ceff6cba3')}); return false;"><div style="margin:0;padding:0"><input name="authenticity_token" type="hidden" value="457854ccb51865f3ef5b601f1674a90ceff6cba3" /></div>
+    <textarea cols="20" id="listing_comment_content" name="listing_comment[content]" rows="5"></textarea><br/>
+    <input id="listing_comment_submit" name="commit" onclick="new Effect.SlideUp(&quot;add_comment_block_1&quot;,{duration:0.5});" type="submit" value="Done" />
+</form>
+
+ </div>
+				  </li>
+			 
+			  </ul>
+			 </div>
+    </div>
+</div>
+
+<div class="post">
+
+	<div class="entry">
+ 			<div class="header" onclick="Element.toggle('listingshow_'+1)" style="cursor:pointer">
+			<ul>
+				<li style="margin-bottom:0px">
+					
+				
+						<span class="floatleft"><h2>[2] Jr. 3 bedroom | Upper West Side | $500 - $650</h2></span><span class="floatright">[-]</span>
+						<div style="clear: both;"></div>	
+						2 2 st | <b>Available:</b> Jul 23, '08 | <b>Posted:</b> Mar 09, '08
+				</li>
+		
+    		</ul>
+			</div>
+			<div id="listingshow_1">
+				
+			<ul style="padding-top:3px">
+				<li>Popularity: 0 | Bogus flags: 0 | N/A flags:  0 | Broker flags: 0</li>
+				<li>
+					
+	        			<div class="lockedheader">
+							<img alt="Images" src="/images/images.png?1142218426" title="Images" /> <a href="#"><img alt="Lock" onmouseout="this.src='/images/lock.png'" onmouseover="this.src='/images/lock_open.png'" src="/images/lock.png?1142218458" title="Unlock Images" /></a>
+					
+						</div>
+	         			
+				<!-- end image -->
+				</li>
+	  	   		
+	          		 
+	              		
+          <li class="linenopad"><b>Basics:</b> 
+          
+          10000 sq feet, 17 ft ceilings, 1 bathroom, 
+          kitchenette, window A/C, carpet floors, no ok</li>
+          <li><b>Rooms:</b> 
+          
+            6 x 6, dim livingroom with street view, 
+          
+          
+            7 x 16, dim bedroom with street view ,
+          
+            12 x 15, dark bedroom with air shaft view ,
+          
+            6 x 10, dark bedroom with air shaft view 
+          
+          
+          </li>
+
+          <li><b>Building:</b> 
+            walkup
+           </li>
+          <li><span class="pluses"><b>Pluses:</b> 
+          private back yard
+            
+          </span></li>
+          <li><span class="minuses"><b>Minuses:</b> 
+          average heat, not broadband capable, poor cellphone signal (Nextel), a lot of street noise, average neighboor noise, average appliances, average maintanance, and average bathroom
+          </span></li>
+          
+	          		
+	        		
+   
+	        	<li><span id="favorites_info_2">
+	          		<a href="#" onclick="new Ajax.Updater('favorites_info_2', 'http://localhost:3000/listings/2/favorites', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('457854ccb51865f3ef5b601f1674a90ceff6cba3')}); return false;"><img alt="Star" src="/images/star.png?1142218662" title="Add to Favorites" /></a>
+	        		</span>	|
+	          		<span id="bogus_flag_2">
+	          		<a href="#" onclick="new Ajax.Updater('bogus_flag_2', 'http://localhost:3000/listings/2/bogus_flags', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('457854ccb51865f3ef5b601f1674a90ceff6cba3')}); return false;"><img alt="Exclamation" src="/images/exclamation.png?1142218368" title="Flag as Bogus" /></a>
+	          		</span>
+	          |
+	          		<span id="na_flag_2">
+			          <a href="#" onclick="new Ajax.Updater('na_flag_2', 'http://localhost:3000/listings/2/na_flags', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('457854ccb51865f3ef5b601f1674a90ceff6cba3')}); return false;"><img alt="Cancel" src="/images/cancel.png?1142218224" title="Flag as No Longer Available" /></a>
+			          </span>
+			          |
+			          <span id="broker_flag_2">
+			          <a href="#" onclick="new Ajax.Updater('broker_flag_2', 'http://localhost:3000/listings/2/broker_flags', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('457854ccb51865f3ef5b601f1674a90ceff6cba3')}); return false;"><img alt="Money_dollar" src="/images/money_dollar.png?1142218486" title="Flag as Broker Listing" /></a>
+			          </span>
+				</li>
+	      		  <li><b>Posted By:</b> user2</li>
+			      <li><b>Comments:</b></li>
+			      <li>
+						<div id="comments_block_2">
+				        
+
+user2: Leo sucks
+<br/><br/>
+
+user3: Long live Leo
+
+
+
+
+
+
+				        </div>
+				        <br/>
+						<a href="#" onclick="new Effect.SlideDown(&quot;add_comment_block_2&quot;,{duration:0.5});">Add comment</a>
+         
+            
+				        <div id="add_comment_block_2" style="display:none">
+				        <form action="/listings/2/listing_comments" class="new_listing_comment" id="new_listing_comment" method="post" onsubmit="new Ajax.Updater('comments_block_2', '/listings/2/listing_comments', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this) + '&amp;authenticity_token=' + encodeURIComponent('457854ccb51865f3ef5b601f1674a90ceff6cba3')}); return false;"><div style="margin:0;padding:0"><input name="authenticity_token" type="hidden" value="457854ccb51865f3ef5b601f1674a90ceff6cba3" /></div>
+    <textarea cols="20" id="listing_comment_content" name="listing_comment[content]" rows="5"></textarea><br/>
+    <input id="listing_comment_submit" name="commit" onclick="new Effect.SlideUp(&quot;add_comment_block_2&quot;,{duration:0.5});" type="submit" value="Done" />
+</form>
+
+ </div>
+				  </li>
+			 
+			  </ul>
+			 </div>
+    </div>
+</div>
+
+<div class="post">
+
+	<div class="entry">
+ 			<div class="header" onclick="Element.toggle('listingshow_'+2)" style="cursor:pointer">
+			<ul>
+				<li style="margin-bottom:0px">
+					
+				
+						<span class="floatleft"><h2>[3] 1 Bedroom | Flatiron | $1800 - $2000</h2></span><span class="floatright">[-]</span>
+						<div style="clear: both;"></div>	
+						3 3 st | <b>Available:</b> Sep 24, '08 | <b>Posted:</b> Mar 09, '08
+				</li>
+		
+    		</ul>
+			</div>
+			<div id="listingshow_2">
+				
+			<ul style="padding-top:3px">
+				<li>Popularity: 0 | Bogus flags: 0 | N/A flags:  0 | Broker flags: 0</li>
+				<li>
+					
+	        			<div class="lockedheader">
+							<img alt="Images" src="/images/images.png?1142218426" title="Images" /> <a href="#"><img alt="Lock" onmouseout="this.src='/images/lock.png'" onmouseover="this.src='/images/lock_open.png'" src="/images/lock.png?1142218458" title="Unlock Images" /></a>
+					
+						</div>
+	         			
+				<!-- end image -->
+				</li>
+	  	   		
+	          		 
+	              		
+          <li class="linenopad"><b>Basics:</b> 
+          
+          14000 sq feet, 17 ft ceilings, shared bathroom, 
+          kitchenette, no A/C, linoleum floors, cats ok</li>
+          <li><b>Rooms:</b> 
+          
+            12 x 12, dim livingroom with street view, 
+          
+          
+            8 x 7, dark bedroom with street view 
+          
+          
+          </li>
+
+          <li><b>Building:</b> 
+            walkup
+           </li>
+          <li><span class="pluses"><b>Pluses:</b> 
+          
+            
+          </span></li>
+          <li><span class="minuses"><b>Minuses:</b> 
+          average heat, a lot of neighboor noise, poor maintanance, not broadband capable, poor cellphone signal (Nextel), a lot of street noise, poor appliances, and average bathroom
+          </span></li>
+          
+	          		
+	        		
+   
+	        	<li><span id="favorites_info_3">
+	          		<a href="#" onclick="new Ajax.Updater('favorites_info_3', 'http://localhost:3000/listings/3/favorites', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('457854ccb51865f3ef5b601f1674a90ceff6cba3')}); return false;"><img alt="Star" src="/images/star.png?1142218662" title="Add to Favorites" /></a>
+	        		</span>	|
+	          		<span id="bogus_flag_3">
+	          		<a href="#" onclick="new Ajax.Updater('bogus_flag_3', 'http://localhost:3000/listings/3/bogus_flags', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('457854ccb51865f3ef5b601f1674a90ceff6cba3')}); return false;"><img alt="Exclamation" src="/images/exclamation.png?1142218368" title="Flag as Bogus" /></a>
+	          		</span>
+	          |
+	          		<span id="na_flag_3">
+			          <a href="#" onclick="new Ajax.Updater('na_flag_3', 'http://localhost:3000/listings/3/na_flags', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('457854ccb51865f3ef5b601f1674a90ceff6cba3')}); return false;"><img alt="Cancel" src="/images/cancel.png?1142218224" title="Flag as No Longer Available" /></a>
+			          </span>
+			          |
+			          <span id="broker_flag_3">
+			          <a href="#" onclick="new Ajax.Updater('broker_flag_3', 'http://localhost:3000/listings/3/broker_flags', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('457854ccb51865f3ef5b601f1674a90ceff6cba3')}); return false;"><img alt="Money_dollar" src="/images/money_dollar.png?1142218486" title="Flag as Broker Listing" /></a>
+			          </span>
+				</li>
+	      		  <li><b>Posted By:</b> user3</li>
+			      <li><b>Comments:</b></li>
+			      <li>
+						<div id="comments_block_3">
+				        
+
+user2: Leo sucks
+<br/><br/>
+
+user3: Long live Leo
+
+
+
+
+
+
+				        </div>
+				        <br/>
+						<a href="#" onclick="new Effect.SlideDown(&quot;add_comment_block_3&quot;,{duration:0.5});">Add comment</a>
+         
+            
+				        <div id="add_comment_block_3" style="display:none">
+				        <form action="/listings/3/listing_comments" class="new_listing_comment" id="new_listing_comment" method="post" onsubmit="new Ajax.Updater('comments_block_3', '/listings/3/listing_comments', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this) + '&amp;authenticity_token=' + encodeURIComponent('457854ccb51865f3ef5b601f1674a90ceff6cba3')}); return false;"><div style="margin:0;padding:0"><input name="authenticity_token" type="hidden" value="457854ccb51865f3ef5b601f1674a90ceff6cba3" /></div>
+    <textarea cols="20" id="listing_comment_content" name="listing_comment[content]" rows="5"></textarea><br/>
+    <input id="listing_comment_submit" name="commit" onclick="new Effect.SlideUp(&quot;add_comment_block_3&quot;,{duration:0.5});" type="submit" value="Done" />
+</form>
+
+ </div>
+				  </li>
+			 
+			  </ul>
+			 </div>
+    </div>
+</div>
+
+
+
+	</div>
+
+<!-- end content -->
+
+<!-- start rightbar -->
+	<div id="rightbar">
+		<ul>
+		  <li id="search">
+		    <h2><b>Map</b></h2>
+		    <div id="map">
+				<img alt="Map" class="bordered_img" height="300" src="/images/map.gif?1204780324" width="300" />
+			</div>
+		  </li>
+		</ul>
+	 </div>
+		
+		<script type="text/javascript">
+		
+			var slideEffect = new Fx.Style('map', 'margin-top', {wait:false, duration:800, transition:Fx.Transitions.circOut});
+			// var slideEffect2 = new Fx.Style('search', 'margin-top', {wait:false, duration:800, transition:Fx.Transitions.circOut});
+			
+			  window.addEvent('load', function() {
+				
+			    var top = $('map').getPosition().y ;
+			    window.addEvent('scroll', function(){
+			      slideEffect.start.delay(600, slideEffect, Math.max(0, document.documentElement.scrollTop - top + 40));
+				  // slideEffect2.start.delay(600, slideEffect2, Math.max(0, document.documentElement.scrollTop - top + 40));
+			    });
+			
+			    new SmoothScroll({duration:700, transition:Fx.Transitions.circOut});
+			  });
+			
+	
+	    </script>
+	</div>
+<!-- end rightbar -->
+
+
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- end page -->
+
+<!-- start footer -->
+<div id="footer">
+	<div class="wrap">
+		<div id="fbox1" class="box2"></div>
+		<div id="fbox2" class="box2"></div>
+		<div id="fbox3" class="box2"></div>
+	</div>
+	<p id="legal">(c) 2008. Design by <a href="http://www.nodethirtythree.com/">NodeThirtyThree</a> & ep.</p>
+</div>
+<!-- end footer -->
+<script src="/javascripts/nav.js?1204780359" type="text/javascript"></script>
+<!-- this javascript include is here because it needs pg elements -->
+</body>
+</html>

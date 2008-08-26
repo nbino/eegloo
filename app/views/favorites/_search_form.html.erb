@@ -1,0 +1,33 @@
+<% remote_form_for(
+        :favorite,
+        :url => search_favorites_path,
+        :complete => "$('search_spinner').hide();" ,
+        :before => "$('search_spinner').show();",
+        :update => 'search_results',
+        :html=>{:id => 'search_form'}) do |f|
+%>
+<ul>
+  <li id="search">
+    <h2><b>Search</b>&nbsp;<%=image_tag "spinner.gif", :id=>"search_spinner", :style=>"display:none", :width => 15, :height => 15 %></h2>
+      <ul>			
+          <li>
+            <div style="position:absolute; top:15px; left: 480px;">
+            <select  onchange="<%=auto_submit('search_form')%>" name="order_by">
+              <option value='created_at'>Sort by</option>
+              <option value='date_posted'>Date posted</option>
+               <option value='lbound'>Price</option>
+               <option value='favorites_count'>Popularity</option>
+            </select>
+            </div>
+          </li>
+        
+          <li>Search personal notes<br/><br/><%=f.text_field :note, :size=>15, :style=>'width:145px'%></li>
+          <li><%=f.submit 'Search'%>&nbsp;&nbsp; <%=link_to 'reset', favorites_path%></li>
+              
+          
+      </ul>
+	</li>
+</ul>
+<% end %>
+				
+

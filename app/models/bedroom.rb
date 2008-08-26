@@ -1,0 +1,2 @@
+class Bedroom < Room
+end

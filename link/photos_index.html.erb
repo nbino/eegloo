@@ -1,0 +1,16 @@
+<%= stylesheet_link_tag 'default' %>
+
+<%if @error == true %>
+   Unable to upload photo. Please check that file name field is not empty and contains correct path and filename.
+<%elsif @photos.size == 0 %>
+    <span style="font-family:arial; color=grey;font-size: 11px">No photos uploaded</span>
+ <%else %>
+    <span style="font-size:14px;text-align:center;color: #3E3E3E">Only <%=(3 - @photos.size)%> more photos to go!</span><br/><br/>
+ <%end%>
+
+<table><tr>
+<% @photos.each do |visual|  %>
+    <td><%= image_tag(visual.public_filename(:thumb), :height=>100, :width=>120) %> <br/> <%=visual.comment %></td>
+  <%end%>
+</tr></table>
+

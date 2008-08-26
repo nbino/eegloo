@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag 'default' %>
+
+<%if !@visuals %>
+ No visuals uploaded.
+<%else%>
+  
+    <table>
+    <tr>
+    
+    <% @visuals.each do |visual|  %>
+    
+      <td><%= image_tag(visual.public_filename(:thumb), :height=>100, :width=>120) %> <br/> <%=visual.comment %></td>
+    
+    <%end%>
+    </tr>
+    </table>
+  
+  <%end%>

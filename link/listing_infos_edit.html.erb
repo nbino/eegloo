@@ -1,0 +1,15 @@
+	<%=render :partial=>'shared/my_listing_navigation'%>
+	
+  
+	<fieldset class="colored">
+	<span style="font-size:16px;font-weight:bold"> Update listing details</span>
+  <br/><br/>
+		
+	<ul class="smalltext">
+		<% form_for( @listing_info, :url=>listing_listing_info_url(@listing) ) do |f| %>
+		
+		<%= render :partial => 'form', :locals => {:f=>f}%>
+		<% end %>
+	</ul>
+	
+	</fieldset>

@@ -1,0 +1,2 @@
+class AcType < AttrValue
+end

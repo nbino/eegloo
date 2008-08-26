@@ -1,0 +1,2 @@
+class Nhood < AttrValue
+end

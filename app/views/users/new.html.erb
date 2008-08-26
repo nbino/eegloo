@@ -1,0 +1,199 @@
+<!-- start content -->
+<div id="fullcontentcenter">
+
+
+
+<div style="clear: both;">&nbsp;</div>
+
+<span id="nyform">
+	<ul><li><div align="center" style="line-height:14px">We hate signups as much as you - but our apartment database depends on the contribution of users like you.  Therefore, to get an invite, just tell us a little about your current place.  If you're not a NYC renter, we'll still let you in - just help us spread the word about our service to your friends!</div></li></ul>
+		
+	<fieldset class="colored"><legend class="colored bigtext">Sign Up & List Your Place</legend>
+		
+	<ul>
+		
+		<% if flash[:error] then %>
+			<li style="text-align:center;color:#b31b1b;line-height:12px"><%= flash[:error] %><br/><br/></span></li>
+		<% end %>
+		
+		<% form_for @user, :html => {:id => 'user_form'} do |f| %>
+		
+		<li><label>Username</label><%= f.text_field :username, :class => 'required text', :size => '15' %></li>
+		
+		<li><label>Password</label><%= f.password_field :password, :class => 'text required', :size => '15' %></li>
+		
+     <li><label>Confirm Password</label> <%= f.password_field :password_confirmation, :class => 'text required', :size => '15'%> </li>
+
+     <li><label>Email</label><%= f.text_field :email, :class => 'text required', :size => '15' %></li>
+
+	<li class="whole">&nbsp;</li>
+	<li class="whole"><div align="center"><span class="boxspan selected" id="chooseny">I'm a current NYC renter!</span><span class="boxspan" id="chooseoot">I'm from out of town!</span></div></li>
+	
+	
+	<li class="whole"><div align="center">Share some details about your place</div></li>
+
+		
+		<%fields_for 'user[listing_attr]' do |f_listing| %>
+		     <li><label for="user_listing_attr_address">Street Address</label><%=f_listing.text_field :address, :class => 'text required', :size => '20' %></li>  
+          
+          <li><label for="user_listing_attr_cross_street">Cross Street:</label><%=f_listing.text_field :cross_street,:class => 'text', :size => '15'%></li>
+      
+          <li><label for="user_listing_attr_nhood">Neighborhood:</label> <%= f_listing.collection_select :nhood_id, @nhoods, :id, :name, {:include_blank=>'[select]'} %> </li>
+
+		      <li><label for="user_listing_attr_apt_type">Apartment Type</label><%= f_listing.collection_select :apt_type_id, @apt_types, :id, :name, {:include_blank=>'[select]', :class=>'required'}, :width =>'10' %></li>
+
+		      <li><label for="user_listing_attr_avail_date">Available Date</label><%= f_listing.text_field :avail_date, :class => 'text required', :size => '8' %> </li> 
+
+		      <li><label for="user_listing_attr_rent_range">Rent</label> <%= f_listing.collection_select :rent_range_id, @rent_ranges, :id, :name, {:include_blank=>'[select]'}, {:value => 11, :class => 'required'} %></li>
+ 
+		
+		<% end %>
+
+			<%= render :partial => '/shared/submit_button' %>
+			
+			
+		
+		<% end %>
+		
+	</ul>
+	</fieldset>
+</span>
+
+</div>
+
+</div>
+<!-- start content -->
+<!-- <div id="fullcontentcenter">
+
+<div align="center"><span class="boxspan selected" id="chooseny">I'm a current NYC renter!</span><span class="boxspan" id="chooseoot">I'm from out of town!</span></div>
+
+
+<div style="clear: both;">&nbsp;</div>
+
+<fieldset class="colored"><legend class="colored bigtext">Login</legend>
+<ul>
+	
+	<form action="/users/auth" method="post">
+		<li><label>username</label><input class="required text" type=text size=15/></li>
+		<li><label>password</label><input class="required text" type=password size=15/></li>
+	<div align="center" style="margin-top:20px">
+	<button id="submit_button" type="submit" class="positive">
+	        <img class="twelveem" src='/images/icons/16-em-check.png'/>Go
+    </button>
+	</div>
+	</form>  	
+	
+</ul>
+</fieldset>
+
+<div>&nbsp;<br/><br/></div>
+
+<span id="nyform">
+	
+	<fieldset class="colored"><legend class="colored bigtext">Sign Up & List Your Place</legend>
+
+	<ul>
+		
+		<% form_for @user do |f| %>
+		
+		<li><label>username</label><%= f.text_field :username, :class => 'required text', :size => '10' %></li>
+		
+		<li><label>password</label><%= f.password_field :password, :class => 'text required', :size => '10' %></li>
+		<li><label>email</label><%= f.text_field :email, :class => 'text required', :size => '10' %></li>
+		
+		<%fields_for 'user[listing_attr]' do |f_listing| %>
+		      <li><label for="user_listing_attr_address">street address</label> </li> <%=f_listing.text_field :address, :class => 'text required', :size => '20' %> <br/>
+
+		      <li><label for="user_listing_attr_apt_type">apartment type</label> </li>  <%= f_listing.collection_select :apt_type_id, @apt_types, :id, :name, {:include_blank=>'...', :class=>'required'} %> <br/>
+
+		      <li><label for="user_listing_attr_avail_date">available date</label> </li> <%= f_listing.text_field :avail_date, :class => 'text required', :size => '8' %> </li>
+
+		      <li><label for="user_listing_attr_rent_range">rent</label> </li>  <%= f_listing.collection_select :rent_range_id, @rent_ranges, :id, :name, {:include_blank=>'...'}, {:value => 11, :class => 'required'} %>
+		
+	
+		   <br/> 
+		
+		<% end %>
+		<div align="center" style="margin-top:20px">
+
+		<button id="submit_button" type="submit" class="positive">
+		        <img class="twelveem" src='/images/icons/16-em-check.png'/>Submit
+	    </button>
+		<br/>
+		 <span id="submit_error">please complete the required info</span></div> 
+
+		
+		<% end %>
+		
+		
+	</ul>
+	</fieldset>
+</span> -->
+<!-- <span id="ootform">
+	
+	<fieldset class="colored"><legend class="colored bigtext">Invite Some Friends</legend>
+
+	<ul><li>
+<b>Don't fret!</b>  We'll still let you have access to our listings, but first you'll have to <b>help us out</b> and invite 5 friends to signup (psst - pass a link along to all your NYC friends!). <br/><br/>Sorry for being a pain, but we're relying on your help to <b>grow our listings database</b> for the benefit of everyone (including you)!
+
+	</li></ul>
+	</fieldset>
+
+</span>
+-->
+<!--
+
+<script type="text/javascript">
+
+var nySlide = new Fx.Slide('nyform');
+var ootSlide = new Fx.Slide('ootform');
+
+ootSlide.hide();
+
+$('chooseny').addEvent('click', function(e){
+
+	$('chooseny').setAttribute('class','boxspan selected');
+	$('chooseoot').setAttribute('class','boxspan');
+
+	e = new Event(e);
+	ootSlide.slideOut('vertical');
+	nySlide.slideIn('vertical');
+	e.stop();
+});
+
+$('chooseoot').addEvent('click', function(e){
+
+	$('chooseny').setAttribute('class','boxspan');
+	$('chooseoot').setAttribute('class','boxspan selected');
+
+	e = new Event(e);
+	nySlide.slideOut('vertical');
+	ootSlide.slideIn('vertical');
+	e.stop();
+});
+
+
+var accordion = new Accordion('h3.atStart', 'div.atStart', {
+	opacity: false,
+	onActive: function(toggler, element){
+		toggler.getElementsByTagName("span")[0].setAttribute('style','background: url(/images/icons/arrow-down.gif) no-repeat left');
+		toggler.setStyle('color', '#b31b1b');
+		toggler.setStyle('margin-bottom', '0px');
+
+		if (element.id == 'lastelement') element.setStyle('border-bottom-width','1px');
+
+	},
+	onBackground: function(toggler, element){
+
+		toggler.getElementsByTagName("span")[0].setAttribute('style','background: url(/images/icons/arrow-right.gif) no-repeat left');
+		toggler.setStyle('color', '#222');
+		toggler.setStyle('margin-bottom', '3px');
+
+		if (element.id == 'lastelement') element.setStyle('border-bottom-width','0px');
+	}
+}, $('accordion'));
+
+var newTog = new Element('h3', {'class': 'toggler'}).setHTML('Common descent');
+//var newEl = new Element('div', {'class': 'element'}).setHTML('<p>A group of organisms is said to have common descent if they have a common ancestor. In biology, the theory of universal common descent proposes that all organisms on Earth are descended from a common ancestor or ancestral gene pool.</p><p>A theory of universal common descent based on evolutionary principles was proposed by Charles Darwin in his book The Origin of Species (1859), and later in The Descent of Man (1871). This theory is now generally accepted by biologists, and the last universal common ancestor (LUCA or LUA), that is, the most recent common ancestor of all currently living organisms, is believed to have appeared about 3.9 billion years ago. The theory of a common ancestor between all organisms is one of the principles of evolution, although for single cell organisms and viruses, single phylogeny is disputed</p>');
+//accordion.addSection(newTog, newEl, 0);
+</script> -->

@@ -1,0 +1,11 @@
+<%if @visuals.size == 0 %>
+  <span style="font-family:arial; color=grey;font-size: 11px">No photos uploaded</span>
+<%end%>
+  
+<table><tr>
+<% @visuals.each do |visual|  %>
+    <td><%= image_tag(visual.public_filename(:thumb), :height=>100, :width=>120) %> <br/> <%=visual.comment %></td>
+  <%end%>
+</tr></table>
+
+

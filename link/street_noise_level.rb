@@ -1,0 +1,2 @@
+class StreetNoiseLevel < AttrValue
+end

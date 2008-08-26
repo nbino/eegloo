@@ -1,0 +1,405 @@
+<!-- start leftbar -->
+	<div id="leftbar">
+		<ul>
+	    <li id="search">
+	    <h2><b>Search</b></h2>
+	    <form method="get" action="">
+	       <input class="text" type="text" size="15"/>
+	    </form>
+		    <div style="text-align: center;" class="single"><br />e.g. "2br Chelsea $1000-2000"</div>
+		  </li>
+		  <li>
+		    <h2 style="font-weight: bold;">refine <span style="font-weight: normal;">search</span></h2>
+		    <ul>
+		      <li><a href="#">Fusce dui neque fringilla</a></li>
+		      <li><a href="#">Eget tempor eget nonummy</a></li>
+		      <li><a href="#">Magna lacus bibendum mauris</a></li>
+		      <li><a href="#">Nec metus sed donec</a></li>
+		      <li><a href="#">Magna lacus bibendum mauris</a></li>
+		      <li><a href="#">Velit semper nisi molestie</a></li>
+		      <li><a href="#">Eget tempor eget nonummy</a></li>
+		    </ul>
+		  </li>
+		  <li>
+		    <h2><b>sponsored&nbsp;</b>results</h2>
+		    <div class="single">Testing</div>
+		  </li>
+		</ul>
+	</div>
+<!-- end leftbar -->
+<!-- start content -->
+
+	<div id="fullcontent">
+
+        <div id="listview">
+        <fieldset class="colored"><legend class="colored bigtext"><%= @listing.address %> [<%= @listing.nhood %>]</legend>
+
+		<ul>
+          <!-- <img class="right" src="images/mapview.gif" width="400" height="500"/> -->
+		  <div id="viewmapouter">
+			<div id="yelp-inputdiv">
+			    <input type="text" id="yelp-input" size="20"/>
+			</div>
+			<div id="viewmap"></div>
+		  </div>
+		
+		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAoTxjcscTPeNniIcHVHOnLRQB8YSA1xJSjpLwFJKRsAnUFEZj6xRq47GZaHePBFWEJb3_UcaQ5438FA"
+        type="text/javascript"></script>
+		  	<script type="text/javascript">
+
+   var YWSID = "-yb90ZjSY4KwDecRo73C3A"; // common required parameter (api key)
+    var map = null;
+    var icon = null;
+	var homelatlng = new GLatLng(40.752068, -73.985005);
+    /*
+     * Creates the map object and calls setCenterAndBounds
+     * to instantiate it.
+     */
+    function load() {
+        map = new GMap2(document.getElementById("viewmap"));
+        GEvent.addListener(map, "load", function() {updateMap("restaurants");});
+        map.setCenter(homelatlng,15);
+        map.addControl(new GSmallMapControl());
+
+        // map.setMapType(G_HYBRID_MAP);
+
+        // if (window.attachEvent) window.attachEvent("onresize", function() { map.checkResize()} );
+        // else if (window.addEventListener) window.addEventListener("resize", function() { map.checkResize()}, false);
+
+        // setup our marker icon
+        icon = new GIcon();
+        icon.image = "images/icons/marker_star.png";
+        icon.shadow = "images/icons/marker_shadow.png";
+        icon.iconSize = new GSize(20, 29);
+        icon.shadowSize = new GSize(38, 29);
+        icon.iconAnchor = new GPoint(15, 29);
+        icon.infoWindowAnchor = new GPoint(15, 3);
+    }
+
+    /*
+     * Construct the URL to call for the API request
+     */
+    function constructYelpURL(term) {
+        var mapBounds = map.getBounds();
+        var URL = "http://api.yelp.com/" +
+            "business_review_search?"+
+            "callback=" + "handleResults" +
+            "&term=" + term +
+            "&num_biz_requested=20" +
+            "&tl_lat=" + mapBounds.getSouthWest().lat() +
+            "&tl_long=" + mapBounds.getSouthWest().lng() +
+            "&br_lat=" + mapBounds.getNorthEast().lat() +
+            "&br_long=" + mapBounds.getNorthEast().lng() +
+            "&ywsid=" + YWSID;
+        return encodeURI(URL);
+    }
+
+    /*
+     * Called on the form submission: updates the map by
+     * placing markers on it at the appropriate places
+     */
+    function updateMap(term) {
+        // turn on spinner animation
+        //document.getElementById("spinner").style.visibility = 'visible';
+
+        var yelpRequestURL = constructYelpURL(term);
+
+        /* clear existing markers */
+        map.clearOverlays();
+
+
+        /* add the center marker */
+
+        var marker = new GMarker(homelatlng);
+         map.addOverlay(marker);
+
+        /* do the api request */
+        var script = document.createElement('script');
+        script.src = yelpRequestURL;
+        script.type = 'text/javascript';
+        var head = document.getElementsByTagName('head').item(0);
+        head.appendChild(script);
+        return false;
+    }
+
+    /*
+     * If a sucessful API response is received, place
+     * markers on the map.  If not, display an error.
+     */
+    function handleResults(data) {
+        // turn off spinner animation
+        //document.getElementById("spinner").style.visibility = 'hidden';
+
+        if(data.message.text == "OK") {
+            if (data.businesses.length == 0) {
+                alert("Error: No businesses were found near that location");
+                return;
+            }
+            for(var i=0; i<data.businesses.length; i++) {
+                biz = data.businesses[i];
+                createMarker(biz, new GLatLng(biz.latitude, biz.longitude), i);
+            }
+        }
+        else {
+            alert("Error: " + data.message.text);
+        }
+    }
+
+    /*
+     * Formats and returns the Info Window HTML
+     * (displayed in a balloon when a marker is clicked)
+     */
+    function generateInfoWindowHtml(biz) {
+        var text = '<div id="marker" class="marker">';
+
+        // image and rating
+        //text += '<img class="businessimage" src="'+biz.photo_url+'"/>';
+
+        // div start
+        text += '<div class="businessinfo">';
+
+        // name/url
+        text += '<a href="'+biz.url+'" target="_blank">'+biz.name+'</a> - '+formatCategories(biz.categories);
+       
+        // categories
+        //text += formatCategories(biz.categories);
+        // neighborhoods
+        //if(biz.neighborhoods.length)
+        //    text += formatNeighborhoods(biz.neighborhoods);
+        // address
+        text += biz.address1 + '<br/>';
+        // address2
+        if(biz.address2.length)
+            text += biz.address2; // + '<br/>';
+        // city, state and zip
+        //text += biz.city + ',&nbsp;' + biz.state + '&nbsp;' + biz.zip + '<br/>';
+        // phone number
+        //if(biz.phone.length)
+        //    text += formatPhoneNumber(biz.phone);
+        // Read the reviews
+        //text += '<br/><a href="'+biz.url+'" target="_blank">Read the reviews »</a><br/>';
+        // div end
+
+		// stars
+        text += '<br/><img class="ratingsimage" src="'+biz.rating_img_url_small+'"/>';
+
+		 // reviews
+	    text += ' ' + biz.review_count + '&nbsp;reviews';
+
+        text += '</div></div>'
+        return text;
+    }
+
+    /*
+     * Formats the categories HTML
+     */
+    function formatCategories(cats) {
+        var s = '';
+        for(var i=0; i<cats.length; i++) {
+            s+= cats[i].name;
+            if(i != cats.length-1) s += ', ';
+        }
+        s += '<br/>';
+        return s;
+    }
+
+    /*
+     * Formats the neighborhoods HTML
+     */
+    function formatNeighborhoods(neighborhoods) {
+        s = 'Neighborhoods: ';
+        for(var i=0; i<neighborhoods.length; i++) {
+            s += '<a href="' + neighborhoods[i].url + '" target="_blank">' + neighborhoods[i].name + '</a>';
+            if (i != neighborhoods.length-1) s += ', ';
+        }
+        s += '<br/>';
+        return s;
+    }
+
+    /*
+     * Formats the phone number HTML
+     */
+    function formatPhoneNumber(num) {
+        if(num.length != 10) return '';
+        return '(' + num.slice(0,3) + ') ' + num.slice(3,6) + '-' + num.slice(6,10) + '<br/>';
+    }
+
+    /*
+     * Creates a marker for the given business and point
+     */
+    function createMarker(biz, point, markerNum) {
+        var infoWindowHtml = generateInfoWindowHtml(biz)
+        var marker = new GMarker(point, icon);
+        map.addOverlay(marker);
+        GEvent.addListener(marker, "click", function() {
+            marker.openInfoWindowHtml(infoWindowHtml, {maxWidth:"100px"});
+        });
+        // automatically open first marker
+        //if (markerNum == 0)    marker.openInfoWindowHtml(infoWindowHtml, {maxWidth:400});
+    }
+
+    //load();
+
+		  </script>
+
+
+
+		
+		<script type="text/javascript">
+		// simple array store
+		var store = new Ext.data.SimpleStore({
+		    fields: ['txt'],
+		    data : [['restaurants'], ['gyms'], ['food'], ['bars']]
+		});
+		var combo = new Ext.form.ComboBox({
+		    store: store,
+		    displayField:'txt',
+		    typeAhead: true,
+		    mode: 'local',
+		    triggerAction: 'all',
+		    emptyText:'Show [restaurants]...',
+		    selectOnFocus:true,
+		    applyTo: 'yelp-input'
+		});
+		
+		combo.addListener("select", function(c,r,i) { updateMap(c.getValue()) }); 
+		combo.addListener("specialkey", function(f,e) { updateMap(f.getValue()) }); 
+			
+		
+		</script>
+
+	        <li><label>Rent</label><%=@listing.rent_range%></li> 
+			<li><label>Apt. Type</label><%=@listing.apt_type%></li>
+			<li><label>Lease Expiry</label><%= @listing.avail_date.strftime("%b %d, '%y") %></li>
+		  	<li><label>Posted</label>on <%= @listing.created_at.strftime("%b %d, '%y")%> by <%=@listing.user.username %></li>
+	        <li>&nbsp;</li>
+        
+<%=image_tag "spinner.gif", :style=>"display:none", :id=>"spinner_#{@listing.id}", :width => 20, :length => 20%>
+<li><div  id="viewtoolbar" align="center"><span class="boxspan">
+
+<span id="favorites_info_<%=@listing.id%>">
+
+<%=link_to_remote( 
+  'Add to favorites', 
+  :url=>listing_favorites_url(@listing), 
+  :complete=>"$('spinner_#{@listing.id}').hide();",
+  :before=>"$('spinner_#{@listing.id}').show();",
+  :update=>"favorites_info_#{@listing.id}",
+  :method=>:post)%>
+
+</span>
+|
+<span id="bogus_flag_<%=@listing.id%>">
+<%=link_to_remote(
+  'Flag as bogus', 
+  :url=>listing_bogus_flags_url(@listing), 
+  :complete=>"$('spinner_#{@listing.id}').hide();",
+  :before=>"$('spinner_#{@listing.id}').show();",
+  :method=>:post,
+  :update=>"bogus_flag_#{@listing.id}")%>
+</span>
+|
+<span id="na_flag_<%=@listing.id%>">
+<%=link_to_remote(
+  'Flag as no longer available', 
+  :url=>listing_na_flags_url(@listing), 
+  :complete=>"$('spinner_#{@listing.id}').hide();",
+  :before=>"$('spinner_#{@listing.id}').show();",
+  :method=>:post,
+  :update=>"na_flag_#{@listing.id}")%>
+</span>
+|
+<span id="broker_flag_<%=@listing.id%>">
+<%=link_to_remote(
+  'Flag as broker', 
+  :url=>listing_broker_flags_url(@listing), 
+  :complete=>"$('spinner_#{@listing.id}').hide();",
+  :before=>"$('spinner_#{@listing.id}').show();",
+  :method=>:post,
+  :update=>"broker_flag_#{@listing.id}")%>
+</span>
+
+
+</span></div></li>
+
+
+        	 <!-- <li class="img"> -->
+        	 	<a href="/images/stock_apt1_full.jpg" rel="lightbox[aptview]">
+        			<img src="/images/stock_apt1_small.jpg" alt="" width="80" height="73" />
+        	 	</a>
+        	 	<a href="/images/stock_apt1_full.jpg" rel="lightbox[aptview]">
+				        			<img src="/images/stock_apt1_small.jpg" alt="" width="80" height="73" />
+        	 	</a>
+        	 	<a href="/images/stock_apt1_full.jpg" rel="lightbox[aptview]">
+				        			<img src="/images/stock_apt1_small.jpg" alt="" width="80" height="73" />
+        	 	</a>
+        	 <!-- </li> -->
+			
+			</ul><div id="listview_s">
+		<ul>
+			<%if @listing.listing_info?%>
+			  <%l = @listing.listing_info%>
+			
+			
+			<li class="line">Numbers</li>
+			<li class="line">Essentials</li>
+			<li class="line">Features</li>
+			
+			
+			<li><label>Square Ft</label><%= l.sq_footage %></li>
+			<li><label>Maintenance</label><%= l.maintenance_q %></li>
+			<li><label>Elevator</label><%= l.elevator ? 'Yes' : 'No' %></li>
+			
+		
+			<li><label>Ceiling ht</label><%= l.ceiling_height %></li>	
+			<li><label>Bathrooms</label> <%= l.bathroom_q %></li>
+			<li><label>Laundry</label><%= l.laundry ? 'Yes' : 'No' %></li>
+			
+			
+			<li><label># Bathrooms</label><%= l.no_of_bathrooms %></li>
+			<li><label>Appliances</label><%= l.appliances_q %></li>
+			<li><label>Gym</label><%= l.gym ? 'Yes' : 'No' %></li>
+			
+			
+			<li><label><%= l.broker_only ? "broker" : "landlord" %> #</label><%= l.landlord_phone_number %></li>
+			<li><label>Heat</label><%= l.heat_q %></li>
+			<li><label>Doorman</label><%= l.doorman ? 'Yes' : 'No' %></li>
+			
+			
+			<li class="whole line">Other</li>
+			<li><label>Pets</label><%= l.pets %></li>
+			<li><label>Cellphone</label><%= l.cellphone_q %></li>
+			<li>&nbsp;</li>
+			
+			<li class="whole"><label>Misc</label><%= 
+		    {
+		     'Rent Stabilized'=>l.rent_stabilized?,
+		     'Rent Controlled'=>l.rent_controlled?,
+		      "#{l.ac_type} A/C" => !l.ac_type.none?,
+		      'Broadband Capable' => l.broadband?,
+		      'Multi-level'=>l.multi_level?, 
+		      'Penthouse'=>l.penthouse?, 
+		      'Private Entrance'=>l.private_entrance?, 
+		   }.keys_to_sentence_sens_false_values%></li>
+		
+			<li class="whole line">Rental Story</li><li>&nbsp;</li>
+			<li class="whole"><%= l.comment %></li>
+			
+		<%else%>
+	  		<li><label>no</label>Additional Info</li>
+	  	<%end%>
+		
+		</ul></div>
+        </fieldset>
+
+        <div class="boxdiv"> 
+        <div id="comments_block_<%=l.id%>">
+        <%=render_partial 'shared/comment_list', :object=>l.comments%>
+        </div>
+        <br/>
+        Add comment<br>
+        <div id="add_comment_block_<%=l.id%>">
+        <%= render :partial=>'/shared/create_comment'%> 
+        </div>
+        </div>
+		</div>

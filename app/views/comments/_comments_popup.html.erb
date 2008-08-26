@@ -1,0 +1,6 @@
+
+<%=render :partial=>shared/dialog, :locals=>{:id=>element_id, :class=>"commentsDialog"} do%>
+
+  <%= render :partial => '/comments/show', :collection =>comments, :spacer_template => '/comments/comments_list_spacer' %>
+
+<%end%>

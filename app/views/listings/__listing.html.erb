@@ -1,0 +1,167 @@
+<%update_page do |page|%>
+
+<%l_id = listing.id%>
+
+<div class="listing" id="listing_<%=l_id%>">
+
+  <!--flag popup-->
+  <%=render :partial=>"shared/dialog", :locals=>{:element_id=>"flag_popup_#{l_id}", :page=>page, :content=>'listings/flag_listing'%>
+  <!--/flag popup-->
+ 
+  <!--images_locked popup-->
+  <%=render :partial=>"shared/dialog", :locals=>{:element_id=>"photos_locked_popup_#{l_id}", :page=>page, :content=>'listings/photos_locked'%>
+  <!--/images_locked popup-->
+ 
+  <!--appt details locked popup-->
+  <%=render :partial=>"shared/dialog", :locals=>{:element_id=>"appt_details_locked_popup_#{l_id}", :page=>page, :content=>'listings/apt_details_locked'%>
+  <!--/appt details locked popup-->
+
+  <!--bld details locked popup-->
+  <%=render :partial=>"shared/dialog", :locals=>{:element_id=>"bld_details_locked_popup_#{l_id}", :page=>page, :content=>'listings/bld_details_locked_locked'%>
+  <!--/bld details locked popup-->
+
+  <!--send by email popup-->
+  <%=render :partial=>"shared/dialog", :locals=>{:element_id=>"send_by_email_popup_#{l_id}", :page=>page, :content=>'listings/send_listing_by_email'%>
+  <!--/send by email popup-->
+ 
+  <div class="listing_heading" id="listing_heading_<%=l_id%>>
+  
+    <!--favorites star-->
+    <%=render :partial=>"shared/favorites_star" :locals=>{:element_id=>"favorites_star_#{l_id}", :page=>page%>
+    <!--/favorites star-->
+    
+    <%content_tag( 
+              :span,
+              :onclick => ["this.style.fontWeight='normal';", 
+                            visual_effect(:toggle_slide, "listing_content_#{l_id}", :duration => 0.4 ), 
+                            page.hide("unread_#{listing_counter}"),
+                            page.show("read_#{listing_counter}"),
+                            (page.toggle("images_locked_popup_#{l_id}") unless listing.photos_allowed?),
+                            (page.toggle("appt_details_locked_popup_#{l_id}") unless listing.appt_details_allowed?),
+                            (page.toggle("bld_details_locked_popup_#{l_id}") unless listing.bld_details_allowed?),
+                            remote_function(:url=>listing_readings_url(listing), :method=>:post)],
+              :id => "listing_title_#{l_id})" do %>
+  
+      <%=content_tag( 
+      :h2,
+      :style=>"#{ l.unread? ? 'font-weight:bold;':'font-weight:normal;'}", 
+      :id=>"header_#{listing_counter}") do%>
+    
+        <%=l.apt_type%> | <%=l.nhood%> | <%#{l.rent_range}%>
+      
+      <%end%>
+        
+                
+    <%end%>
+              <span style="float:right;">
+                  
+               <%=image_tag(
+                      'unchecked.gif', 
+                      :id=>"unread_#{listing_counter}", 
+                      :onclick=>["$('header_#{listing_counter}').style.fontWeight='normal';", page.toggle("read_#{listing_counter}", "unread_#{listing_counter}"), remote_function(:url=>listing_readings_url(listing), :method=>:post)], 
+                      :style=>"cursor:pointer;#{is_this_friends? || is_this_favorites? || l.read? ? 'display:none;' : ''}", 
+                      :title=>'Mark as read') 
+			         %>
+                  
+                  <%=image_tag(
+                      'checked.gif', 
+                      :id=>"read_#{listing_counter}", 
+                      :onclick=>["$('header_#{listing_counter}').style.fontWeight='bold';",page.toggle("read_#{listing_counter}", "unread_#{listing_counter}"), remote_function(:url=>listing_reading_url(listing, 0), :method=>:delete)], 
+                      :style=>"cursor:pointer;#{is_this_friends? || is_this_favorites? || l.read? ? '' : 'display:none;'}", 
+                      :title=>'Mark as unread') 
+			         %>
+               </span>
+               <%=l.address%> | Available: <%= l.avail_date.strftime("%b %d, '%y") %> | Posted: <%=l.created_at.strftime("%b %d, '%y")%>
+               
+               
+               <%if is_this_favorites?%>
+                  <a href="#" title="Under construction">Send to phone</a>
+                  <%favorite = current_user.favorites.find(:first, :conditions=>['listing_id = ?', listing.id])%>
+                  <%if favorite.note.nil?%>        
+                    <%=render :partial=>'add_note', :locals=>{:page=>page, :listing=>listing}%>
+               <%else%>
+                    <br/><%=render :partial=>'show_note', :locals=>{:favorite=>favorite}%><br/>
+               <%end%>
+                <%=link_to_function 'Send note/photo/video from your phone', page.show("sms_note_popup_#{listing.id}") %>
+            <%end%>
+            </div>
+				</li>
+    		</ul>
+      </div>
+			
+      
+			<div id="listingshow_<%= listing_counter %>" style="border:1px solid gray;border-top:0;padding:6px; background:#FFF; display:none;z-index:0">
+				
+			<ul style="padding-top:3px">
+				<li>Popularity: <%=l.favorites.count%></li>
+          
+          <%if l.flag_alert?%>
+          <li>Warning: 
+            <%if l.broker_alert?%>
+              This listing is likely a broker listing.
+            <%elsif l.na_alert?%>
+              This apartment is probably no longer available.
+            <%elsif l.bogus_alert?%>
+               This listing 
+            <%end%>
+          <%end%>
+				<li>
+            <%if !current_user.photo_access?%>
+	        		
+              <div>
+							<%=link_to_function image_tag('images_locked.jpg', :width=>370, :height=>91, :title=>'Photos are locked'), page.show("images_locked_popup_#{l.id}")%>
+						</div>
+              
+	         	<%else%>
+	          	<%if l.photos.size == 0 %>
+	          		Photos were not provided <a href="#">Request photos</a>
+	          	<%else%>
+	          		<table width=100%>
+                    <tr>
+                      <% l.photos.each do |visual|  %>
+                          <td><%= image_tag(visual.public_filename(:thumb), :height=>75, :width=>100) %> <br/> <%=visual.comment %></td>
+                      <%end%>
+	            		</tr>
+                  </table>
+				  	<%end%>
+					<%end%>
+				<!-- end image -->
+				</li>
+          <%=render :partial=>"shared/comment_popup", :locals=>{:listing=>l, :page=>page}%> 
+
+            <%if current_user.listing_info_access?%>
+                <%if l.listing_info?%> 
+                    <%=render :partial => 'shared/listing_info', :locals => {:li=>l.listing_info}%>
+                <%else%>
+                   Detailed info was not provided. <a href="#">Request detailed info</a>
+                <%end%>
+            <%else%>
+              <%=render :partial=>'shared/locked_listing_info', :locals=>{:page=>page, :listing=>listing}%>
+            <%end%>
+   
+	        <li><b>Posted By:</b> <%= l.user.username %></li>
+	 			
+          <li>
+               
+              <%=link_to_function 'Show comments', [visual_effect(:toggle_slide, "comments_block_#{l.id}", :duration => 0.4 ), page.toggle("show_comments_#{l.id}", "hide_comments_#{l.id}")], :id=>"show_comments_#{l.id}"%>
+              <%=link_to_function 'Hide comments', [visual_effect(:toggle_slide, "comments_block_#{l.id}", :duration => 0.4 ), page.toggle("show_comments_#{l.id}", "hide_comments_#{l.id}")], :id=>"hide_comments_#{l.id}", :style=>'display:none'%> |
+              <%=link_to_function 'Add comment', [page.toggle("comment_popup_#{l.id}")] %>
+              
+           </li>
+				
+					
+            <div id="comments_block_<%=l.id%>" style="display:none">
+						
+			        <%=render :partial=>'shared/comment_list', :locals=>{:comments=>l.comments}%>
+
+            </div>
+					
+			  	
+				
+			     
+          </ul>
+			 </div>
+      </div>
+  </div>
+</div><!--positioning div-->  
+<% end %>

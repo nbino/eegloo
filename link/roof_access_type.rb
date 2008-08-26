@@ -1,0 +1,2 @@
+class RoofAccessType < AttrValue
+end

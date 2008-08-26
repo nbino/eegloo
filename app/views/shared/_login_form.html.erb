@@ -1,0 +1,10 @@
+<li><%=flash[:error]%></li>
+<%form_for :user, :url=>session_path do |f|%>
+
+	<li><label>Email</label><%= f.text_field :email, :class => 'required text', :size => '15' %></li>
+	
+	<li><label>Password</label><%= f.password_field :password, :class => 'text required', :size => '15' %></li>
+
+    <li><label>&nbsp;</label><%= f.submit "Log in" %></li>
+
+<%end%>

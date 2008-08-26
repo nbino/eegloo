@@ -1,0 +1,83 @@
+<!-- start content -->
+<!--
+<div id="fullcontentcenter">
+
+<div style="clear: both;">&nbsp;</div>
+	<fieldset class="colored"><legend class="colored bigtext">Invite Friends</legend>
+	<ul style="padding-left:75px"><li>Friend's Emails (Separate by Comma)
+		</li>
+		<li>
+		<%= text_area :invite, :emails, :rows => 5, :style=> 'width:450px' %>
+		</li>
+
+	</ul>
+	
+	<ul style="padding-top:0px; padding-left:45px"><li>	
+		<div class="lockedheader" style="padding-left:20px;padding-right:20px;width:470px"><ul>
+		<% form_remote_tag :url => '/invite/get', :loading => "$('selected-list-ul').innerHTML='<li>Loading...</li>'", :update => 'selected-list-ul', :html => {:name => 'inviteform'} do -%>
+		<li>Import Friends From: &nbsp;<%= select 'invite', 'service',  {'Gmail'=>'gmail','Facebook'=>'facebook','Yahoo'=>'yahoo','Hotmail'=>'hotmail'}  %> <%= text_field :invite, :login, {:size => '10'} %> &nbsp;<%= password_field :invite, :password, {:size => '10'}  %> &nbsp;<%= submit_tag 'Get' %><% end -%>
+		</li>
+		<li style="margin-top:20px">
+			<div class="selected-box">
+        	    <div class="selected-list">
+					<form name="importform">
+					<ul id="selected-list-ul">
+						
+				
+					</ul>
+					</form>
+					<script language="javascript">
+						function addInvites() {
+							
+							var x = document.forms.importform.elements.contact;
+							if (!x) { return; }
+							
+							var v = $('invite_emails').value;
+							var str = '';
+							for (var i=0;i<x.length;i++) { if (x[i].checked) {str += ', '+x[i].value}}
+							v = v.replace(/\w*,\w*$/,'');
+							if (v.length == 0) {str = str.substring(2,str.length)}	
+							$('invite_emails').value = v + str;
+						
+							
+							$('selected-list-ul').innerHTML = '';
+							// for (var i=0;i<x.length;i++) { x[i].checked=false }
+													
+						}
+					</script>
+	            </div>
+ 			</div>
+		</li>
+		<li style="margin-top:10px;text-align:center"><%= button_to_function 'Add Selected to Invite List', 'addInvites()' %></li>
+		</ul>
+			
+		</div>
+		</ul></li>
+		
+		<ul style="padding-top:0px;padding-left:75px">
+		<li>Subject<br/>
+			<%= text_field :invite, :subject, :style=> 'width:450px' %>
+		<li>Message<br/>
+			Hi [friend],
+			
+			[Yourname] has sent you an invite to our service, Freshpaint, a place for NYC renters (and would-be renters) to exchange information about apartments.  Please click [here] to accept [yourname]'s invite and check out what we're doing!
+			
+			[More about Freshpaint] Our goal is to connect renters to vacancies as efficiently as possible - without all the hassle, cost, guessing, and wasted time that has come to be associated with apartment-hunting in the big city.
+			
+			[The following is a little note from [Yourname]]
+			<%= text_area :invite, :message, :rows => 5, :style=> 'width:450px' %>
+			
+			
+		</li>
+		<li>+ Standard link text</li>
+		<li><div align="center" style="margin-top:20px">
+
+		<%= submit_tag 'Send Invites' %>
+		<br/></li>
+		
+	</li></ul>
+	</fieldset>
+</span>
+</div>
+-->
+<h2>Under construction</h2>

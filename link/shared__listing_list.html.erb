@@ -1,0 +1,14 @@
+<%javascript_tag do%>
+var photoMessageShown = <%=session[:no_more_popups] || is_this_favorites? || current_user.photo_access? ? 'true' : 'false'%>;
+var detailsMessageShown = <%=session[:no_more_popups] || is_this_favorites? || current_user.listing_info_access? ? 'true' : 'false'%>;
+<%end%>
+<%session[:no_more_popups] = true%>
+
+<%if @listings.size > 0%>
+  <div>page <%=remote_paginating_links @listings, {:window_size => 5, :auto_submit_form => true, :form_name=>'search_form', :set_hidden_field=>true, :hidden_field_name=>'custom_options[page]' }%></div>
+  <%=render :partial => '/shared/listing', :collection => @listings-%>
+<%elsif is_this_favorites?%>
+No favorites found
+<%else%>
+No listings found
+<%end%>

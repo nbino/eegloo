@@ -1,0 +1,18 @@
+
+<%=render :partial=>shared/dialog, :locals=>{:id=>element_id, :class=>"flagDialog"} do%>
+
+  <%remote_form_for Flag.new, :url=>listing_flags_url(listing) do |f|%>
+
+    <%=f.label,:type, "Flag listing as:"%><br/>
+    <%= f.collection_select  :type, Flag.types, :id, :name, {:include_blank=>'Select'} %> <br/>
+    
+
+    <%=f.label,:type, "Comment:"%><br/>
+    <%=f.text_area :comment%>
+    
+
+    <%=f.image_submit "flag_submit_button.png", :onclick=>page.hide(element_id)%>
+
+  <%end%>
+
+<%end%>

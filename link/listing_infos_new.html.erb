@@ -1,0 +1,17 @@
+
+	<%=render :partial=>'shared/my_listing_navigation'%>
+	
+  <fieldset class="colored">
+	
+  <span style="font-size:14px;text-align:left;color: #3E3E3E">Why add detailed information to your listing? Because it helps you and your fellow apartment hunters get detailed information without running around looking at apartments. This makes apartment hunting easier and more fun. And that's a good thing.</span>
+  <br/><br/>
+	
+		
+	<ul class="smalltext">
+		<% form_for( @listing_info, :url=>listing_listing_info_url(@listing) ) do |f| %>
+		
+		<%= render :partial => 'form', :locals => {:f=>f}%>
+		<% end %>
+	</ul>
+	
+	</fieldset>

@@ -1,0 +1,21 @@
+<%=render :partial=>'shared/my_listing_navigation', :locals => {:active => 2}%>
+
+
+<b>Upload photos and videos</b>
+<%= error_messages_for :visual %>
+
+A picture is worth a thousand words. Posting 3 photos gets you access to all photos. Posting a video gets you access to all photos and videos.
+<% form_for([@listing, @visual], :html => { :multipart => true }, :target=>'visuals_list') do |f| %>
+  <div>
+    <label for="visual_uploaded_data">Upload A Photo or Video:</label> <br/> <%= f.file_field :uploaded_data %> <br/>
+    <label for="visual_comment">Description:</label> <br/> <%= f.text_field :comment %> <br/>
+    <%= f.submit "Add" %>
+  </div>
+
+<% end %> 
+  <b>Uploaded photos and videos</b>
+  <br>  
+  <iframe name="visuals_list" frameborder="0" width="100%" src="<%=listing_visuals_url current_user.listing%>"></iframe>
+  </p>
+
+

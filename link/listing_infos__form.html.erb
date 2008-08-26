@@ -1,0 +1,102 @@
+
+	
+	<li><label for="listing_info_landlord_phone_number">Landlord #</label>
+	<%=f.text_field :landlord_phone_number, :size => 13 , :class=>'required text' %></li>
+	
+	<li><label for="listing_info_elevator">Broker Only</label><%= f.yes_no_radio :broker_only, :on_change=>'$("listing_info_landlord_phone_number").enabled = this.value' %></li>
+
+    <!-- [EP] Broker # not needed.  The above box will be used for the broker #  -->
+
+
+	<!-- Numbers -->
+	<li class="whole">&nbsp;</li>	
+	<li><label for="listing_info_sq_footage">Sq Footage</label>
+	<%=f.text_field :sq_footage, :size => 4 , :class=>'required text' %> sq.ft.</li>
+	<li><label for="listing_info_no_of_bathrooms"># Bathrooms</label>
+		<%= f.collection_select :bathroom_n_id, @no_of_bathrooms_select , :id, :name, {:include_blank=>'Select', :class=>'required'} %></li>
+	<li><label for="listing_info_ceiling_height">Ceiling Height</label>
+		<%=f.text_field :ceiling_height, :size => 4 , :class=>'required text'%> ft.</li>
+	
+	<!-- Essentials -->
+	<li class="whole">&nbsp;</li>
+   <li><label for="listing_info_maintenance_q">Maintenance</label>
+		<%= f.collection_select  :maintenance_q_id, @maintenance_select, :id, :name, {:include_blank=>'Select', :class=>'required'} %></li>
+	<li><label for="listing_info_appliance_q">Appliance Cond</label>
+    <%= f.collection_select  :appliances_q_id, @appliances_select, :id, :name, {:include_blank=>'Select', :class=>'required'} %></li>	
+	<li><label for="listing_info_heat_q">Heat</label>   
+    <%= f.collection_select  :heat_q_id, @heat_select, :id, :name, {:include_blank=>'Select', :class=>'required'} %></li>
+	<li><label for="listing_info_bathroom_q">Bathroom Cond</label>   
+    <%= f.collection_select  :bathroom_q_id, @bathroom_select, :id, :name, {:include_blank=>'Select', :class=>'required'} %></li>
+  <li><label for="listing_info_floor_type">Floor Type</label><%= f.collection_select  :floor_type_id, @floor_types, :id, :name, {:include_blank=>'Select', :class=>'required'} %></li>
+  <li><label for="listing_info_heat_q">A/C</label><%= f.collection_select  :ac_type_id, @ac_types, :id, :name, {:include_blank=>'Select', :class=>'required'} %></li>	
+	
+	<li class="whole line">&nbsp;</li>
+	<li><label for="listing_info_elevator">Elevator</label><%= f.yes_no_radio :elevator %></li>
+	<li><label for="listing_info_laundry">Laundry</label><%= f.yes_no_radio :laundry %></li>
+	<li><label for="listing_info_gym">Gym</label><%= f.yes_no_radio :gym %></li>
+	<li><label for="listing_info_doorman">Doorman</label><%= f.yes_no_radio :doorman %></li>
+	<li><label for="listing_info_dogs_allowed">Dogs allowed</label> <%= f.yes_no_radio :dogs_allowed  %></li>
+  <li><label for="listing_info_dogs_allowed">Cats allowed</label> <%= f.yes_no_radio :dogs_allowed  %></li>
+
+  <li class="whole">&nbsp;</li>
+	<li><label for="listing_info_convertable">Convertible</label><%= f.yes_no_radio :convertable%></li> 
+	<li><label for="listing_info_multi_level">Multi Level</label><%= f.yes_no_radio :multi_level %></li>
+	<li><label for="listing_info_penthouse">Penthouse</label><%= f.yes_no_radio :penthouse %></li>
+	<li><label for="listing_info_patio">Patio</label><%= f.yes_no_radio :patio %></li>
+  <li><label for="listing_info_balcony">Balcony</label><%= f.yes_no_radio :balcony %></li>
+  <li><label for="listing_info_back_yard">Backyard</label>   
+    <%= f.collection_select  :back_yard_type_id, @back_yard_types, :id, :name, {:include_blank=>'Select', :class=>'required'} %></li>
+	<li><label for="listing_info_roof_access">Roof Access</label>   
+    <%= f.collection_select  :roof_access_type_id, @roof_access_types, :id, :name, {:include_blank=>'Select', :class=>'required'} %></li>
+	
+	<li class="whole">&nbsp;</li>
+	<li><label for="listing_info_street_noise_level">Street Noise</label> 
+    <%= f.collection_select  :street_noise_level_id, @street_noise_levels, :id, :name, {:include_blank=>'Select', :class=>'required'} %></li>
+	<li><label for="listing_info_street_noise_level">Neighbor Noise</label> 
+    <%= f.collection_select  :nbors_noise_level_id, @nbors_noise_levels, :id, :name, {:include_blank=>'Select', :class=>'required'} %></li>
+	<li><label for="listing_info_roaches">Roaches</label><%= f.yes_no_radio :roaches %></li>	
+	<li><label for="listing_info_rodents">Rodents</label><%= f.yes_no_radio :rodents %></li>		
+	
+	
+	<li class="whole">&nbsp;</li>
+  <li><label for="listing_info_cellphone">Cellphone Signal</label> <%= f.collection_select  :cellphone_q_id, @cellphone_select, :id, :name, {:include_blank=>'Select', :class=>'required'} %>
+  </li>
+  <li><label for="listing_info_cellphone_provider">Cellphone Provider</label>
+    <%= f.collection_select  :cellphone_provider_id, @cellphone_providers, :id, :name, {:include_blank=>'Select', :class=>'required'} %> </li>
+  <li><label for="listing_info_broadband">Broadband Ready</label><%= f.yes_no_radio :broadband %></li>
+	
+	
+  <li class="whole">&nbsp;</li>
+  <li><label for="listing_info_rent_controlled">Rent Controlled</label><%= f.yes_no_radio :rent_controlled%></li>
+  <li><label for="listing_info_rent_stabilized">Rent Stabilized</label><%= f.yes_no_radio :rent_stabilized%></li>
+  <li class="whole">&nbsp;</li>
+  <li class="whole blackline">Living Room</li>
+    <% fields_for('listing_info[livingroom_info]', @listing_info.livingroom ) do |f_room| %>
+
+      <li><label for="livingroom_info_length">Length</label>  <%=f_room.text_field :length, :size=>3%> </li>
+      <li><label for="livingroom_info_width">Width</label>  <%=f_room.text_field :width, :size=>3%> </li>
+      <li><label for="livingroom_light_level">Light</label>   <%= f_room.collection_select :light_level_id, @light_levels, :id, :name, {:include_blank=>'Select', :class=>'required'} %></li>
+      <li><label for="livingroom_info_window_direction">Window Direction</label>  <%= f_room.collection_select :window_direction_id, @window_directions, :id, :name, {:include_blank=>'Select', :class=>'required'} %> </li>
+        
+    <% end %>
+
+  
+  <li class="whole">&nbsp;</li>
+    <% @listing_info.bedrooms.each_with_index do |bedroom, i|%>
+  <li class="whole blackline">Bedroom<%=i + 1%></li>
+    
+    <% fields_for('listing_info[bedrooms_info][]', bedroom) do |f_room| %> 
+      
+      <li><label for="livingroom_info_length">Length</label>  <%=f_room.text_field :length, :size=>3%> </li>
+      <li><label for="livingroom_info_width">Width</label>  <%=f_room.text_field :width, :size=>3%> </li>
+      <li><label for="livingroom_light_level">Light</label>   <%= f_room.collection_select :light_level_id, @light_levels,:id, :name, {:include_blank=>'Select', :class=>'required'} %></li>
+      <li><label for="livingroom_info_window_direction">Window Direction</label>  <%= f_room.collection_select :window_direction_id, @window_directions, :id, :name, {:include_blank=>'Select', :class=>'required'} %> </li>
+    <%end %>
+  
+  <% end %>
+  <li class="whole">&nbsp;</li>
+  <li class="whole blackline">Overall experience</li><br/>
+  <li><%= f.text_area :comment, :colums=>30, :rows=>10%><br/><br/></li>
+  <li><%= f.submit 'Done', :style=>'text-align:center'%></li>
+ 
+ 

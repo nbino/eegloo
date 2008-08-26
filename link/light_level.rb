@@ -1,0 +1,2 @@
+class LightLevel < AttrValue
+end

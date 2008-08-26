@@ -1,0 +1,17 @@
+<div class="menu" style="position:relative; top:23px; left:-2px"><ul>
+<%menu_items = [{:title=>'Basics', :image=>'chart_bar.png', :url=>[edit_listing_path(current_user.listing)]},
+                        {:title=>'Details',:image=>'pencil.png', :url=>[edit_listing_listing_info_path(current_user.listing), new_listing_listing_info_path(current_user.listing)]},  
+                        {:title=>'Images & Video',:image=>'images.png', :url=>[new_listing_photo_path(current_user.listing)]}] 
+        
+              menu_items.each do |menu|
+                  content_tag ('li', 
+                  :class => "tabs #{menu[:url].include?(request.request_uri) ? 'active':''}",
+                  :onmouseover => "this.style.backgroundColor='FFF'", 
+                  :onmouseout => "this.style.backgroundColor='FOFOFO'",
+                  :onclick => "window.location='#{menu[:url][0]}'") do-%>
+                                    <%="#{image_tag(menu[:image])} #{menu[:title]}"-%>
+
+                      <%end
+                end-%>
+                
+</ul></div>

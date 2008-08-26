@@ -1,0 +1,1 @@
+page.replace_html("#{@flag_type}_flag_#{@listing_id}" , "Flagged as #{@flag_type} ")

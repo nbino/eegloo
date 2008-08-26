@@ -1,0 +1,2 @@
+class WindowDirection < AttrValue
+end

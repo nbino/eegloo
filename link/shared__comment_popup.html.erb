@@ -1,0 +1,8 @@
+<div id="comment_popup_<%= listing.id %>" class="leftsearch_box" style="display:none;position:absolute;width:180px;height:160px;left:200px;z-index:1500;opacity:0.9;">
+<%=image_tag 'cross.png', :style=>"float:right;cursor:pointer;", :onclick=>page.hide("comment_popup_#{listing.id}")%>
+<%remote_form_for [listing, ListingComment.new], :update=>"comments_block_#{listing.id}" do |f|%>
+    <b>Add Comment</b><br/>
+    <%=f.text_area  :content, :cols => 18, :rows => 5, :style => 'float:none'%><br/>
+    <%=f.submit "Add Comment", :onclick=>page.hide("comment_popup_#{listing.id}"), :duration => 0.5 -%>
+<%end%>
+</div>

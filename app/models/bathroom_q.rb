@@ -1,0 +1,3 @@
+class BathroomQ < AttrValue
+  
+end

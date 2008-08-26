@@ -1,0 +1,69 @@
+
+          <li class="linenopad"><b>Basics:</b> 
+          
+          <%= li.sq_footage %> sq feet, <%= li.ceiling_height %> ft ceilings, <%='convertable, ' if li.convertable%><%="#{li.bathroom_n} bathroom(s)" %>, 
+          <%= li.separate_kitchen? ? 'separate kitchen' : 'kitchenette' %>, <%=li.ac_type%> A/C, <%=li.floor_type%> floors, <%=li.dogs_allowed? ? 'dogs ok' : 'no dogs'%>, <%=li.cats_allowed? ? 'cats ok' : 'no cats'%></li>
+          <li><b>Rooms:</b> 
+          <%if li.livingroom?%>
+            <%=li.livingroom.length%> x <%=li.livingroom.length%>, <%=li.livingroom.light_level %> livingroom with <%=li.livingroom.window_direction%> view, 
+          <%end%>
+          <%li.bedrooms.each_with_index do |bedroom, i|%>
+            <%=bedroom.length%> x <%=bedroom.width%>, <%=bedroom.light_level%> bedroom with <%=bedroom.window_direction%> view <%=i < li.bedrooms.size - 1 ? ',' : ''%>
+          <%end %>
+          
+          </li>
+
+          <li><b>Building:</b> 
+            <%=
+          {
+            'elevator'=> li.elevator?,
+            'walkup' => !li.elevator?,
+            'doorman' => li.doorman?,
+            'laundromat' => li.laundry?,
+            'gym' => li.gym?,
+            'rent stabilized'=>li.rent_stabilized?,
+            'rent controlled'=>li.rent_controlled?
+          }.keys_to_sentence_sens_false_values%>
+           </li>
+          <li><div class="pluses"><b>Pluses:</b> 
+          <%=
+          {
+            'good heat' => li.heat_q.most_desirable?,
+            "#{li.nbors_noise_level} neighboors" => li.nbors_noise_level.most_desirable?,
+            "#{li.street_noise_level} street" => li.street_noise_level.most_desirable?,
+            "#{li.maintenance_q} maintainance" => li.maintenance_q.most_desirable?,
+            "#{li.appliances_q} appliances" => li.appliances_q.most_desirable?,
+            "#{li.bathroom_q} bathroom" => li.bathroom_q.most_desirable?,
+            'multi-level'=>li.multi_level?, 
+            'penthouse'=>li.penthouse?, 
+            'private entrance'=>li.private_entrance?,  
+            "#{li.roof_access_type} roof access" => !li.roof_access_type.none?,
+            "#{li.back_yard_type} back yard" => !li.back_yard_type.none?,  
+            'balcony' => li.balcony?,
+            'patio' => li.patio?,
+            'broadband capable' => li.broadband?
+           }.keys_to_sentence_sens_false_values%>
+            
+          </div></li>
+          <li/>
+          <li><div class="minuses"><b>Minuses:</b> 
+          <%=
+           {
+            "#{li.heat_q} heat" => !li.heat_q.most_desirable?,
+            "#{li.nbors_noise_level} neighboor noise" => !li.nbors_noise_level.most_desirable?,
+            "#{li.street_noise_level} street noise" => !li.street_noise_level.most_desirable?,
+            "#{li.maintenance_q} maintanance" => !li.maintenance_q.most_desirable?,
+            "#{li.appliances_q} appliances" => !li.appliances_q.most_desirable?,
+            "#{li.bathroom_q} bathroom" => !li.bathroom_q.most_desirable?,
+            'not broadband capable' => !li.broadband?,
+             "#{li.cellphone_q} cellphone signal (#{li.cellphone_provider})" => !li.cellphone_q.most_desirable?,
+             'roaches' => li.roaches?,
+             'roadents' => li.rodents?,
+             'ants' => li.ants?
+           }.keys_to_sentence_sens_false_values%>
+          </div></li>
+          
+          <li class="linenopad"><b>Tenant experience:</b> 
+          <%=li.comment%>
+          
+          </li>

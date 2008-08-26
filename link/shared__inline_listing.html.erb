@@ -1,0 +1,177 @@
+<!-- Inline listing before switch to separate page. Currently also contains a greate attribute set -->
+
+ <%= link_to( (image_tag('plus.jpg', :border=>'none') ),  "#", :onclick => visual_effect(:slide_down, "details_#{listing_counter}", :duration => 0.5 ) )%>
+ <%= link_to( (image_tag('minus.jpg', :border=>'none') ),  "#", :onclick => visual_effect(:slide_up, "details_#{listing_counter}", :duration => 0.5 ) )%>
+ 
+ <%=listing.rent_range%> | <%=listing.apt_type%> |  <%=listing.nhood%> | Avail <%="#{listing.avail_date.month}/#{listing.avail_date.day}/#{listing.avail_date.year}"%><br/>
+<div id="<%="details_#{listing_counter}"%>" style="display:none">
+<div>
+<p>
+
+
+<%=image_tag "spinner.gif", :style=>"display:none", :id=>"spinner_#{listing.id}", :width => 20, :length => 20%>&nbsp;
+<span id="favorites_info_<%=listing.id%>">
+<!--link_to 'Add to favorites', listing_favorites_url(listing) , :method=>:post-->
+<%=link_to_remote( 
+  'Add to favorites', 
+  :url=>listing_favorites_url(listing), 
+  :complete=>"$('spinner_#{listing.id}').hide();",
+  :before=>"$('spinner_#{listing.id}').show();",
+  :update=>"favorites_info_#{listing.id}",
+  :method=>:post)%>
+
+</span>
+|
+<span id="bogus_flag_<%=listing.id%>">
+<%=link_to_remote(
+  'Flag as bogus', 
+  :url=>listing_bogus_flags_url(listing), 
+  :complete=>"$('spinner_#{listing.id}').hide();",
+  :before=>"$('spinner_#{listing.id}').show();",
+  :method=>:post,
+  :update=>"bogus_flag_#{listing.id}")%>
+</span>
+|
+<span id="na_flag_<%=listing.id%>">
+<%=link_to_remote(
+  'Flag as no longer available', 
+  :url=>listing_na_flags_url(listing), 
+  :complete=>"$('spinner_#{listing.id}').hide();",
+  :before=>"$('spinner_#{listing.id}').show();",
+  :method=>:post,
+  :update=>"na_flag_#{listing.id}")%>
+</span>
+|
+<span id="broker_flag_<%=listing.id%>">
+<%=link_to_remote(
+  'Flag as broker', 
+  :url=>listing_broker_flags_url(listing), 
+  :complete=>"$('spinner_#{listing.id}').hide();",
+  :before=>"$('spinner_#{listing.id}').show();",
+  :method=>:post,
+  :update=>"broker_flag_#{listing.id}")%>
+</span>
+
+
+
+</p>
+<%if listing.photos? %>
+  
+  <%if listing.photo_access?%>
+    hover to enlarge the image
+  <%else%>
+    images locked. <a href="#">unlock</a>
+  <%end%>
+  
+      <table cellspacing=10>
+      <tr>
+      <!--image_tag(visual.public_filename(:thumb), :height=>100, :width=>120) -->
+      <% listing.photos.each_with_index do |visual, i|  %>
+            <td><%= listing.photo_access? ?image_tag("#{i+1}.gif", :height=>100, :width=>120) : image_tag(visial.blank_image)%> <br/> <%=visual.comment %></td>
+      <%end%>
+      </tr>
+      </table>
+<%else%>
+No  images. <a href="#">Add an image.</a>
+<% end %>
+
+<%if listing.listing_info?%>
+  <%l = listing.listing_info%>
+    <table>
+    <tr>
+    <td>
+    Sq. footage: <%=l.sq_footage%><br/>
+    Ceilings: <%=l.ceiling_height%><br/>
+    Convertable: <%=l.convertable?.to_yn_s%><br/>
+    Pets allowed: <%=l.pets%><br/>
+    </td>
+    <td>
+    Separate Kitchen: <%=l.separate_kitchen?.to_yn_s%><br/>
+    Bathroom(s):
+    <%if l.no_of_bathrooms == 0%>
+      shared
+    <%else%>
+    <%=l.no_of_bathrooms%>
+    <%end%><br/>		
+    Appliance Condition: <%=l.appliances_q%><br/>
+    Fixtures Condition: <%=l.bathroom_q%><br/>
+    Winter heat: <%=l.heat_q%><br/>
+    Super Maintenance: <%=l.maintenance_q%><br/>
+    </td>
+    <td>
+    Landlord no.: <%=l.landlord_phone_number%><br/>
+    Broker no: <%=l.broker_phone_number%><br/>
+    Through broker only: <%=l.broker_only?.to_yn_s%><br/>
+    
+    </td>
+    </tr>
+    <tr>
+    <td colspan=6>
+    <%if l.livingroom?%>
+      Livingroom: <%=l.livingroom.length%> x <%=l.livingroom.length%>, <%=l.livingroom.light_level %>, <%=l.livingroom.window_direction%> view
+    <%end%>
+    </td>
+    </tr>
+    <tr>
+    <td>
+    <%l.bedrooms.each_with_index do |bedroom, i|%>
+      Bedroom <%=i + 1%>: <%=bedroom.length%> x <%=bedroom.width%>, <%=bedroom.light_level%>, <%=bedroom.window_direction%> view
+    <%end %>
+
+    </td>
+    </tr>
+    <tr>
+    <td colspan=6>
+    Apt Features: 
+    <!-- back yard and roof access are hacks -->
+    <%= 
+    {
+     'rent stabilized'=>l.rent_stabilized?,
+     'rent controlled'=>l.rent_controlled?,
+      "#{l.ac_type} a/c" => !l.ac_type.none?,
+      'broadband capable' => l.broadband?,
+      'multi-level'=>l.multi_level?, 
+      'penthouse'=>l.penthouse?, 
+      'private entrance'=>l.private_entrance?, 
+      "#{l.back_yard_type} back yard" => !l.back_yard_type.none?,  
+      "#{l.roof_access_type} roof access" => !l.roof_access_type.none?,
+      "#{pluralize(l.no_of_balconies, 'balcony')}" => l.no_of_balconies?,
+      "#{pluralize(l.no_of_patios, 'patio')}" => l.no_of_patios?
+    }.keys_to_sentence_sens_false_values%>
+    </td>
+    </tr>
+    <tr>
+    <td colspan=6>
+    Building Features: 
+    <%=
+    {
+      'elevator'=> l.elevator?,
+      'walkup' => !l.elevator?,
+      'doorman' => l.doorman?,
+      'indoor laundromat' => l.laundry?,
+      'indoor gym' => l.gym?
+    }.keys_to_sentence_sens_false_values%>
+    </td>
+    </tr>
+    <tr>
+    <td colspan=6>
+    Resident's comments: <%=l.comment%> 
+    </td>
+    </tr>
+    </table>
+    
+  <%else%>
+  &nbsp; No addtional info. <a href="#">Add info</a>
+  <%end%>
+
+  <p>
+   <%= link_to( (image_tag('plus.jpg', :border=>'none') ),  "#", :onclick => visual_effect(:slide_down, "user_comments_#{listing_counter}", :duration => 0.5 ) )-%> 
+   <%= link_to( (image_tag('minus.jpg', :border=>'none') ),  "#", :onclick => visual_effect(:slide_up, "user_comments_#{listing_counter}", :duration => 0.5 ) )%>
+  User comments
+    <div id="<%="user_comments_#{listing_counter}"%>" style="display:none">
+    </div>
+  </p>
+</div>  
+</div><!--details-->
+    
+

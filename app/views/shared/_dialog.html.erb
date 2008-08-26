@@ -1,0 +1,4 @@
+<div id="<%=element_id%>" style="display:none;">
+  <%=image_tag 'cross.png', :style=>"float:right;cursor:pointer;", :onclick=>page.hide(element_id) %>
+  <%= render :partial=>content%>
+</div>

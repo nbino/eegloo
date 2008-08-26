@@ -1,0 +1,2 @@
+class Livingroom < Room
+end

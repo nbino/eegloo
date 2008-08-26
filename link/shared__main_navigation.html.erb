@@ -1,0 +1,20 @@
+<!--main tabs-->
+  <ul>
+    <%menu_items = [{:title=>'Listings', :image=>'chart_bar.png', :url=>[listings_path]},
+                        {:title=>'Favorites',:image=>'folder_heart.png', :url=>[favorites_path]},  
+                        {:title=>'My Listing',:image=>'pencil.png', :url=>[edit_listing_path(current_user.listing), new_listing_listing_info_path(current_user.listing), edit_listing_listing_info_path(current_user.listing), new_listing_photo_path(current_user.listing)]}, 
+                        {:title=>'Friends',:image=>'group.png', :url=>[friends_path]}]
+        
+              menu_items.each do |menu|
+                  content_tag ('li', 
+                  :class => "tabs white #{menu[:url].include?(request.request_uri) ? 'active_white':''}",
+                  :onmouseover => "this.style.backgroundColor='FFF'", 
+                  :onmouseout => "this.style.backgroundColor='FOFOFO'",
+                  :onclick => "window.location='#{menu[:url][0]}'") do-%>
+                                    <%="#{image_tag(menu[:image])} #{menu[:title]}"-%>
+
+                      <%end
+                end-%>
+                      
+    </ul>
+<!--/main tabs-->

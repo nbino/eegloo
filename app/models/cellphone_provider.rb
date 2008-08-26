@@ -1,0 +1,2 @@
+class CellphoneProvider < AttrValue
+end

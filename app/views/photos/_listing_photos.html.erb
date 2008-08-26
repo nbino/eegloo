@@ -1,0 +1,19 @@
+<%if !current_user.photo_access?%>
+      
+      Photos: 
+        
+        <%=link_to_function 'View photos', page.show("images_locked_popup_#{l.id}")%>
+        
+      <%else%>
+        <%if l.photos.size == 0 %>
+          Photos were not provided <a href="#">Request photos</a>
+        <%else%>
+          <table width=100%>
+              <tr>
+                <% l.photos.each do |visual|  %>
+                    <td><%= image_tag(visual.public_filename(:thumb), :height=>75, :width=>100) %> <br/> <%=visual.comment %></td>
+                <%end%>
+            </tr>
+            </table>
+      <%end%>
+    <%end%>

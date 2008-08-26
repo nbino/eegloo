@@ -1,0 +1,221 @@
+<%update_page do |page|%>
+
+
+
+<div style="position:relative">
+
+<%=render :partial=>"shared/flag_popup", :locals=>{:listing=>l, :page=>page}%>
+
+<%if is_this_favorites?%>
+  <%=render :partial=>"note_popup", :locals=>{:listing=>l, :page=>page}%>
+  <div id="sms_note_popup_<%= listing.id %>" class="leftsearch_box" class="leftsearch_box" style="display:none;position:absolute;width:180px;height:160px;left:100px;z-index:1500;opacity:0.9;background: #CCFFCC;">
+    <%=image_tag 'cross.png', :style=>"float:right;cursor:pointer;", :onclick=>[page.hide("sms_note_popup_#{listing.id}")]%>
+        Sending notes, photos or videos from your phone is a great way to keep track of places you've seen. Wouldn't be nice if this was implemented? Coming soon.
+  </div>
+
+<%end%>
+ 
+
+  <div id="details_locked_popup_<%= listing.id %>" class="leftsearch_box" style="top:230px;display:none;position:absolute;width:260px;height:90px;left:370px;z-index:1500;opacity:0.9;background: #CCFFCC;">
+    <%=image_tag 'cross.png', :style=>"float:right;cursor:pointer;", :onclick=>[page.hide("details_locked_popup_#{listing.id}"), 'detailMessageShown=true']%>
+    <table>
+    <tr><td valign="center"><span style="font-size:48pt;"><b>&lt;</b></span></td>
+      <td><b>This is just an example of detailed information. FreshPaint is about getting as much detail as possible and this detail comes from users. 
+      To get real details please add details to your listing.</b> <%=link_to 'Add detail', new_listing_listing_info_path(current_user.listing)%></td>
+      </tr>
+      </table>
+  </div>
+
+  <div id="images_locked_popup_<%= listing.id %>" class="leftsearch_box" style="top:100px;display:none;position:absolute;width:220px;height:90px;left:370px;z-index:1500;opacity:0.9;background: #CCFFCC;">
+    <%=image_tag 'cross.png', :style=>"float:right;cursor:pointer;", :onclick=>[page.hide("images_locked_popup_#{listing.id}"), 'photoMessageShown=true']%>
+    
+    <table>
+      <tr><td valign="center"><span style="font-size:48pt;"><b>&lt;</b></span></td>
+      <td><b>FreshPaint is like potluck dinner: everyone contributes for all to share. To veiw photos please add photos to your listing.</b> <%=link_to 'Add photos', new_listing_photo_path(current_user.listing)%></td>
+      </tr>
+    </table>  
+    
+  </div>
+  <div id="email_popup_<%= listing.id %>" class="leftsearch_box" style="display:none;position:absolute;width:180px;height:60px;left:375px;z-index:1500;opacity:0.9;background:#BBBBBB">
+    <%=image_tag 'cross.png', :style=>"float:right;cursor:pointer;", :onclick=>[page.hide("email_popup_#{listing.id}")]%>
+    
+    Email:<br/>
+    <input type="text"/><br/>
+    <%=submit_tag 'Send', :onclick=>page.hide("email_popup_#{listing.id}")%>
+    
+  </div>
+            	
+
+<div class="post" style="z-index:0" id="listing_<%=l.id%>">
+	<div class="entry" style="z-index:0">
+      <div class="header" style="z-index:0">
+    
+			<ul>
+          <span class="floatleft">
+            <!--favorites stars-->
+                  
+				  		<%=image_tag(
+                      'grey_star.png', 
+                      :id=>"off_star_#{listing_counter}", 
+                      :onclick=>[page.toggle("off_star_#{listing_counter}", "on_star_#{listing_counter}"), remote_function(:url=>listing_favorites_url(listing), :method=>:post)], 
+                      :style=>"cursor:pointer;#{is_this_friends? || is_this_favorites? || l.favorite? ? 'display:none;' : ''}", 
+                      :title=>'Add to favorites') 
+			         %>
+                  
+                  <%=image_tag(
+                      'yellow_star.png', 
+                      :id=>"on_star_#{listing_counter}", 
+                      :onclick=>[page.toggle("off_star_#{listing_counter}", "on_star_#{listing_counter}"), (page.hide("listing_#{l.id}") if is_this_favorites?  || is_this_friends?), remote_function(:url=>listing_favorite_url(listing, 0), :method=>:delete) ], 
+                      :style=>"cursor:pointer;#{is_this_friends? ||is_this_favorites? || l.favorite? ? '' : 'display:none;'}", 
+                      :title=>'Remove from favorites') 
+			         %>
+                  
+                &nbsp;
+              </span>
+              
+              <!--favorites stars/-->
+              <%content_tag( 
+              :span,
+              :onclick => ["$('header_#{listing_counter}').style.fontWeight='normal';", 
+                            visual_effect(:toggle_slide, "listingshow_#{listing_counter}", :duration => 0.4 ), 
+                            page.hide("unread_#{listing_counter}"),
+                            page.show("read_#{listing_counter}"),
+                            'if(!photoMessageShown){ ' + page.toggle("images_locked_popup_#{listing.id}") + '; photoMessageShown=true;} ;',
+                            'if(!detailsMessageShown){ ' + page.toggle("details_locked_popup_#{listing.id}") + '; detailsMessageShown=true;} ;',
+                            remote_function(:url=>listing_readings_url(listing), :method=>:post)],
+              :class=>'floatleft',
+              :style => "cursor:pointer;background:#F0F0F0;") do %>
+              
+               
+                <%=content_tag( 
+                :h2,
+                "#{l.apt_type} | #{l.nhood} | #{l.rent_range}",      
+                :style=>"#{ !is_this_friends? && !is_this_favorites? && l.unread? ? 'font-weight:bold;':'font-weight:normal;'}", 
+                :id=>"header_#{listing_counter}") %>
+                  
+                
+              <%end%>
+              <span style="float:right;">
+               <%= image_tag 'envelope.gif', :onclick=>page.toggle("email_popup_#{listing.id}"), :title=>'Send to a friend', :style=>"cursor:pointer;position:relative;top:3px"%>
+                  
+               <%=image_tag(
+                      'flag.gif', 
+                      :id=>"flag_#{listing_counter}", 
+                      :onclick=>[page.toggle("flag_popup_#{listing.id}")],
+                      :style=>"cursor:pointer;", 
+                      :title=>'Flag listing') 
+			         %>
+               
+                  
+               <%=image_tag(
+                      'unchecked.gif', 
+                      :id=>"unread_#{listing_counter}", 
+                      :onclick=>["$('header_#{listing_counter}').style.fontWeight='normal';", page.toggle("read_#{listing_counter}", "unread_#{listing_counter}"), remote_function(:url=>listing_readings_url(listing), :method=>:post)], 
+                      :style=>"cursor:pointer;#{is_this_friends? || is_this_favorites? || l.read? ? 'display:none;' : ''}", 
+                      :title=>'Mark as read') 
+			         %>
+                  
+                  <%=image_tag(
+                      'checked.gif', 
+                      :id=>"read_#{listing_counter}", 
+                      :onclick=>["$('header_#{listing_counter}').style.fontWeight='bold';",page.toggle("read_#{listing_counter}", "unread_#{listing_counter}"), remote_function(:url=>listing_reading_url(listing, 0), :method=>:delete)], 
+                      :style=>"cursor:pointer;#{is_this_friends? || is_this_favorites? || l.read? ? '' : 'display:none;'}", 
+                      :title=>'Mark as unread') 
+			         %>
+               </span>
+               <div style="clear: both;"></div>	
+						<%=l.address%> | Available: <%= l.avail_date.strftime("%b %d, '%y") %> | Posted: <%=l.created_at.strftime("%b %d, '%y")%>
+               <!--Very gross hack, need to redo this in terms of favorites-->
+               <div>
+               
+               <%if is_this_favorites?%>
+                  <a href="#" title="Under construction">Send to phone</a>
+                  <%favorite = current_user.favorites.find(:first, :conditions=>['listing_id = ?', listing.id])%>
+                  <%if favorite.note.nil?%>        
+                    <%=render :partial=>'add_note', :locals=>{:page=>page, :listing=>listing}%>
+               <%else%>
+                    <br/><%=render :partial=>'show_note', :locals=>{:favorite=>favorite}%><br/>
+               <%end%>
+                <%=link_to_function 'Send note/photo/video from your phone', page.show("sms_note_popup_#{listing.id}") %>
+            <%end%>
+            </div>
+				</li>
+    		</ul>
+      </div>
+			
+      
+			<div id="listingshow_<%= listing_counter %>" style="border:1px solid gray;border-top:0;padding:6px; background:#FFF; display:none;z-index:0">
+				
+			<ul style="padding-top:3px">
+				<li>Popularity: <%=l.favorites.count%></li>
+          
+          <%if l.flag_alert?%>
+          <li>Warning: 
+            <%if l.broker_alert?%>
+              This listing is likely a broker listing.
+            <%elsif l.na_alert?%>
+              This apartment is probably no longer available.
+            <%elsif l.bogus_alert?%>
+               This listing 
+            <%end%>
+          <%end%>
+				<li>
+            <%if !current_user.photo_access?%>
+	        		
+              <div>
+							<%=link_to_function image_tag('images_locked.jpg', :width=>370, :height=>91, :title=>'Photos are locked'), page.show("images_locked_popup_#{l.id}")%>
+						</div>
+              
+	         	<%else%>
+	          	<%if l.photos.size == 0 %>
+	          		Photos were not provided <a href="#">Request photos</a>
+	          	<%else%>
+	          		<table width=100%>
+                    <tr>
+                      <% l.photos.each do |visual|  %>
+                          <td><%= image_tag(visual.public_filename(:thumb), :height=>75, :width=>100) %> <br/> <%=visual.comment %></td>
+                      <%end%>
+	            		</tr>
+                  </table>
+				  	<%end%>
+					<%end%>
+				<!-- end image -->
+				</li>
+          <%=render :partial=>"shared/comment_popup", :locals=>{:listing=>l, :page=>page}%> 
+
+            <%if current_user.listing_info_access?%>
+                <%if l.listing_info?%> 
+                    <%=render :partial => 'shared/listing_info', :locals => {:li=>l.listing_info}%>
+                <%else%>
+                   Detailed info was not provided. <a href="#">Request detailed info</a>
+                <%end%>
+            <%else%>
+              <%=render :partial=>'shared/locked_listing_info', :locals=>{:page=>page, :listing=>listing}%>
+            <%end%>
+   
+	        <li><b>Posted By:</b> <%= l.user.username %></li>
+	 			
+          <li>
+               
+              <%=link_to_function 'Show comments', [visual_effect(:toggle_slide, "comments_block_#{l.id}", :duration => 0.4 ), page.toggle("show_comments_#{l.id}", "hide_comments_#{l.id}")], :id=>"show_comments_#{l.id}"%>
+              <%=link_to_function 'Hide comments', [visual_effect(:toggle_slide, "comments_block_#{l.id}", :duration => 0.4 ), page.toggle("show_comments_#{l.id}", "hide_comments_#{l.id}")], :id=>"hide_comments_#{l.id}", :style=>'display:none'%> |
+              <%=link_to_function 'Add comment', [page.toggle("comment_popup_#{l.id}")] %>
+              
+           </li>
+				
+					
+            <div id="comments_block_<%=l.id%>" style="display:none">
+						
+			        <%=render :partial=>'shared/comment_list', :locals=>{:comments=>l.comments}%>
+
+            </div>
+					
+			  	
+				
+			     
+          </ul>
+			 </div>
+      </div>
+  </div>
+</div><!--positioning div-->  
+<% end %>

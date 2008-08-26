@@ -1,0 +1,71 @@
+<!-- start leftbar render :partial=>'search_form' -->
+
+<%update_page do |page|%>
+
+<!--start left_bar-->
+	<div id="leftbar">
+		<%=render :partial=>'search_form'%>
+	</div>
+<!-- end leftbar -->
+
+<!-- start content -->
+	<div id="content">
+    <div id="search_results" style="position:relative;top:14px">
+		<%= render :partial => '/shared/listing_list'%>
+    </div>
+	</div>
+
+<!-- end content -->
+
+<!-- start rightbar -->
+	<div id="rightbar">
+		
+		<div id="mapouter">
+		<ul>
+		  <li id="search">
+		    <span style="font-size:16px;margin-right:20px"><b>map</b></span>
+        
+            <span id="small_map" style="display:none"><%= link_to_function("Small map",["toggleMapSize(); moveDiv();", page.toggle("small_map", "large_map")])%></span> <span id="large_map"><%= link_to_function("Large map",["toggleMapSize(); moveDiv();", page.toggle("small_map", "large_map")])%></span>
+		    
+			<div id="map" class="map" style="text-align:right">		
+			
+			</div>
+		  </li>
+		</ul>
+		</div>
+    
+		
+	 </div>
+<!--end content-->
+
+<!--start rightbar-->
+<!--start map--> 
+	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAaoo2yAo-3IJSl1N4bEy_cRSKLi6oRkXMKDpxZ0UjNwoH-yv7JhTbfQ-TqXQYViGuAzLNY0JOB22bTA"
+	     type="text/javascript"></script>
+	<%= javascript_include_tag 'gmap.js' %>
+	<% javascript_tag do -%>
+		
+		function toggleMapSize() {
+			
+			if ($('map').className == 'map') { 
+				$('map').className = 'mapexpanded';
+				<!-- $('mapimg').className = 'mapimgexpanded'; -->				 
+				$('leftbar').setStyle({display:'none'});
+				$('rightbar').className = 'rightbarlarge';
+			} else {
+				$('map').className = 'map';
+				<!-- $('mapimg').className = 'mapimg'; -->
+				$('leftbar').setStyle({display:'block'});
+				$('rightbar').className = 'rightbar';
+			}					
+									
+		}
+  	<% end -%>	
+
+	<!--<%= javascript_include_tag 'nav.js' %>-->
+
+<!--end map-->	
+	
+
+<%end%>
+<!-- end rightbar -->

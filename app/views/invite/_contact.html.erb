@@ -1,0 +1,6 @@
+<% @contacts.each do |n| %>
+
+<li><input type="checkbox" name="contact" id="contact_<%= n.email %>" value="<%= n.email %>"></input> <label class="plain" for="contact_<%= n.email %>"><%= n.name ? n.name + ' <'+n.email+'>' :  n.email %></label>
+</li>
+
+<% end %>

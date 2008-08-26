@@ -1,0 +1,59 @@
+1. Take out My Listing
+2. Create standart pop-up box. For messages we can just  make an arrow within the box pointing to ...
+3. Limit to 3 listings - create a fold with a message
+4. Create stadart hr
+5. Add forum
+6. User account handling
+7. Email handling
+8. DB optimization
+9. Take out sq footage, ceiling hight, room measurements and all other unnecessary info
+10. Design cute unavailable icons
+11. Maps integration. When apartment is selected map only that
+12. N-hood raitings. Same as above.
+13. User shutdown based on details
+14. Invites
+15. Reccomend to friend
+  The dialog should have a list of friends + an email box
+
+16. Multiselect on friends box in send to dialog
+17. Investigate Google Friend Connect integration
+18. SMS in pictures, important
+19. import friends
+20. use email name as username
+21. buttons: 
+  submit buttons
+22. Use ! for flagging
+23. Friends tab, side bar
+  Friend's Places
+  Friends Recommended
+  Find Friends -> should go to that by defualt if there's no friends
+  Invite Freinds
+  
+24. Reorder favorites
+25. Favorites mobile view
+26. Viewing calendar, status: submitted application, scheduled viewing
+27. Optional icons on the bottom of listing
+28. Favorites and read icons are standart
+29. Map: show all that are part of search result. Highlight the one being viewed.
+30. Collapse other listings when one is expanded
+31. Information hiding: Show header and link for viewing: Photos: Show Photos
+32. Photo maginifaction: Photos: Magnify
+33. Map - put map on top when expanded
+34. Comments: show a few and then do view all. View comments does
+35. Listing bottom toolbar:
+  Flag, Recommend To, Friend, Add comment, Contact Poster
+36. Favorites bottom toolbar:
+  same as listing + add personal note, SMS to phone, Mobile Options, Schedule Viewing, 
+37. Friend of a friend is a friend
+38. Use gmail as mail provider via pop or imap in order to prevent getting into spam folder. Establish a business account
+39. Allow users to ask me question box on sign up. No is a no to contact others
+40. Date should be a range slider as opposed to a calendar
+  
+
+
+
+  
+  
+
+
+

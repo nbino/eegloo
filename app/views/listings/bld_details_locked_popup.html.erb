@@ -1,0 +1,6 @@
+<div id="details_locked_popup_<%= listing.id %>" class="leftsearch_box" style="top:230px;display:none;position:absolute;width:260px;height:90px;left:370px;z-index:1500;opacity:0.9;background: #CCFFCC;">
+    <%=image_tag 'cross.png', :style=>"float:right;cursor:pointer;", :onclick=>[page.hide("details_locked_popup_#{listing.id}"), 'detailMessageShown=true']%>
+      To view details, help your fellow apartment hunters by describing the place you are moving out of in more detail.
+      
+    
+</div>
