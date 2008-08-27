@@ -1,0 +1,14 @@
+<%update_page do |page|%>
+<!--photos-->
+
+<table width=100%>
+    <tr>
+      <% l.photos.each do |photo|  %>
+          <td><%= image_tag(photo.public_filename(:thumb), :height=>75, :width=>100) %> <br/> <%=photo.comment %></td>
+      <%end%>
+  </tr>
+</table>
+
+
+<!--/photos-->
+<% end %>

@@ -1,24 +1,23 @@
-<%update_page do |page|%>
+<!--listing-->
 
 <%
   lid = listing.id
   l = listing
+  
 
 %>
 
 <div class="listing" id="listing_<%=lid%>">
 
   <!--standart dialogs-->
-  <%['flag_listing', 'photos_locked', 'appt_details_locked', 'bld_details_locked', 'send_by_email', 'add_comment'].each do |dialog_name|%>
+  <%toolbar.each do |dialog_name|%>
       
       <!--<%=dialog_name%> popup-->
-      <%=render :partial=>"shared/dialog", :locals=>{:element_id=>"#{dialog_name}_popup_#{lid}", :page=>page, :content=>'listings/#{dialog_name}_content'%>
+      <%=render_dialog dialog_name, page, lid%>
       <!--/<%=dialog_name%> popup-->
 
-<%end%>
+  <%end%>
   <!--/standart dialogs-->
-    
-  
   
   <div class="listing_heading" id="listing_heading_<%=lid%>>
   
@@ -57,7 +56,7 @@
       :style=>"#{ l.unread? ? 'font-weight:bold;':'font-weight:normal;'}", 
       :id=>"header_#{lid}") do%>
 
-        <%=l.apt_type%> | <%=l.nhood%> | <%#{l.rent_range}%>
+        <%=l.rent%> <%=l.nhood%> <%=l.apt_type%>, avail. <%=l.avail_date.strftime("%b %d, '%y")%> 
 
       <%end%>
     <!--/title-->  
@@ -66,6 +65,62 @@
                 
     <%end%>
                     
+               
+    <%=l.address%> <%=render :partial=>"listing/rating_stars", :locals=>{:rating=>calculate_popularity(l.favorites.count)}%> Posted: <%=l.created_at.strftime("%b %d, '%y")%>
+     
+    <%=render :partial=>additional_header_content unless additional_header_content.nil?%>
+    
+               
+  </div><!--heading-->             
+             
+      
+  <div id="listing_content_<%= lid %>">
+
+
+  
+    
+    <%if l.flag_alert?%>
+    Warning: 
+      <%if l.broker_alert?%>
+        This listing is likely a broker listing.
+      <%elsif l.na_alert?%>
+        This apartment is probably no longer available.
+      <%elsif l.bogus_alert?%>
+         This listing is likely non-existant.
+      <%end%>
+    <%end%>
+
+   
+      Apt info:
+
+      <%if current_user.apt_info_access?%>
+          <%if l.listing_info?%> 
+              <%=render :partial => 'shared/apt_info', :locals => {:l=>l}%>
+          <%else%>
+             Apt details were not provided. <a href="#">Request detailed info</a>
+          <%end%>
+      <%else%>
+        <%=link_to_function 'View apt details', [page.toggle("apt_info_locked_popup_#{l.id}")]%>
+      <%end%>
+
+      Building info:
+      <%if current_user.apt_info_access?%>
+          <%if l.listing_info?%> 
+              <%=render :partial => 'shared/apt_info', :locals => {:l=>l}%>
+          <%else%>
+             Apt details were not provided. <a href="#">Request detailed info</a>
+          <%end%>
+      <%else%>
+        <%=render :partial=>'shared/locked_listing_info', :locals=>{:page=>page, :listing=>listing}%>
+      <%end%>
+
+
+      <b>Posted By:</b> <%= l.user.username %>
+      <%=render :partial=>'shared/comment_list', :locals=>{:comments=>l.comments}%>
+        
+      <%=link_to_function 'See all', [page.toggle("comments_popup_#{l.id}")]%>
+
+      
     <%=image_tag(
           'unchecked.gif', 
           :id=>"unread_icon_#{lid}", 
@@ -81,50 +136,7 @@
         :style=>"cursor:pointer;#{is_this_friends? || is_this_favorites? || l.read? ? '' : 'display:none;'}", 
         :title=>'Mark as unread') 
     %>
-               
-    <%=l.address%> | Available: <%= l.avail_date.strftime("%b %d, '%y") %> | Posted: <%=l.created_at.strftime("%b %d, '%y")%>
-     
-    <%=render :partial=>additional_header_content%>
     
-               
-  </div><!--heading-->             
-             
-      
-  <div id="listing_content_<%= lid %>">
-
-
-  Popularity: <%=render :partial=>"listing/rating_stars", :locals=>{:rating=>calculate_popularity(l.favorites.count)}%>
-    
-    <%if l.flag_alert?%>
-    Warning: 
-      <%if l.broker_alert?%>
-        This listing is likely a broker listing.
-      <%elsif l.na_alert?%>
-        This apartment is probably no longer available.
-      <%elsif l.bogus_alert?%>
-         This listing is likely non-existant.
-      <%end%>
-    <%end%>
-
-   
-    
-
-      <%if current_user.listing_info_access?%>
-          <%if l.listing_info?%> 
-              <%=render :partial => 'shared/listing_info', :locals => {:li=>l.listing_info}%>
-          <%else%>
-             Detailed info was not provided. <a href="#">Request detailed info</a>
-          <%end%>
-      <%else%>
-        <%=render :partial=>'shared/locked_listing_info', :locals=>{:page=>page, :listing=>listing}%>
-      <%end%>
-
-    <b>Posted By:</b> <%= l.user.username %>
-        <%=render :partial=>'shared/comment_list', :locals=>{:comments=>l.comments}%>
-        
-        <%=link_to_function 'See all', [page.toggle("comments_popup_#{l.id}")]%>
-
-      
     
     <%{'flag_listing'=>'Flag listing',
         'send_by_email'=>'Send to friend',
@@ -142,4 +154,3 @@
      
    </div><!--listing content-->
 </div><!--listing-->  
-<% end %>

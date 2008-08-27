@@ -1,14 +1,26 @@
-<%javascript_tag do%>
-var photoMessageShown = <%=session[:no_more_popups] || is_this_favorites? || current_user.photo_access? ? 'true' : 'false'%>;
-var detailsMessageShown = <%=session[:no_more_popups] || is_this_favorites? || current_user.listing_info_access? ? 'true' : 'false'%>;
-<%end%>
-<%session[:no_more_popups] = true%>
+<%update_page do |page|%>
+<!--listings list-->
 
-<%if @listings.size > 0%>
-  <div>page <%=remote_paginating_links @listings, {:window_size => 5, :auto_submit_form => true, :form_name=>'search_form', :set_hidden_field=>true, :hidden_field_name=>'custom_options[page]' }%></div>
-  <%=render :partial => '/shared/listing', :collection => @listings-%>
-<%elsif is_this_favorites?%>
-No favorites found
-<%else%>
+<%if 0==@listings.size%>
 No listings found
+<%else%>
+
+  <%=render_dialog 'basic_info_locked', page unless current_user.basic_access?%>
+  
+  <%=render_dialog 'apt_info_locked', page unless current_user.apt_info_access?%>
+  
+  <%=render_dialog 'bld_info_locked', page unless current_user.bld_info_access?%>
+
+  <div id="pagination">
+    page <%=remote_paginating_links @listings, {:window_size => 5, :auto_submit_form => true, :form_name=>'search_form', :set_hidden_field=>true, :hidden_field_name=>'custom_options[page]' }%>
+  </div>
+  
+  <%=render :partial => '/shared/listing', :locals=>{:toolbar=>['flag_listing', 'send_by_email', 'add_comment'], :page=>page}, :collection => @listings-%>
+  
+  <%=link_to_function 'View more listings', [page.toggle("basic_info_locked_popup")]%>
+
+
+<%end%>
+
+<!--/listings list-->
 <%end%>

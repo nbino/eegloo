@@ -1,4 +1,4 @@
-class Listing
+module AttributeLiterals
   
   NHOODS = [
     'Chelsea'
@@ -90,7 +90,6 @@ class Listing
 end 
  
 
-class Room
   LIGHT_LEVELS = %w{dark, dim, bright}
   
   def light

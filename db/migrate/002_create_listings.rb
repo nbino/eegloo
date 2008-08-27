@@ -2,22 +2,18 @@ class CreateListings < ActiveRecord::Migration
   def self.up
     create_table :listings do |t|
       t.belongs_to :user, :null => false
+      t.belongs_to :nhood
  
       #basics
-      t.string :address, :cross_street
+      t.string :address, :cross_street1, :cross_street2
       t.float :latitude, :longtitude
       t.datetime :avail_date
-      
-      t.integer  
+      t.integer
+        :apt_no,
         :rent_range_top, 
         :rent_range_bottom, 
         :rent_exact
       
-      #foreign keys
-      t.integer 
-        :apt_type_id, 
-        :nhood_id
-        
       #counts
       t.integer :bogus_flag_count, 
         :broker_flag_count, 
