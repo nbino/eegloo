@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
     raise AlreadyActivated.new(user) if user.active?
     user.send(:activate!)
     user
-  end
+  endtt
  
   def active?
     # the presence of an activation date means they have activated
@@ -79,9 +79,19 @@ class User < ActiveRecord::Base
     videos?
   end
   
-  def listing_info_access?
+  def apt_info_access?
     listing.listing_info?
   end
+  
+  def bld_info_access?
+    listing.listing_info?
+  end
+  
+  def basic_access?
+    listing.listing_info?
+  end
+  
+  
   
   # Returns the user or nil.
   # Updated 2/20/08

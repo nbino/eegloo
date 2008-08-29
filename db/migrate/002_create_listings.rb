@@ -8,8 +8,7 @@ class CreateListings < ActiveRecord::Migration
       t.string :address, :cross_street1, :cross_street2
       t.float :latitude, :longtitude
       t.datetime :avail_date
-      t.integer
-        :apt_no,
+      t.integer :apt_no,
         :rent_range_top, 
         :rent_range_bottom, 
         :rent_exact
@@ -26,23 +25,22 @@ class CreateListings < ActiveRecord::Migration
       t.integer :sq_footage,
         :ceiling_height,
         :n_bathrooms,
-        :floor_type_id,
-        :heat_q_id,
-        :ac_type_id,
+        :floor_type,
+        :heat_q,
+        :ac_type,
         :back_yard,
-        :street_noise_level_id,
-        :nbors_noise_level_id,
-        :appliances_q_id,
-        :bathroom_q_id,
-        :cellphone_q_id,
-        :cellphone_provider_id
+        :street_noise_level,
+        :nbors_noise_level,
+        :appliances_q,
+        :bathroom_q,
+        :cellphone_q,
+        :cellphone_provider
         
       t.boolean :private_back_yard
       
       
       #building info
-      t.integer
-        :maintenance_q_id,
+      t.integer :maintenance_q
         
       t.boolean :broker_only, 
         :elevator, 

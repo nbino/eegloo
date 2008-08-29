@@ -291,3 +291,913 @@ DEPRECATION WARNING: config.action_view.cache_template_extensions option has bee
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
+DEPRECATION WARNING: config.action_view.cache_template_extensions option has been deprecated and has no affect. Please remove it from your config files.  See http://www.rubyonrails.org/deprecation for details. (called from send at c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/initializer.rb:455)
+
+
+Processing ListingsController#index (for 127.0.0.1 at 2008-08-28 23:25:03) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--b644f2249b634557fde3668fcb0f73c72c298f94
+  Parameters: {"action"=>"index", "controller"=>"listings"}
+
+
+ActiveRecord::StatementInvalid (Could not find table 'listings'):
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite3_adapter.rb:29:in `table_structure'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/core_ext/object/misc.rb:28:in `returning'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite3_adapter.rb:28:in `table_structure'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite_adapter.rb:189:in `columns'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/base.rb:1145:in `columns'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:262:in `column_for'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:119:in `calculate'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:46:in `count'
+    /vendor/plugins/paginating_find/lib/paginating_find.rb:67:in `find'
+    /app/models/listing.rb:204:in `do_search'
+    /app/controllers/listings_controller.rb:14:in `index'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `send'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `perform_action_without_filters'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:580:in `call_filters'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:573:in `perform_action_without_benchmark'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/rescue.rb:201:in `perform_action_without_caching'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:33:in `cache'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/query_cache.rb:8:in `cache'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `send'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `process_without_filters'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:569:in `process_without_session_management_support'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/session_management.rb:130:in `process'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:389:in `process'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:149:in `handle_request'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:76:in `process'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:74:in `process'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:159:in `process_client'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `each'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `process_client'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `initialize'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `new'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `initialize'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `new'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `run'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:282:in `run'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:281:in `each'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:281:in `run'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/mongrel_rails:128:in `run'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/command.rb:212:in `run'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/mongrel_rails:281
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/servers/mongrel.rb:64
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/server.rb:39
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+Rendering c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing ListingsController#index (for 127.0.0.1 at 2008-08-28 23:25:10) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--b644f2249b634557fde3668fcb0f73c72c298f94
+  Parameters: {"action"=>"index", "controller"=>"listings"}
+
+
+ActiveRecord::StatementInvalid (Could not find table 'listings'):
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite3_adapter.rb:29:in `table_structure'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/core_ext/object/misc.rb:28:in `returning'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite3_adapter.rb:28:in `table_structure'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite_adapter.rb:189:in `columns'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/base.rb:1145:in `columns'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:262:in `column_for'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:119:in `calculate'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:46:in `count'
+    /vendor/plugins/paginating_find/lib/paginating_find.rb:67:in `find'
+    /app/models/listing.rb:204:in `do_search'
+    /app/controllers/listings_controller.rb:14:in `index'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `send'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `perform_action_without_filters'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:580:in `call_filters'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:573:in `perform_action_without_benchmark'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/rescue.rb:201:in `perform_action_without_caching'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:33:in `cache'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/query_cache.rb:8:in `cache'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `send'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `process_without_filters'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:569:in `process_without_session_management_support'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/session_management.rb:130:in `process'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:389:in `process'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:149:in `handle_request'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:76:in `process'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:74:in `process'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:159:in `process_client'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `each'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `process_client'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `initialize'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `new'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `initialize'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `new'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `run'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:282:in `run'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:281:in `each'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:281:in `run'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/mongrel_rails:128:in `run'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/command.rb:212:in `run'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/mongrel_rails:281
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/servers/mongrel.rb:64
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/server.rb:39
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+Rendering c:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+DEPRECATION WARNING: config.action_view.cache_template_extensions option has been deprecated and has no affect. Please remove it from your config files.  See http://www.rubyonrails.org/deprecation for details. (called from send at C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/initializer.rb:455)
+
+
+Processing ListingsController#index (for 127.0.0.1 at 2008-08-28 23:29:17) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--b644f2249b634557fde3668fcb0f73c72c298f94
+  Parameters: {"action"=>"index", "controller"=>"listings"}
+
+
+ActiveRecord::StatementInvalid (Could not find table 'listings'):
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite3_adapter.rb:29:in `table_structure'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/core_ext/object/misc.rb:28:in `returning'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite3_adapter.rb:28:in `table_structure'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite_adapter.rb:189:in `columns'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/base.rb:1145:in `columns'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:262:in `column_for'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:119:in `calculate'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:46:in `count'
+    /vendor/plugins/paginating_find/lib/paginating_find.rb:67:in `find'
+    /app/models/listing.rb:204:in `do_search'
+    /app/controllers/listings_controller.rb:14:in `index'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `perform_action_without_filters'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:580:in `call_filters'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:573:in `perform_action_without_benchmark'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/rescue.rb:201:in `perform_action_without_caching'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:33:in `cache'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/query_cache.rb:8:in `cache'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `process_without_filters'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:569:in `process_without_session_management_support'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/session_management.rb:130:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:389:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:149:in `handle_request'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:76:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:74:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:159:in `process_client'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `each'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `process_client'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `initialize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `new'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `initialize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `new'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:282:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:281:in `each'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:281:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/mongrel_rails:128:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/command.rb:212:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/mongrel_rails:281
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/servers/mongrel.rb:64
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/server.rb:39
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+Rendering C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+DEPRECATION WARNING: config.action_view.cache_template_extensions option has been deprecated and has no affect. Please remove it from your config files.  See http://www.rubyonrails.org/deprecation for details. (called from send at C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/initializer.rb:455)
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.093000)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.110000)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+DEPRECATION WARNING: config.action_view.cache_template_extensions option has been deprecated and has no affect. Please remove it from your config files.  See http://www.rubyonrails.org/deprecation for details. (called from send at C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/initializer.rb:455)
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.125000)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.110000)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+DEPRECATION WARNING: config.action_view.cache_template_extensions option has been deprecated and has no affect. Please remove it from your config files.  See http://www.rubyonrails.org/deprecation for details. (called from send at C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/initializer.rb:455)
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.312000)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.250000)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+DEPRECATION WARNING: config.action_view.cache_template_extensions option has been deprecated and has no affect. Please remove it from your config files.  See http://www.rubyonrails.org/deprecation for details. (called from send at C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/initializer.rb:455)
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.109000)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.094000)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+DEPRECATION WARNING: config.action_view.cache_template_extensions option has been deprecated and has no affect. Please remove it from your config files.  See http://www.rubyonrails.org/deprecation for details. (called from send at C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/initializer.rb:455)
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.093000)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.125000)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.125000)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "friend2_id" integer DEFAULT NULL NULL, "friend1_id" integer DEFAULT NULL NULL) [0m
+DEPRECATION WARNING: config.action_view.cache_template_extensions option has been deprecated and has no affect. Please remove it from your config files.  See http://www.rubyonrails.org/deprecation for details. (called from send at C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/initializer.rb:455)
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: table "users" already exists: CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "friend2_id" integer DEFAULT NULL NULL, "friend1_id" integer DEFAULT NULL NULL) [0m
+DEPRECATION WARNING: config.action_view.cache_template_extensions option has been deprecated and has no affect. Please remove it from your config files.  See http://www.rubyonrails.org/deprecation for details. (called from send at C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/initializer.rb:455)
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+DEPRECATION WARNING: config.action_view.cache_template_extensions option has been deprecated and has no affect. Please remove it from your config files.  See http://www.rubyonrails.org/deprecation for details. (called from send at C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/initializer.rb:455)
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (1)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table "users" already exists: CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255) NOT NULL, "email" varchar(255) NOT NULL, "password" varchar(255) NOT NULL, "crypted_password" varchar(40) DEFAULT NULL NULL, "salt" varchar(40) DEFAULT NULL NULL, "remember_token" varchar(255) DEFAULT NULL NULL, "activation_code" varchar(40) DEFAULT NULL NULL, "password_reset_code" varchar(40) DEFAULT NULL NULL, "remember_token_expires_at" datetime DEFAULT NULL NULL, "activated_at" datetime DEFAULT NULL NULL, "enabled" boolean DEFAULT 't' NULL, "admin" boolean DEFAULT 't' NULL, "allow_contact" boolean DEFAULT 't' NULL, "created_at" datetime DEFAULT NULL NULL, "updated_at" datetime DEFAULT NULL NULL) [0m
+DEPRECATION WARNING: config.action_view.cache_template_extensions option has been deprecated and has no affect. Please remove it from your config files.  See http://www.rubyonrails.org/deprecation for details. (called from send at C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/initializer.rb:455)
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.063000)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.109000)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (1)
+  [4;35;1mSQL (0.016000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.109000)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255) NOT NULL, "email" varchar(255) NOT NULL, "password" varchar(255) NOT NULL, "crypted_password" varchar(40) DEFAULT NULL NULL, "salt" varchar(40) DEFAULT NULL NULL, "remember_token" varchar(255) DEFAULT NULL NULL, "activation_code" varchar(40) DEFAULT NULL NULL, "password_reset_code" varchar(40) DEFAULT NULL NULL, "remember_token_expires_at" datetime DEFAULT NULL NULL, "activated_at" datetime DEFAULT NULL NULL, "enabled" boolean DEFAULT 't' NULL, "admin" boolean DEFAULT 't' NULL, "allow_contact" boolean DEFAULT 't' NULL, "created_at" datetime DEFAULT NULL NULL, "updated_at" datetime DEFAULT NULL NULL) [0m
+  [4;35;1mSQL (0.297000)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('1')[0m
+Migrating to CreateListings (2)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.219000)[0m   [0mCREATE TABLE "listings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "nhood_id" integer DEFAULT NULL NULL, "address" varchar(255) DEFAULT NULL NULL, "cross_street1" varchar(255) DEFAULT NULL NULL, "cross_street2" varchar(255) DEFAULT NULL NULL, "latitude" float DEFAULT NULL NULL, "longtitude" float DEFAULT NULL NULL, "avail_date" datetime DEFAULT NULL NULL, "apt_no" integer DEFAULT NULL NULL, "rent_range_top" integer DEFAULT NULL NULL, "rent_range_bottom" integer DEFAULT NULL NULL, "rent_exact" integer DEFAULT NULL NULL, "bogus_flag_count" integer DEFAULT 0 NULL, "broker_flag_count" integer DEFAULT 0 NULL, "na_flag_count" integer DEFAULT 0 NULL, "favorites_count" integer DEFAULT 0 NULL, "listing_comments_count" integer DEFAULT 0 NULL, "sq_footage" integer DEFAULT NULL NULL, "ceiling_height" integer DEFAULT NULL NULL, "n_bathrooms" integer DEFAULT NULL NULL, "floor_type" integer DEFAULT NULL NULL, "heat_q" integer DEFAULT NULL NULL, "ac_type" integer DEFAULT NULL NULL, "back_yard" integer DEFAULT NULL NULL, "street_noise_level" integer DEFAULT NULL NULL, "nbors_noise_level" integer DEFAULT NULL NULL, "appliances_q" integer DEFAULT NULL NULL, "bathroom_q" integer DEFAULT NULL NULL, "cellphone_q" integer DEFAULT NULL NULL, "cellphone_provider" integer DEFAULT NULL NULL, "private_back_yard" boolean DEFAULT NULL NULL, "maintenance_q" integer DEFAULT NULL NULL, "broker_only" boolean DEFAULT NULL NULL, "elevator" boolean DEFAULT NULL NULL, "multi_level" boolean DEFAULT NULL NULL, "penthouse" boolean DEFAULT NULL NULL, "private_entrance" boolean DEFAULT NULL NULL, "gym" boolean DEFAULT NULL NULL, "laundry" boolean DEFAULT NULL NULL, "roaches" boolean DEFAULT NULL NULL, "rodents" boolean DEFAULT NULL NULL, "ants" boolean DEFAULT NULL NULL, "broadband" boolean DEFAULT NULL NULL, "doorman" boolean DEFAULT NULL NULL, "rent_stabilized" boolean DEFAULT NULL NULL, "rent_controlled" boolean DEFAULT NULL NULL, "convertable" boolean DEFAULT NULL NULL, "separate_kitchen" boolean DEFAULT NULL NULL, "balcony" boolean DEFAULT NULL NULL, "patio" boolean DEFAULT NULL NULL, "loft" boolean DEFAULT NULL NULL, "roof_access" boolean DEFAULT NULL NULL, "public_back_yard" boolean DEFAULT NULL NULL, "dogs_allowed" boolean DEFAULT NULL NULL, "cats_allowed" boolean DEFAULT NULL NULL, "tenant_comment" varchar(255) DEFAULT NULL NULL, "created_at" datetime DEFAULT NULL NULL, "updated_at" datetime DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.140000)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('2')[0m
+Migrating to CreateFlags (3)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.141000)[0m   [0;1mCREATE TABLE "flags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "listing_id" integer NOT NULL, "user_id" integer NOT NULL, "type" varchar(255) DEFAULT NULL NULL, "attr_name" varchar(255) DEFAULT NULL NULL, "comment" varchar(255) DEFAULT NULL NULL, "created_at" datetime DEFAULT NULL NULL, "updated_at" datetime DEFAULT NULL NULL) [0m
+  [4;35;1mSQL (0.125000)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('3')[0m
+Migrating to CreateReadings (4)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.344000)[0m   [0mCREATE TABLE "readings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer DEFAULT NULL NULL, "listing_id" integer DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.187000)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('4')[0m
+Migrating to CreateRooms (5)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.140000)[0m   [0;1mCREATE TABLE "rooms" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255) DEFAULT NULL NULL, "listing_id" integer DEFAULT NULL NULL, "light_level_id" integer DEFAULT NULL NULL, "exposure_id" integer DEFAULT NULL NULL, "length" integer DEFAULT NULL NULL, "width" integer DEFAULT NULL NULL, "size_id" integer DEFAULT NULL NULL, "created_at" datetime DEFAULT NULL NULL, "updated_at" datetime DEFAULT NULL NULL) [0m
+  [4;35;1mSQL (0.125000)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('5')[0m
+Migrating to CreateContactInfos (6)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.156000)[0m   [0mCREATE TABLE "contact_infos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "listing_id" integer DEFAULT NULL NULL, "type" varchar(255) DEFAULT NULL NULL, "work_phone1" varchar(255) DEFAULT NULL NULL, "work_phone2" varchar(255) DEFAULT NULL NULL, "work_phone3" varchar(255) DEFAULT NULL NULL, "cell_phone1" varchar(255) DEFAULT NULL NULL, "cell_phone2" varchar(255) DEFAULT NULL NULL, "cell_phone3" varchar(255) DEFAULT NULL NULL, "fax1" varchar(255) DEFAULT NULL NULL, "fax2" varchar(255) DEFAULT NULL NULL, "fax3" varchar(255) DEFAULT NULL NULL, "address1" varchar(255) DEFAULT NULL NULL, "address2" varchar(255) DEFAULT NULL NULL, "verified" boolean DEFAULT NULL NULL, "deals_direct" boolean DEFAULT NULL NULL, "representing_broker_id" integer DEFAULT NULL NULL, "created_at" datetime DEFAULT NULL NULL, "updated_at" datetime DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.312000)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('6')[0m
+Migrating to CreateInvites (7)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.172000)[0m   [0;1mCREATE TABLE "invites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "listing_id" integer NOT NULL, "email" varchar(255) DEFAULT NULL NULL, "user_nick_name" varchar(255) DEFAULT NULL NULL, "note" varchar(255) DEFAULT NULL NULL, "created_at" datetime DEFAULT NULL NULL, "updated_at" datetime DEFAULT NULL NULL) [0m
+  [4;35;1mSQL (0.110000)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('7')[0m
+Migrating to CreateVisuals (8)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.110000)[0m   [0mCREATE TABLE "visuals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "listing_id" integer DEFAULT NULL NULL, "parent_id" integer DEFAULT NULL NULL, "size" integer DEFAULT NULL NULL, "width" integer DEFAULT NULL NULL, "height" integer DEFAULT NULL NULL, "type" varchar(255) DEFAULT NULL NULL, "content_type" varchar(255) DEFAULT NULL NULL, "filename" varchar(255) DEFAULT NULL NULL, "thumbnail" varchar(255) DEFAULT NULL NULL, "comment" varchar(255) DEFAULT NULL NULL, "created_at" datetime DEFAULT NULL NULL, "updated_at" datetime DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.125000)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('8')[0m
+Migrating to CreateFriendships (9)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.141000)[0m   [0;1mCREATE TABLE "friendships" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "friend2_id" integer DEFAULT NULL NULL, "friend1_id" integer DEFAULT NULL NULL) [0m
+  [4;35;1mSQL (0.312000)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('9')[0m
+Migrating to CreateFavorites (10)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.188000)[0m   [0mCREATE TABLE "favorites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "listing_id" integer NOT NULL, "user_id" integer NOT NULL, "note" varchar(255) DEFAULT NULL NULL, "created_at" datetime DEFAULT NULL NULL, "updated_at" datetime DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.125000)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('10')[0m
+Migrating to CreateSuggestions (11)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.093000)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('11')[0m
+Migrating to CreateComments (12)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.125000)[0m   [0;1mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer DEFAULT NULL NULL, "listing_id" integer DEFAULT NULL NULL, "type" varchar(255) DEFAULT NULL NULL, "content" varchar(255) DEFAULT NULL NULL, "rating" integer DEFAULT 0 NULL, "private" boolean DEFAULT 'f' NULL, "created_at" datetime DEFAULT NULL NULL, "updated_at" datetime DEFAULT NULL NULL) [0m
+  [4;35;1mSQL (0.125000)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('12')[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("comments")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPRAGMA index_list("contact_infos")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("favorites")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPRAGMA index_list("flags")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("friendships")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPRAGMA index_list("invites")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("listings")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPRAGMA index_list("readings")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("rooms")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("visuals")[0m
+
+
+Processing ListingsController#index (for 127.0.0.1 at 2008-08-28 23:55:04) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--b644f2249b634557fde3668fcb0f73c72c298f94
+  Parameters: {"action"=>"index", "controller"=>"listings"}
+  [4;36;1mSQL (0.000000)[0m   [0;1mselect sqlite_version(*)[0m
+
+
+NameError (uninitialized constant AttrValue):
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:278:in `load_missing_constant'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:467:in `const_missing'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:479:in `const_missing'
+    /app/models/nhood.rb:1
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:215:in `load_without_new_constant_marking'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:215:in `load_file'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:214:in `load_file'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:95:in `require_or_load'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:260:in `load_missing_constant'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:467:in `const_missing'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:479:in `const_missing'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:485:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:485:in `const_missing'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/base.rb:1909:in `compute_type'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/reflection.rb:129:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/reflection.rb:129:in `klass'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/associations.rb:1786:in `initialize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/associations.rb:1682:in `new'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/associations.rb:1682:in `build_join_association'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/associations.rb:1665:in `build'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/associations.rb:1668:in `build'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/associations.rb:1667:in `each'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/associations.rb:1667:in `build'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/associations.rb:1589:in `initialize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:184:in `new'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:184:in `construct_calculation_sql'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:213:in `execute_simple_calculation'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:124:in `calculate'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:120:in `catch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:120:in `calculate'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:46:in `count'
+    /vendor/plugins/paginating_find/lib/paginating_find.rb:67:in `find'
+    /app/models/listing.rb:204:in `do_search'
+    /app/controllers/listings_controller.rb:14:in `index'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `perform_action_without_filters'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:580:in `call_filters'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:573:in `perform_action_without_benchmark'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/rescue.rb:201:in `perform_action_without_caching'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:33:in `cache'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/query_cache.rb:8:in `cache'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `process_without_filters'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:569:in `process_without_session_management_support'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/session_management.rb:130:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:389:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:149:in `handle_request'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:76:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:74:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:159:in `process_client'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `each'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `process_client'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `initialize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `new'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `initialize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `new'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:282:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:281:in `each'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:281:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/mongrel_rails:128:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/command.rb:212:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/mongrel_rails:281
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/servers/mongrel.rb:64
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/server.rb:39
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+Rendering C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing ListingsController#index (for 127.0.0.1 at 2008-08-29 00:01:13) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--b644f2249b634557fde3668fcb0f73c72c298f94
+  Parameters: {"action"=>"index", "controller"=>"listings"}
+  [4;35;1mSQL (0.000000)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: no such table: nhoods: SELECT count(DISTINCT listings.id) AS count_listings_id FROM "listings" LEFT OUTER JOIN "comments" ON comments.listing_id = listings.id AND "comments"."type" = 'ListingComment' LEFT OUTER JOIN "visuals" ON visuals.listing_id = listings.id AND "visuals"."type" = 'Photo' LEFT OUTER JOIN "readings" ON readings.listing_id = listings.id AND readings.user=412738 LEFT OUTER JOIN "favorites" ON favorites.listing_id = listings.id AND favorites.user = 412738 LEFT OUTER JOIN "nhoods" ON "nhoods".id = "listings".nhood_id [0m
+
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: nhoods: SELECT count(DISTINCT listings.id) AS count_listings_id FROM "listings"  LEFT OUTER JOIN "comments" ON comments.listing_id = listings.id AND "comments"."type" = 'ListingComment'  LEFT OUTER JOIN "visuals" ON visuals.listing_id = listings.id AND "visuals"."type" = 'Photo'  LEFT OUTER JOIN "readings" ON readings.listing_id = listings.id AND readings.user=412738  LEFT OUTER JOIN "favorites" ON favorites.listing_id = listings.id AND favorites.user = 412738  LEFT OUTER JOIN "nhoods" ON "nhoods".id = "listings".nhood_id     ):
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract_adapter.rb:147:in `log'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite_adapter.rb:132:in `execute'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite_adapter.rb:360:in `catch_schema_changes'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite_adapter.rb:132:in `execute'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite_adapter.rb:263:in `select'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/database_statements.rb:7:in `select_all_without_query_cache'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:59:in `select_all'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:80:in `cache_sql'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:59:in `select_all'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/database_statements.rb:13:in `select_one'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/database_statements.rb:19:in `select_value'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:213:in `execute_simple_calculation'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:124:in `calculate'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:120:in `catch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:120:in `calculate'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:46:in `count'
+    /vendor/plugins/paginating_find/lib/paginating_find.rb:67:in `find'
+    /app/models/listing.rb:204:in `do_search'
+    /app/controllers/listings_controller.rb:14:in `index'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `perform_action_without_filters'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:580:in `call_filters'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:573:in `perform_action_without_benchmark'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/rescue.rb:201:in `perform_action_without_caching'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:33:in `cache'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/query_cache.rb:8:in `cache'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `process_without_filters'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:569:in `process_without_session_management_support'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/session_management.rb:130:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:389:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:149:in `handle_request'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:76:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:74:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:159:in `process_client'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `each'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `process_client'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `initialize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `new'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `initialize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `new'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:282:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:281:in `each'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:281:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/mongrel_rails:128:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/command.rb:212:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/mongrel_rails:281
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/servers/mongrel.rb:64
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/server.rb:39
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+Rendering C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+DEPRECATION WARNING: config.action_view.cache_template_extensions option has been deprecated and has no affect. Please remove it from your config files.  See http://www.rubyonrails.org/deprecation for details. (called from send at C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/initializer.rb:455)
+DEPRECATION WARNING: config.action_view.cache_template_extensions option has been deprecated and has no affect. Please remove it from your config files.  See http://www.rubyonrails.org/deprecation for details. (called from send at C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/initializer.rb:455)
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (1)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateListings (2)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateFlags (3)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateReadings (4)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateRooms (5)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateContactInfos (6)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateInvites (7)
+  [4;35;1mSQL (0.016000)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateVisuals (8)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateFriendships (9)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateFavorites (10)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateSuggestions (11)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateComments (12)
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateNhoods (20080829040310)
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.172000)[0m   [0mCREATE TABLE "nhoods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) DEFAULT NULL NULL, "safety_rating" integer DEFAULT NULL NULL, "schools_rating" integer DEFAULT NULL NULL, "parking_rating" integer DEFAULT NULL NULL, "night_life_rating" integer DEFAULT NULL NULL, "food_rating" integer DEFAULT NULL NULL, "services_rating" integer DEFAULT NULL NULL, "created_at" datetime DEFAULT NULL NULL, "updated_at" datetime DEFAULT NULL NULL) [0m
+  [4;36;1mNhood Create (0.000000)[0m   [0;1mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Chelsea', NULL, '2008-08-29 00:33:59', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:33:59')[0m
+  [4;35;1mNhood Create (0.000000)[0m   [0mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Columbus Circle', NULL, '2008-08-29 00:33:59', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:33:59')[0m
+  [4;36;1mNhood Create (0.000000)[0m   [0;1mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('East Village', NULL, '2008-08-29 00:34:00', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:00')[0m
+  [4;35;1mNhood Create (0.016000)[0m   [0mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Financial District', NULL, '2008-08-29 00:34:00', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:00')[0m
+  [4;36;1mNhood Create (0.000000)[0m   [0;1mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Flatiron', NULL, '2008-08-29 00:34:00', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:00')[0m
+  [4;35;1mNhood Create (0.000000)[0m   [0mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Gramercy/Flatiron', NULL, '2008-08-29 00:34:00', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:00')[0m
+  [4;36;1mNhood Create (0.000000)[0m   [0;1mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Greenwich Village', NULL, '2008-08-29 00:34:00', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:00')[0m
+  [4;35;1mNhood Create (0.016000)[0m   [0mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Harlem', NULL, '2008-08-29 00:34:01', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:01')[0m
+  [4;36;1mNhood Create (0.000000)[0m   [0;1mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Hell''s Kitchen', NULL, '2008-08-29 00:34:01', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:01')[0m
+  [4;35;1mNhood Create (0.000000)[0m   [0mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Lincoln Center', NULL, '2008-08-29 00:34:01', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:01')[0m
+  [4;36;1mNhood Create (0.000000)[0m   [0;1mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Lower East Side', NULL, '2008-08-29 00:34:01', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:01')[0m
+  [4;35;1mNhood Create (0.000000)[0m   [0mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Meatpacking District', NULL, '2008-08-29 00:34:01', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:01')[0m
+  [4;36;1mNhood Create (0.016000)[0m   [0;1mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Midtown East', NULL, '2008-08-29 00:34:02', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:02')[0m
+  [4;35;1mNhood Create (0.016000)[0m   [0mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Midtown West', NULL, '2008-08-29 00:34:02', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:02')[0m
+  [4;36;1mNhood Create (0.000000)[0m   [0;1mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Murray Hill', NULL, '2008-08-29 00:34:02', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:02')[0m
+  [4;35;1mNhood Create (0.000000)[0m   [0mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('NoHo', NULL, '2008-08-29 00:34:02', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:02')[0m
+  [4;36;1mNhood Create (0.000000)[0m   [0;1mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('NoLita', NULL, '2008-08-29 00:34:02', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:02')[0m
+  [4;35;1mNhood Create (0.000000)[0m   [0mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Rockefeller Center', NULL, '2008-08-29 00:34:03', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:03')[0m
+  [4;36;1mNhood Create (0.000000)[0m   [0;1mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('SoHo', NULL, '2008-08-29 00:34:03', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:03')[0m
+  [4;35;1mNhood Create (0.047000)[0m   [0mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Theater District', NULL, '2008-08-29 00:34:03', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:03')[0m
+  [4;36;1mNhood Create (0.000000)[0m   [0;1mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Times Square', NULL, '2008-08-29 00:34:03', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:03')[0m
+  [4;35;1mNhood Create (0.000000)[0m   [0mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('TriBeCa', NULL, '2008-08-29 00:34:03', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:03')[0m
+  [4;36;1mNhood Create (0.000000)[0m   [0;1mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Union Square', NULL, '2008-08-29 00:34:04', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:04')[0m
+  [4;35;1mNhood Create (0.000000)[0m   [0mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Upper East Side', NULL, '2008-08-29 00:34:04', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:04')[0m
+  [4;36;1mNhood Create (0.000000)[0m   [0;1mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('Upper West Side', NULL, '2008-08-29 00:34:04', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:04')[0m
+  [4;35;1mNhood Create (0.000000)[0m   [0mINSERT INTO "nhoods" ("name", "schools_rating", "updated_at", "safety_rating", "night_life_rating", "parking_rating", "food_rating", "services_rating", "created_at") VALUES('West Village', NULL, '2008-08-29 00:34:04', NULL, NULL, NULL, NULL, NULL, '2008-08-29 00:34:04')[0m
+  [4;36;1mSQL (0.109000)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20080829040310')[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPRAGMA index_list("comments")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("contact_infos")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPRAGMA index_list("favorites")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("flags")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPRAGMA index_list("friendships")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("invites")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPRAGMA index_list("listings")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("nhoods")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPRAGMA index_list("readings")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("rooms")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("visuals")[0m
+
+
+Processing ListingsController#index (for 127.0.0.1 at 2008-08-29 01:06:42) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--b644f2249b634557fde3668fcb0f73c72c298f94
+  Parameters: {"action"=>"index", "controller"=>"listings"}
+  [4;35;1mSQL (0.000000)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: no such column: favorites.user: SELECT count(DISTINCT listings.id) AS count_listings_id FROM "listings" LEFT OUTER JOIN "comments" ON comments.listing_id = listings.id AND "comments"."type" = 'ListingComment' LEFT OUTER JOIN "visuals" ON visuals.listing_id = listings.id AND "visuals"."type" = 'Photo' LEFT OUTER JOIN "readings" ON readings.listing_id = listings.id AND readings.user=412738 LEFT OUTER JOIN "favorites" ON favorites.listing_id = listings.id AND favorites.user = 412738 LEFT OUTER JOIN "nhoods" ON "nhoods".id = "listings".nhood_id [0m
+
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: favorites.user: SELECT count(DISTINCT listings.id) AS count_listings_id FROM "listings"  LEFT OUTER JOIN "comments" ON comments.listing_id = listings.id AND "comments"."type" = 'ListingComment'  LEFT OUTER JOIN "visuals" ON visuals.listing_id = listings.id AND "visuals"."type" = 'Photo'  LEFT OUTER JOIN "readings" ON readings.listing_id = listings.id AND readings.user=412738  LEFT OUTER JOIN "favorites" ON favorites.listing_id = listings.id AND favorites.user = 412738  LEFT OUTER JOIN "nhoods" ON "nhoods".id = "listings".nhood_id     ):
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract_adapter.rb:147:in `log'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite_adapter.rb:132:in `execute'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite_adapter.rb:360:in `catch_schema_changes'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite_adapter.rb:132:in `execute'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/sqlite_adapter.rb:263:in `select'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/database_statements.rb:7:in `select_all_without_query_cache'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:59:in `select_all'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:80:in `cache_sql'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:59:in `select_all'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/database_statements.rb:13:in `select_one'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/database_statements.rb:19:in `select_value'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:213:in `execute_simple_calculation'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:124:in `calculate'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:120:in `catch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:120:in `calculate'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/calculations.rb:46:in `count'
+    /vendor/plugins/paginating_find/lib/paginating_find.rb:67:in `find'
+    /app/models/listing.rb:204:in `do_search'
+    /app/controllers/listings_controller.rb:14:in `index'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `perform_action_without_filters'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:580:in `call_filters'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:573:in `perform_action_without_benchmark'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/rescue.rb:201:in `perform_action_without_caching'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:33:in `cache'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/query_cache.rb:8:in `cache'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `process_without_filters'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:569:in `process_without_session_management_support'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/session_management.rb:130:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:389:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:149:in `handle_request'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:76:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:74:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:159:in `process_client'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `each'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `process_client'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `initialize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `new'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `initialize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `new'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:282:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:281:in `each'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:281:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/mongrel_rails:128:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/command.rb:212:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/mongrel_rails:281
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/servers/mongrel.rb:64
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/server.rb:39
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+Rendering C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing ListingsController#index (for 127.0.0.1 at 2008-08-29 01:10:56) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--b644f2249b634557fde3668fcb0f73c72c298f94
+  Parameters: {"action"=>"index", "controller"=>"listings"}
+  [4;35;1mSQL (0.000000)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.016000)[0m   [0;1mSELECT count(DISTINCT listings.id) AS count_listings_id FROM "listings" LEFT OUTER JOIN "comments" ON comments.listing_id = listings.id AND "comments"."type" = 'ListingComment' LEFT OUTER JOIN "visuals" ON visuals.listing_id = listings.id AND "visuals"."type" = 'Photo' LEFT OUTER JOIN "readings" ON readings.listing_id = listings.id AND readings.user_id=412738 LEFT OUTER JOIN "favorites" ON favorites.listing_id = listings.id AND favorites.user_id = 412738 LEFT OUTER JOIN "nhoods" ON "nhoods".id = "listings".nhood_id [0m
+Rendering template within layouts/main
+Rendering listings/index
+
+
+ActionView::TemplateError (undefined method `listing_info_access?' for :false:Symbol) on line #13 of listings/_search_form.html.erb:
+10:         :html=>{:id => 'search_form'}) do |f|
+11: %>
+12: 
+13: <%if !session[:no_more_popups] && !current_user.listing_info_access?%>
+14: <div id="form_locked_popup" class="leftsearch_box" style="vertical-align: bottom;position:absolute;left:160px;top:260px;width:220px;height:100px;z-index:1500;opacity:0.9;background: #CCFFCC;">
+15: <%=image_tag 'cross.png', :style=>"float:right;cursor:pointer;", :onclick=> "Element.hide('form_locked_popup');"%>
+16: </br>
+
+    app/views/listings/_search_form.html.erb:13:in `_run_erb_47app47views47listings47_search_form46html46erb'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/helpers/form_helper.rb:317:in `fields_for'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/helpers/prototype_helper.rb:386:in `remote_form_for'
+    app/views/listings/_search_form.html.erb:5:in `_run_erb_47app47views47listings47_search_form46html46erb'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/base.rb:338:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/base.rb:338:in `execute'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template_handlers/compilable.rb:29:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template_handlers/compilable.rb:29:in `render'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/partial_template.rb:20:in `render'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/partial_template.rb:19:in `render'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template.rb:22:in `render_template'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/partials.rb:110:in `render_partial'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/base.rb:273:in `render'
+    app/views/listings/index.html.erb:7:in `__instance_exec0'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/core_ext/object/extending.rb:52:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/core_ext/object/extending.rb:52:in `instance_exec'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/helpers/prototype_helper.rb:581:in `initialize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/helpers/prototype_helper.rb:1023:in `new'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/helpers/prototype_helper.rb:1023:in `update_page'
+    app/views/listings/index.html.erb:3:in `_run_erb_47app47views47listings47index46html46erb'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/base.rb:338:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/base.rb:338:in `execute'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template_handlers/compilable.rb:29:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template_handlers/compilable.rb:29:in `render'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template.rb:35:in `render'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template.rb:22:in `render_template'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/base.rb:245:in `render_file'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1108:in `render_for_file'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:922:in `render_with_no_layout'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/layout.rb:251:in `render_without_benchmark'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:51:in `render'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:51:in `render'
+    app/controllers/listings_controller.rb:17:in `index'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:131:in `call'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:131:in `custom'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:160:in `call'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:160:in `respond'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:154:in `each'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:154:in `respond'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:107:in `respond_to'
+    app/controllers/listings_controller.rb:16:in `index'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `perform_action_without_filters'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:580:in `call_filters'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:573:in `perform_action_without_benchmark'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/rescue.rb:201:in `perform_action_without_caching'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:33:in `cache'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/query_cache.rb:8:in `cache'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `send'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `process_without_filters'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:569:in `process_without_session_management_support'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/session_management.rb:130:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:389:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:149:in `handle_request'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/rails.rb:76:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/rails.rb:74:in `synchronize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/rails.rb:74:in `process'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:159:in `process_client'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `each'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `process_client'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `initialize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `new'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `initialize'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `new'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:282:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:281:in `each'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:281:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/mongrel_rails:128:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/command.rb:212:in `run'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/mongrel_rails:281
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:502:in `load'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/servers/mongrel.rb:64
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/dependencies.rb:509:in `require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/rails-2.1.0/lib/commands/server.rb:39
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+Rendering C:/Documents and Settings/Glevik/My Documents/My Bins/ruby/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/templates/rescues/layout.erb (internal_server_error)

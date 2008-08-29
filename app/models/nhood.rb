@@ -1,2 +1,2 @@
-class Nhood < AttrValue
+class Nhood < ActiveRecord::Base
 end

@@ -1,6 +1,5 @@
 class Listing < ActiveRecord::Base
 
-
 #Constants
 NON_MEMBER_LIMIT = 3
 
@@ -23,31 +22,26 @@ belongs_to :nhood
 has_many :listing_comments, :include=>:author
 
 #Validations
-validates_presence_of(
-    :apt_type_id,
+validates_presence_of :apt_type,
     :rent_range_top,
     :rent_range_bottom,
-    :nhood_id,
+    :nhood,
     :address, :cross_street,
-    :avail_date)
+    :avail_date
 
-validates_numericality_of(
-  :apt_type_id,
+validates_numericality_of :apt_type,
   :rent_range_top,
   :rent_range_bottom,
-  :nhood_id,
+  :nhood,
   
   #other
-  :greater_than=>0, :only_integer=>true)
+  :greater_than=>0, :only_integer=>true
       
-validates_associated(
-  )
 
 
 #compound attributes
 def add_apt_info(params)
-  validates_presence_of(
-        :sq_footage,
+  validates_presence_of :sq_footage,
         :ceiling_height,
         :multi_level,
         :penthouse,
@@ -65,27 +59,24 @@ def add_apt_info(params)
         :patio,
         :loft,
         :dogs_allowed,
-        :cats_allowed)
+        :cats_allowed
 
-  validates_numericality_of(
-        #other
-        :sq_footage,
+  validates_numericality_of :sq_footage,
         :ceiling_height,
-        :greater_than=>0, :only_integer=>true)
+        :greater_than=>0, :only_integer=>true
         
   update_attributes params
 
 end
 
 def add_building_info(params)
-  validates_presence_of(
-        :roof_access,
+  validates_presence_of :roof_access,
         :elevator, 
         :gym, 
         :laundry, 
         :broadband, 
         :doorman
-        )
+
   
   update_attributes(params)
   
@@ -151,8 +142,8 @@ end
 SQL_OPERATORS = 
 {
   'avail_date'=>'<=',
-  'ac_type_id'=>'>=',
-  'bathroom_n_id'=>'>=',
+  'ac_type'=>'>=',
+  'bathroom_n'=>'>=',
   'no_of_balconies'=>'>=',
   'no_of_bathrooms'=>'>=',
   'sq_footage'=>'>=',
@@ -169,7 +160,7 @@ SORT_ORDER =
   'rent_range_bottom' => 'listings.rent_range_bottom ASC'
 }
     
-def self.do_search(params, user_id, order_by='created_at', current_page=1)
+def self.do_search(params, user, order_by='created_at', current_page=1)
      #expects params hash
      
     conditions = []
@@ -178,10 +169,10 @@ def self.do_search(params, user_id, order_by='created_at', current_page=1)
     
     #emty nhoods are not ignored. 
     if  params.nil? || params.empty? || params['nhoods'].nil? || params['nhoods'].empty?
-      conditions << 'nhood_id = 0' 
+      conditions << 'nhood = 0' 
     else
       #add parans for IN operator and join array. "all" is a special value that means all
-      conditions << "nhood_id IN (#{params['nhoods'].join(',')})" unless params['nhoods'].include? 'all'
+      conditions << "nhood IN (#{params['nhoods'].join(',')})" unless params['nhoods'].include? 'all'
     end
       
     
@@ -198,8 +189,8 @@ def self.do_search(params, user_id, order_by='created_at', current_page=1)
     end
       
     # set up associations
-    has_one :read_by_user, :class_name=>'Reading', :conditions=>"readings.user_id=#{user_id}"
-    has_one :user_favorite, :class_name=>'Favorite', :conditions=>"favorites.user_id = #{user_id}"
+    has_one :read_by_user, :class_name=>'Reading', :conditions=>"readings.user_id=#{user}"
+    has_one :user_favorite, :class_name=>'Favorite', :conditions=>"favorites.user_id = #{user}"
     
     self.find(
       :all,
@@ -218,43 +209,43 @@ end
 
 #attribute_values
 #~ def nhood
-  #~ AttributeLiterals::NHOODS[nhood_id]
+  #~ AttributeLiterals::NHOODS[nhood]
 #~ end
 
-def nbors_noise_level
-  AttributeLiterals::NOISE_LEVELS[nbors_noise_level_id]
+def nbors_noise
+  AttributeLiterals::NOISE_LEVELS[nbors_noise_level]
 end
 
-def street_noise_level
-  AttributeLiterals::NOISE_LEVELS[street_noise_level_id]
+def street_noise
+  AttributeLiterals::NOISE_LEVELS[street_noise_level]
 end
 
 def cell_provider
-  AttributeLiterals::CELL_PROVIDERS[cellphone_q_id]
+  AttributeLiterals::CELL_PROVIDERS[cellphone_q]
 end
 
-def cell_signal_quality
-  AttributeLiterals::NHOOD_LITERALS[cellphone_q_id]
+def cell_signal
+  AttributeLiterals::NHOOD_LITERALS[cellphone_q]
 end
 
 def appl_condition
-  AttributeLiterals::CONDITIONS[appliance_q_id]
+  AttributeLiterals::CONDITIONS[appliance_q]
 end
   
 def maint_quality
-  AttributeLiterals::CONDITIONS[maintenance_q_id]
+  AttributeLiterals::CONDITIONS[maintenance_q]
 end
 
 def bath_quality
-  AttributeLiterals::CONDITIONS[bathroom_q_id]
+  AttributeLiterals::CONDITIONS[bathroom_q]
 end
 
 def heat
-  AttributeLiterals::CONDITIONS[heat_q_id]
+  AttributeLiterals::CONDITIONS[heat_q]
 end
   
-def floor_type
-  AttributeLiterals::FLOOR_TYPES[floor_type_id]
+def floor_kind
+  AttributeLiterals::FLOOR_TYPES[floor_type]
 end
   
 
