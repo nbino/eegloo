@@ -1,2 +1,0 @@
-class FloorType < AttrValue
-end

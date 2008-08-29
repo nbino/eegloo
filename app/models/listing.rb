@@ -1,5 +1,3 @@
-require 'attribute_literals'
-
 class Listing < ActiveRecord::Base
 
 
@@ -7,20 +5,20 @@ class Listing < ActiveRecord::Base
 NON_MEMBER_LIMIT = 3
 
 #Associations
-has_many 
-  :favorites, 
-  :photos,
-  :movies,
-  :broker_flags,
-  :na_flags,
-  :bogus_flags,
-  :listing_comments,
-  :contact_infos,
-  :bedrooms
+has_many :favorites  
+has_many :photos 
+has_many :movies 
+has_many :broker_flags 
+has_many :na_flags 
+has_many :bogus_flags 
+has_many :listing_comments 
+has_many :contact_infos 
+has_many :bedrooms
 
 has_one :living_room
 
-belongs_to :user, :nhood
+belongs_to :user
+belongs_to :nhood
   
 has_many :listing_comments, :include=>:author
 
@@ -209,7 +207,7 @@ def self.do_search(params, user_id, order_by='created_at', current_page=1)
         :listing_comments,
         :photos, 
         :read_by_user,
-        :user_favorite,S
+        :user_favorite,
         :nhood
       ],
       :conditions=>[conditions.join(' AND '), params],

@@ -1,3 +1,0 @@
-class CellphoneQ < AttrValue
-  
-end

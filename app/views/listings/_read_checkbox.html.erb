@@ -1,0 +1,15 @@
+<%=image_tag(
+      'unchecked.gif', 
+      :id=>"unread_icon_#{lid}", 
+      :onclick=>["$('header_#{lid}').style.fontWeight='normal';", page.toggle("read_icon_#{lid}", "unread_icon_#{lid}"), remote_function(:url=>listing_readings_url(listing), :method=>:post)], 
+      :style=>"cursor:pointer;#{is_this_friends? || is_this_favorites? || l.read? ? 'display:none;' : ''}", 
+      :title=>'Mark as read') 
+%>
+            
+<%=image_tag(
+    'checked.gif', 
+    :id=>"read_icon_#{lid}", 
+    :onclick=>["$('header_#{lid}').style.fontWeight='bold';",page.toggle("read_#{lid}", "unread_#{lid}"), remote_function(:url=>listing_reading_url(listing, 0), :method=>:delete)], 
+    :style=>"cursor:pointer;#{is_this_friends? || is_this_favorites? || l.read? ? '' : 'display:none;'}", 
+    :title=>'Mark as unread') 
+%>

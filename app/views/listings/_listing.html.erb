@@ -10,10 +10,10 @@
 <div class="listing" id="listing_<%=lid%>">
 
   <!--standart dialogs-->
-  <%toolbar.each do |dialog_name|%>
+  <%toolbar.each do |dialog_name, title|%>
       
       <!--<%=dialog_name%> popup-->
-      <%=render_dialog dialog_name, page, lid%>
+      <%=render_dialog dialog_name_popup, page, lid%>
       <!--/<%=dialog_name%> popup-->
 
   <%end%>
@@ -23,21 +23,7 @@
   
     <!--favorites star-->
                   
-    <%=image_tag(
-            'grey_star.gif', 
-            :id=>"off_star_#{lid}", 
-            :onclick=>[page.toggle("off_star_#{lid}", "on_star_#{lid}"), remote_function(:url=>listing_favorites_url(listing), :method=>:post)], 
-            :style=>"cursor:pointer;#{l.favorite? ? 'display:none;' : ''}", 
-            :title=>'Add to favorites') 
-     %>
-        
-    <%=image_tag(
-        'yellow_star.png', 
-        :id=>"on_star_#{lid}", 
-        :onclick=>[page.toggle("off_star_#{lid}", "on_star_#{lid}"), remote_function(:url=>listing_favorite_url(listing, 0), :method=>:delete) ], 
-        :style=>"cursor:pointer;#{l.favorite? ? '' : 'display:none;'}", 
-        :title=>'Remove from favorites') 
-    %>
+    <%= render :partial=>'favorites_star' %>
                   
     <!--/favorites star-->
     
@@ -120,27 +106,13 @@
         
       <%=link_to_function 'See all', [page.toggle("comments_popup_#{l.id}")]%>
 
+      <!-- read checkbox-->
       
-    <%=image_tag(
-          'unchecked.gif', 
-          :id=>"unread_icon_#{lid}", 
-          :onclick=>["$('header_#{lid}').style.fontWeight='normal';", page.toggle("read_icon_#{lid}", "unread_icon_#{lid}"), remote_function(:url=>listing_readings_url(listing), :method=>:post)], 
-          :style=>"cursor:pointer;#{is_this_friends? || is_this_favorites? || l.read? ? 'display:none;' : ''}", 
-          :title=>'Mark as read') 
-    %>
-                
-    <%=image_tag(
-        'checked.gif', 
-        :id=>"read_icon_#{lid}", 
-        :onclick=>["$('header_#{lid}').style.fontWeight='bold';",page.toggle("read_#{lid}", "unread_#{lid}"), remote_function(:url=>listing_reading_url(listing, 0), :method=>:delete)], 
-        :style=>"cursor:pointer;#{is_this_friends? || is_this_favorites? || l.read? ? '' : 'display:none;'}", 
-        :title=>'Mark as unread') 
-    %>
+      <%= render :partial=>'read_checkbox' %>
     
+      <!--/read checkbox-->
     
-    <%{'flag_listing'=>'Flag listing',
-        'send_by_email'=>'Send to friend',
-        'add_comment'=>'Comment'}.each do |button_name, title|%>
+    <%toolbar.each do |button_name, title|%>
     <%=image_tag(
                 "#{button_name}_button.gif", 
                 :id=>"#{button_name}_button_#{lid}", 

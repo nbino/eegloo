@@ -1,2 +1,0 @@
-class AcType < AttrValue
-end

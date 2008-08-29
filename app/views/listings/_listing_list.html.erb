@@ -2,7 +2,7 @@
 <!--listings list-->
 
 <%if 0==@listings.size%>
-No listings found
+  No listings found
 <%else%>
 
   <%=render_dialog 'basic_info_locked', page unless current_user.basic_access?%>
@@ -15,12 +15,22 @@ No listings found
     page <%=remote_paginating_links @listings, {:window_size => 5, :auto_submit_form => true, :form_name=>'search_form', :set_hidden_field=>true, :hidden_field_name=>'custom_options[page]' }%>
   </div>
   
-  <%=render :partial => '/shared/listing', :locals=>{:toolbar=>['flag_listing', 'send_by_email', 'add_comment'], :page=>page}, :collection => @listings-%>
+  <%=render :partial => '/shared/listing', 
+          :locals=>{
+            :toolbar=>[
+              'flag_listing'=>'Flag listing',
+              'send_by_email'=>'Send to friend',
+              'add_comment'=>'Comment'], 
+            :page=>page},
+          :collection => @listings-%>
+  <%if not current_user.basics_access?%>
   
-  <%=link_to_function 'View more listings', [page.toggle("basic_info_locked_popup")]%>
-
+      <%=link_to_function 'View more listings', [page.toggle("basic_info_locked_popup")]%>
+      
+  <%end%>
 
 <%end%>
+
 
 <!--/listings list-->
 <%end%>

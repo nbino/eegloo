@@ -1,2 +1,0 @@
-class HeatQ < AttrValue
-end

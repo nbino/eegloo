@@ -1,2 +1,0 @@
-class CellphoneProvider < AttrValue
-end

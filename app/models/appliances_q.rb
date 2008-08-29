@@ -1,3 +1,0 @@
-class AppliancesQ < AttrValue
-  
-end

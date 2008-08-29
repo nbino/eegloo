@@ -1,2 +1,0 @@
-class WindowDirection < AttrValue
-end

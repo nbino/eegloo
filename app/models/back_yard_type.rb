@@ -1,3 +1,0 @@
-class BackYardType < AttrValue
-  
-end

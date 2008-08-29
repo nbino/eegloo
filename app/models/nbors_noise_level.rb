@@ -1,2 +1,0 @@
-class NborsNoiseLevel < AttrValue
-end
