@@ -70,26 +70,26 @@ class User < ActiveRecord::Base
     @activated
   end
  
- 
-  def photo_access?
-    listing.photos.size >= 3
-  end
+  #moved to database
+  #~ def photo_access?
+    #~ listing.photos.size >= 3
+  #~ end
   
-  def video_access?
-    videos?
-  end
+  #~ def video_access?
+    #~ videos?
+  #~ end
   
-  def apt_info_access?
-    listing.listing_info?
-  end
+  #~ def apt_info_access?
+    #~ listing
+  #~ end
   
-  def bld_info_access?
-    listing.listing_info?
-  end
+  #~ def bld_info_access?
+    #~ listing.listing_info?
+  #~ end
   
-  def basic_access?
-    listing.listing_info?
-  end
+  #~ def basic_access?
+    #~ listing.listing_info?
+  #~ end
   
   
   

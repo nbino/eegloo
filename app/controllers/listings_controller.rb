@@ -12,6 +12,7 @@ class ListingsController < ApplicationController
     all_nhoods = {'nhoods'=>['all']}
     
     @listings = Listing.do_search all_nhoods, current_user.id, 10
+    @search_listing = Listing.new
     
     respond_to do |format|
       format.html { render :layout => 'main' }
@@ -37,6 +38,7 @@ class ListingsController < ApplicationController
     page = params[:custom_options][:page] || 1
     
     @listings = Listing.do_search params[:listing], current_user.id, params[:order_by], page
+    @search_listing = Listing.new
 
     respond_to do |format|
       format.html { render :partial => '/shared/listing_list'}

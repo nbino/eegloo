@@ -138,9 +138,14 @@ def contact_alert?
   bogus_flag_count == 5
 end
 
-#if param operator is '=', no need to include them in SQL_OPERATORS as that is the default. to exlude params for special handling use operatlor '#'
+#if param operator is '=', no need to include them in SQL_OPERATORS as that is the default. to exlude params for special handling use operatlor '#'.
+#to compare against different field, use {operator=>field_name} hash.
 SQL_OPERATORS = 
 {
+  'apt_type_top' =>{'<='=>'apt_type'},
+  'apt_type_bottom' =>{'>='=>'apt_type'},
+  'rent_top' =>{'<='=>'rent'},
+  'rent_bottom' =>{'>='=>'rent'},
   'avail_date'=>'<=',
   'ac_type'=>'>=',
   'bathroom_n'=>'>=',
@@ -157,7 +162,7 @@ SORT_ORDER =
 {
   'created_at' => 'listings.created_at DESC',
   'favorites_count' => 'listings.favorites_count DESC',
-  'rent_range_bottom' => 'listings.rent_range_bottom ASC'
+  'rent' => 'listings.rent ASC'
 }
     
 def self.do_search(params, user, order_by='created_at', current_page=1)

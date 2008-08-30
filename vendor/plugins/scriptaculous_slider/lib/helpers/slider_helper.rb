@@ -55,7 +55,7 @@ module ActionView
       # Creates a simple slider control and associates it with a hidden text field
       def slider_field(object, method, options={})
         options.merge!({ 
-          :change => "$('#{object}_#{method}').value = value",
+          :change => "$('#{object}_#{method}').value = value;#{options[:change]}",
           :slider_value  => instance_variable_get("@#{object}").send(method)
         })
         hidden_field(object, method) <<        
