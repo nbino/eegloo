@@ -9,6 +9,7 @@ class CreateListings < ActiveRecord::Migration
       t.float :latitude, :longtitude
       t.datetime :avail_date
       t.integer :apt_no,
+        :n_bedrooms,
         :rent_range_top, 
         :rent_range_bottom, 
         :rent_exact
@@ -22,7 +23,8 @@ class CreateListings < ActiveRecord::Migration
         :default=>0
         
       #apt info
-      t.integer :sq_footage,
+      t.integer :livingroom,
+        :sq_footage,
         :ceiling_height,
         :n_bathrooms,
         :floor_type,

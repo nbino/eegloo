@@ -30,10 +30,10 @@
 
 <h2>Basics:</h2>
 
-<h3>Apt Type:</h3>
+<h3>Bedrooms:</h3>
 <span id="show_type">studio - 5 bed+ </span>
 
-<%= slider :search_listing, :apt_type_id, 
+<%= slider :search_listing, :n_bedrooms, 
   :no_of_sliders=>2,  
   :range=>0..5,
   :values=>[0, 1, 2, 3, 4, 5],
@@ -56,7 +56,6 @@ Avail : <%= f.calendar_date_select :avail_date, :size => 9, :popup => "force", :
   :change=>auto_submit('search_form'),
   :restricted=>true
 -%>
-
 
 
 <h3>Size</h3>
@@ -93,18 +92,18 @@ Avail : <%= f.calendar_date_select :avail_date, :size => 9, :popup => "force", :
 <h2>Apartment Details</h2> 
 <%=gen_checkboxes :convertable,
         :separate_kitchen,
-        [:maintenance_q_id, MaintenanceQ.most_desirable, 'Excellent maintenance'],
+        [:maintenance_q, MaintenanceQ.most_desirable, 'Excellent maintenance'],
         :convertable,
-        [:maintenance_q_id, MaintenanceQ.most_desirable, 'Excellent Maintenance'],
-        [:appliances_q_id, AppliancesQ.most_desirable, 'Excellent Appliances'],
-        [:bathroom_q_id, BathroomQ.most_desirable, 'Excellent Bathroom'],
-        [:heat_q_id, HeatQ.most_desirable, 'Good Heating'],
-        [:ac_type_id, 1, A/C],
-        [:floor_type_id, FloorType.most_desirable, 'Floor - Hardwood'],
-        [:street_noise_level_id, StreetNoiseLevel.most_desirable, 'Quiet Street'],
-        [:nbors_noise_level_id, NborsNoiseLevel.most_desirable, 'Quiet Neighbors'],
+        [:maintenance_q, MaintenanceQ.most_desirable, 'Excellent Maintenance'],
+        [:appliances_q, AppliancesQ.most_desirable, 'Excellent Appliances'],
+        [:bathroom_q, BathroomQ.most_desirable, 'Excellent Bathroom'],
+        [:heat_q, HeatQ.most_desirable, 'Good Heating'],
+        [:ac_type, 1, A/C],
+        [:floor_type, FloorType.most_desirable, 'Floor - Hardwood'],
+        [:street_noise_level, StreetNoiseLevel.most_desirable, 'Quiet Street'],
+        [:nbors_noise_level, NborsNoiseLevel.most_desirable, 'Quiet Neighbors'],
         :pests_free,
-        [:cellphone_q_id, CellphoneQ.most_desirable, 'Good cell coverage'],
+        [:cellphone_q, CellphoneQ.most_desirable, 'Good cell coverage'],
         :rent_controlled,
         :rent_stabilized,
         :multi_level,

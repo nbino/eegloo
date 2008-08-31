@@ -2,8 +2,8 @@ class Visual < ActiveRecord::Base
   
   belongs_to :listing
   
-  has_attachment :content_type => :image, 
-                        :storage => :file_system,
+  has_attachment :storage => :file_system,
+                        #:content_type => :image, 
   #                      :processor => :mini_magick,                        
   #                      :max_size => 1000.kilobytes,
   #                      :resize_to => '320x200>',
