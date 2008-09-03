@@ -11,7 +11,7 @@
   
   <%=render_dialog 'bld_info_locked', page unless current_user.bld_info_access?%>
   <span style="text:align:left">
-      <%= select("other","oder_by",{'Date posted'=>'created_at', 'Price'=>'rent', 'Popularity' => 'favorites_count', selected = 'created_at'), :on_submit=>"{auto_submit('search_form')" -%>
+      <%= select "other","order_by",{'Date posted'=>'created_at', 'Price'=>'rent', 'Popularity' => 'favorites_count', selected => 'created_at'}, :on_submit=>"auto_submit('search_form')" -%>
   </span>
   
   <span style="text-align:left">

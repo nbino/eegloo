@@ -217,6 +217,15 @@ end
   #~ AttributeLiterals::NHOODS[nhood]
 #~ end
 
+def pests_free=(value)
+  roaches = rodents = ants = false
+end
+
+def pests_free()
+  ! (roaches || rodents || ants)
+end
+
+
 def nbors_noise
   AttributeLiterals::NOISE_LEVELS[nbors_noise_level]
 end

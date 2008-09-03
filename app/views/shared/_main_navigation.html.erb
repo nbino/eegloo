@@ -1,20 +1,12 @@
-<!--main tabs-->
-  <ul>
-    <%menu_items = [{:title=>'Listings', :image=>'chart_bar.png', :url=>[listings_path]},
-                        {:title=>'Favorites',:image=>'folder_heart.png', :url=>[favorites_path]},  
-                        {:title=>'My Listing',:image=>'pencil.png', :url=>[edit_listing_path(current_user.listing), new_listing_listing_info_path(current_user.listing), edit_listing_listing_info_path(current_user.listing), new_listing_photo_path(current_user.listing)]}, 
-                        {:title=>'Friends',:image=>'group.png', :url=>[friends_path]}]
-        
-              menu_items.each do |menu|
-                  content_tag ('li', 
-                  :class => "tabs white #{menu[:url].include?(request.request_uri) ? 'active_white':''}",
-                  :onmouseover => "this.style.backgroundColor='FFF'", 
-                  :onmouseout => "this.style.backgroundColor='FOFOFO'",
-                  :onclick => "window.location='#{menu[:url][0]}'") do-%>
-                                    <%="#{image_tag(menu[:image])} #{menu[:title]}"-%>
+<!--menu bar-->
+<MAP NAME="PreviewImageMap">
+<AREA SHAPE=RECT HREF="" ALT="Discuss with others" COORDS="436,58,494,94">
+<AREA SHAPE=RECT HREF="" ALT="Look together!" COORDS="349,58,434,94">
+<AREA SHAPE=RECT HREF="" ALT="Favorite apartments" COORDS="243,59,348,91">
+<AREA SHAPE=RECT HREF="" ALT="Find aparment" COORDS="185,58,241,91">
+</MAP>
 
-                      <%end
-                end-%>
-                      
-    </ul>
-<!--/main tabs-->
+<%= image_tag "header_left.png", :usemap=>"#PreviewImageMap", :ismap=>"ISMAP", :style=>'float:left;border:0;' -%>
+<div id='menu_bar_right' style="background-image:url('images/menu_bar_strip.png');background-repeat: repeat;width:100%;height:110px"></div>
+
+<!--/menu bar-->

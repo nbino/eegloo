@@ -24,49 +24,42 @@ module ApplicationHelper
       output
     end
     
-    def check_box_x(method, options={}, value = 1, label_text=nil)
-      check_box method, options.merge({:onchange => "this.form.onsubmit()"}), value <<
-      label.nil? ? label(method) : label(method label_text)
+    def autosubmit_check_box_with_label(method, options={}, label_text=nil, value = 1)
+      check_box(method, options.merge({:onchange => "this.form.onsubmit()"}), value ) <<
+      label(method, label_text)
     end
     
-    def gen_checkboxes(*args)
+    def column_of_autosubmit_checkboxes(*args)
+      ouput = ''
       args.each do |arg|
-        check_box_x arg unless arg.kind_of?(Array)
-        check_box_x arg[0], {}, arg[1], arg[2] if arg.kind_of?(Array)
+        ouput << (arg.kind_of?(Array) ? autosubmit_check_box_with_label(arg[0], {}, arg[1], arg[2]) : autosubmit_check_box_with_label(arg)) << '<br/>'
       end
+      ouput
     end
-    
-    
-      	
   end				
 
   def slider(model, method, options)
     output  = ''
     handles = []
     
-    output << %@<div id="track_#{method}" class="track" style="position:relative; width:100%; height : 20px;">@
+    output << %@<div id="#{model}_#{method}_track" class="track"><div class="track-left"></div>@
     
     no_of_handles = options.include?(:no_of_handles) || 1
 
-    options.delete :no_of_sliders
+    options.delete :no_of_handles
     
     no_of_handles.times do |i|
-      id = "handle_#{i}_#{method}"
+      id = "#{model}_#{method}_#{i}_handle"
       
-      output << <<-GOATS
-      <span id="#{id}" class="sliderHandle">
-        <img src="images/slider-images-handle.png;float:left" alt=""/>
-      </span>
-      GOATS
+      output << %@<div id="#{id}"><img src="images/slider-images-handle.png" style="float:left" alt=""/></div>@
       
       handles << id
     end
     
-    output << slider_field(model, 
+    output << '</div>' << slider_field(model, 
       method, 
       options.merge({
-        :handles=>handles, 
-        :track=>"track_#{method}"}))
+        :handles=>handles}))
     
   end    
 

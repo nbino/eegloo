@@ -39,9 +39,8 @@ module ActionView
           options[k] = array_or_string_for_javascript(options[k]) if options[k]
         end
         
-        if options[:slider_value]
-          options[:sliderValue] = array_or_numeric_for_javascript(options[:slider_value])
-          options.delete :slider_value
+        [:slider_value, :values].each do |k|
+            options[k] = array_or_numeric_for_javascript(options[k]) if options[k]
         end
         
         options[:range] = "$R(#{options[:range].min},#{options[:range].max})" if options[:range]
@@ -59,9 +58,9 @@ module ActionView
           :slider_value  => instance_variable_get("@#{object}").send(method)
         })
         hidden_field(object, method) <<        
-        content_tag('div',content_tag('div', ''), 
-          :class => 'slider', :id => "#{object}_#{method}_slider") << 
-        slider_element("#{object}_#{method}_slider", options)
+        #~ options[:track].nil? content_tag('div',content_tag('div', ''), 
+          #~ :class => 'slider', :id => "#{object}_#{method}_slider") : '' << 
+        slider_element("#{object}_#{method}_track", options)
       end
       
       def slider_stylesheet
@@ -102,7 +101,7 @@ module ActionView
         
         def array_or_numeric_for_javascript(option)
           js_option = if option.kind_of?(Array)
-            "[#{option.join('\',\'')}]"
+            "[#{option.join(',')}]"
           elsif !option.nil?
             "#{option}"
           end

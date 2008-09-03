@@ -3,35 +3,37 @@
 <%update_page do |page|%>
 
 <!--start left_bar-->
-	<div id="leftbar">
-		<%=render :partial=>'search_form'%>
+	<div id="search_bar" style="width:250px;float:left;border-right:1px solid #ddd;">
+		<%= render :partial=>'search_form'%>
 	</div>
 <!-- end leftbar -->
 
 <!-- start content -->
-	<div id="content">
-    <div id="search_results" style="position:relative;top:14px">
-		<%= render :partial => '/shared/listing_list'%>
-    </div>
+	<div id="content" style="width:100%">
+    Mid column
+		<%# = render :partial => 'listing_list'%>
 	</div>
 
 <!-- end content -->
 
 <!-- start rightbar -->
-	<div id="rightbar">
-		
-		<div id="mapouter">
+	<div id="right_bar" style="float:right;width:250px;border-left:1px solid #ddd;">
+		Right column
+		<!--
+    <div id="mapouter">
 		<ul>
 		  <li id="search">
 		    <span style="font-size:16px;margin-right:20px"><b>map</b></span>
         
-            <span id="small_map" style="display:none"><%= link_to_function("Small map",["toggleMapSize(); moveDiv();", page.toggle("small_map", "large_map")])%></span> <span id="large_map"><%= link_to_function("Large map",["toggleMapSize(); moveDiv();", page.toggle("small_map", "large_map")])%></span>
+            <span id="small_map" style="display:none"><%= link_to_function("Small map",["toggleMapSize(); moveDiv();", page.toggle("small_map", "large_map")])%></span> 
+            <span id="large_map"><%= link_to_function("Large map",["toggleMapSize(); moveDiv();", page.toggle("small_map", "large_map")])%></span>
 		    
 			<div id="map" class="map" style="text-align:right">		
 			
 			</div>
 		  </li>
 		</ul>
+    -->
 		</div>
     
 		
@@ -49,12 +51,10 @@
 			
 			if ($('map').className == 'map') { 
 				$('map').className = 'mapexpanded';
-				<!-- $('mapimg').className = 'mapimgexpanded'; -->				 
 				$('leftbar').setStyle({display:'none'});
 				$('rightbar').className = 'rightbarlarge';
 			} else {
 				$('map').className = 'map';
-				<!-- $('mapimg').className = 'mapimg'; -->
 				$('leftbar').setStyle({display:'block'});
 				$('rightbar').className = 'rightbar';
 			}					
