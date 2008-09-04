@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>eegloo - social apartment hunting</title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+
+  <link href="/stylesheets/main.css?1220476678" media="screen" rel="stylesheet" type="text/css" />
+  <script src="/javascripts/prototype.js?1219790652" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1219790652" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1219790652" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1219790652" type="text/javascript"></script>
+<script src="/javascripts/slider.js?1219936050" type="text/javascript"></script>
+<script src="/javascripts/application.js?1219790652" type="text/javascript"></script> 
+  <script src="/javascripts/calendar_date_select/calendar_date_select.js?1219790652" type="text/javascript"></script>
+<script src="/javascripts/calendar_date_select/format_american.js?1219790652" type="text/javascript"></script>
+<link href="/stylesheets/calendar_date_select/default.css?1219790652" media="screen" rel="stylesheet" type="text/css" />
+  
+</head>
+
+<body>
+<div id="header" style="vertical-align:bottom;clear:both">
+<!--menu bar-->
+<MAP NAME="PreviewImageMap">
+<AREA SHAPE=RECT HREF="" ALT="Discuss with others" COORDS="436,58,494,94">
+<AREA SHAPE=RECT HREF="" ALT="Look together!" COORDS="349,58,434,94">
+<AREA SHAPE=RECT HREF="" ALT="Favorite apartments" COORDS="243,59,348,91">
+<AREA SHAPE=RECT HREF="" ALT="Find aparment" COORDS="185,58,241,91">
+</MAP>
+
+<img alt="Header_left" ismap="ISMAP" src="/images/header_left.png.?1220476678" style="float:left;border:0;" usemap="#PreviewImageMap" /><div id='menu_bar_right' style="background-image:url('images/menu_bar_strip.png');background-repeat: repeat;width:100%;height:110px"></div>
+
+<!--/menu bar--></div>
+
+<div id="main_content" width="100%" style="clear:both">
+<!-- start leftbar render :partial=>'search_form' -->
+
+
+
+<!--start search bar-->
+	<div id="search_bar" style="width:250px;float:left;border-right:1px solid #ddd;">
+		<form action="/listings/search" id="search_form" method="post" onsubmit="$('search_spinner').show();; new Ajax.Updater('search_results', '/listings/search', {asynchronous:true, evalScripts:true, onComplete:function(request){$('search_spinner').hide();}, parameters:Form.serialize(this)}); return false;"><div style="margin:0;padding:0"><input name="authenticity_token" type="hidden" value="4c5ea1fc1388403ccea7be7ab8df82d42701dadf" /></div>
+
+<h1>basics</h1>
+
+
+<label>Size</label>
+&gt;&nbsp;<span id="show_sqft"> 0</span> ft<sup>2</sup>
+<div id="search_listing_sq_footage_track" class="track">
+  <div class="track-left"></div>
+  <div id="search_listing_sq_footage_0_handle" class="sliderHandle">
+    <img src="images/slider-images-handle.png" style="float:left" alt=""/>
+  </div>
+</div>
+<input id="search_listing_sq_footage" name="search_listing[sq_footage]" type="hidden" />
+<script type="text/javascript">
+//<![CDATA[
+Element.cleanWhitespace('search_listing_sq_footage_track');
+new Control.Slider(
+  ['search_listing_sq_footage_0_handle'],
+  'search_listing_sq_footage_track', 
+  {onChange:function(value){$('search_listing_sq_footage').value = value;}, 
+  onSlide:function(value){$('show_sqft').innerHTML=value;}, 
+  range:$R(0,2500,false), 
+  values:[0,200,400,600,750,1000,1250,1500,2000,2500]})
+//]]>
+</script><br/>    
+</form>
+	</div>
+<!-- end search bar -->
+
+<!-- start content -->
+	<div id="content" style="width:100%">
+    Mid column
+		
+	</div>
+
+<!-- end content -->
+
+<!-- start rightbar -->
+	<div id="right_bar" style="float:right;width:250px;border-left:1px solid #ddd;">
+		Right column
+		<!--
+    <div id="mapouter">
+		<ul>
+		  <li id="search">
+		    <span style="font-size:16px;margin-right:20px"><b>map</b></span>
+        
+            <span id="small_map" style="display:none"><a href="#" onclick="toggleMapSize(); moveDiv();[&quot;small_map&quot;, &quot;large_map&quot;].each(Element.toggle);; return false;">Small map</a></span> 
+            <span id="large_map"><a href="#" onclick="toggleMapSize(); moveDiv();[&quot;small_map&quot;, &quot;large_map&quot;].each(Element.toggle);; return false;">Large map</a></span>
+		    
+			<div id="map" class="map" style="text-align:right">		
+			
+			</div>
+		  </li>
+		</ul>
+    -->
+		</div>
+    
+		
+	 </div>
+<!--end content-->
+
+<!--start rightbar-->
+<!--start map--> 
+	
+
+	<!--<script src="/javascripts/nav.js?1219790652" type="text/javascript"></script>-->
+
+<!--end map-->	
+	
+
+
+<!-- end rightbar -->	
+</div>
+
+<div id="footer" style="clear:both">
+	<p id="legal">(c) 2008. </p>
+</div>
+</body>
+</html>
