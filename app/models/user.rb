@@ -34,10 +34,6 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :username, :email, :password, :password_confirmation, :listing_attr
   
-  
-  
-  
- 
   class ActivationCodeNotFound < StandardError; end
   class AlreadyActivated < StandardError
     attr_reader :user, :message;
@@ -58,7 +54,7 @@ class User < ActiveRecord::Base
     raise AlreadyActivated.new(user) if user.active?
     user.send(:activate!)
     user
-  endtt
+  end
  
   def active?
     # the presence of an activation date means they have activated
@@ -70,29 +66,6 @@ class User < ActiveRecord::Base
     @activated
   end
  
-  #moved to database
-  #~ def photo_access?
-    #~ listing.photos.size >= 3
-  #~ end
-  
-  #~ def video_access?
-    #~ videos?
-  #~ end
-  
-  #~ def apt_info_access?
-    #~ listing
-  #~ end
-  
-  #~ def bld_info_access?
-    #~ listing.listing_info?
-  #~ end
-  
-  #~ def basic_access?
-    #~ listing.listing_info?
-  #~ end
-  
-  
-  
   # Returns the user or nil.
   # Updated 2/20/08
   def self.authenticate(email, password)    

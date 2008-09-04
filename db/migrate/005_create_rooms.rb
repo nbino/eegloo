@@ -3,7 +3,7 @@ class CreateRooms < ActiveRecord::Migration
     create_table :rooms do |t|
       t.string :type
       t.belongs_to :listing
-      t.integer :light_level_id, :exposure_id, :length, :width, :size_id
+      t.integer :light_level_id, :exposure_id, :length, :width, :size
       
       t.timestamps
     end

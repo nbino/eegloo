@@ -1,38 +1,35 @@
 class AddTestData < ActiveRecord::Migration
+  
+  
   def self.up
      (1..100).each  do |i| 
       u = User.new(:username=>"user#{i}", :password=>"padboo7", :password_confirmation =>'padboo7', :email=>"user#{i}@email.com")
       
       u.listing = Listing.new(
-    :user_id=>i+1, 
-    :address=>"#{i} #{i} st", 
-    :cross_street=>"#{i+3} st", 
-    :apt_type_id=>AptType.find(:all)[rand(8)].id, 
-    :nhood_id=>Nhood.find(:all)[rand(26)].id, 
-    :rent_range_id=>RentRange.find(:all)[rand(10)].id,
-    :avail_date=> "#{rand(11)+1}/#{rand(29)+1}/2008")
-    
-    u.listing.listing_info = ListingInfo.new(
-        :listing_id=>i,
+        :address=>"#{i} #{ordinalize(i)} ave", 
+        :cross_street1=>"#{ordinalize{i+10}} st", 
+        :cross_street2=>"#{ordinalize{i+11}} st", 
+        :bedrooms=>rand(6), 
+        :nhood_id=>rand(26), 
+        :rent_range=>rand(10),
+        :avail_date=>"#{rand(11) + 1}/#{rand(29)+1}/2008"
         :sq_footage=>(rand(10) + 5)  * 100,
-        :ceiling_height=>rand(8)+10,
-        :bathroom_n_id=>BathroomN.find(:all)[rand(4)].id,
-        :floor_type_id=>FloorType.find(:all)[rand(3)].id,
-        :heat_q_id=>HeatQ.find(:all)[rand(3)].id,
-        :ac_type_id=>AcType.find(:all)[rand(4)].id,
-        :roof_access_type_id=>RoofAccessType.find(:all)[rand(3)].id,
-        :back_yard_type_id=>BackYardType.find(:all)[rand(3)].id,
-        :street_noise_level_id=>StreetNoiseLevel.find(:all)[rand(3)].id,
-        :nbors_noise_level_id=>NborsNoiseLevel.find(:all)[rand(3)].id,
-        :maintenance_q_id=>MaintenanceQ.find(:all)[rand(3)].id,
-        :appliances_q_id=>AppliancesQ.find(:all)[rand(3)].id,
-        :bathroom_q_id=>BathroomQ.find(:all)[rand(3)].id,
-        :cellphone_q_id=>CellphoneQ.find(:all)[rand(3)].id,
-        :cellphone_provider_id=>CellphoneProvider.find(:all)[rand(6)].id,
+        :ceiling_height=>rand(8)+ 8,
+        :bathroom_n=>rand(4),
+        :floor_type=>rand(3),
+        :heat_q=>rand(3),
+        :ac_type=>rand(4),
+        :roof_access_type=>rand(3),
+        :back_yard_type=>rand(3),
+        :street_noise_level=>rand(3),
+        :nbors_noise_level=>rand(3),
+        :maintenance_q=>rand(3),
+        :appliances_q=>rand(3),
+        :bathroom_q=>rand(3),
+        :cellphone_q=>rand(3),
+        :cellphone_provider=>rand(6),
         :dogs_allowed=>rand(2), 
         :cats_allowed=>rand(2), 
-        :landlord_phone_number=>'(123)555-55-55',
-        :broker_phone_number=>'(123)555-55-55',
         :comment=>'This place is awesome',
         :broker_only=>rand(2), 
         :elevator=>rand(2), 
@@ -56,23 +53,21 @@ class AddTestData < ActiveRecord::Migration
         
    ) 
    
-    u.listing.listing_info.livingroom = Livingroom.new(
-      :light_level_id=>LightLevel.find(:all)[rand(3)].id,
-      :window_direction_id=>WindowDirection.find(:all)[rand(3)].id, 
-      :length=>rand(6) + 6, 
-      :width=>(rand(6) + 6)
+    u.listing.livingroom = Livingroom.new(
+      :light_level=>rand(3),
+      :window_direction=>rand(3), 
+      :size=>rand(10) * 50 + 50
     )
     
-    u.listing.apt_type.bedrooms.times do |i|
-      u.listing.listing_info.bedrooms[i] = Bedroom.new(
-        :light_level_id=>LightLevel.find(:all)[rand(3)].id,
-        :window_direction_id=>WindowDirection.find(:all)[rand(3)].id, 
-        :length=>rand(12) + 6, 
-        :width=>(rand(12) + 6)
+    u.listing.bedrooms.times do |i|
+      u.listing.listing_info.bedrooms << Bedroom.new(
+        :light_level=>rand(3),
+        :window_direction=>rand(3), 
+        :size=>rand(10) * 50 + 50, 
     )
     end
     
-    1..3.times do |i|
+    #1..3.times do |i|
       
         #~ v = Photo.create(
           #~ :listing_id=>i,
@@ -81,9 +76,8 @@ class AddTestData < ActiveRecord::Migration
       
         
        u.listing.comments << ListingComment.new(
-          :listing_id=>i,
-          :user_id => rand (20) + 1,
-          :content=>["Kinda far from the subway", "Beautiful place but overpriced", "Loud construction on the block"][i]
+          :user_id =>rand (20) + 1,
+          :content=>["Kinda far from the subway", "Beautiful place but overpriced", "Loud construction on the block"][rand(3)]
           )
           
         
@@ -100,8 +94,8 @@ class AddTestData < ActiveRecord::Migration
 
   def self.down
     User.delete_all
-    Visual.delete_all
+    #Visual.delete_all
+    Rooms.delete_all
     Listing.delete_all
-    ListingInfo.delete_all
   end
 end

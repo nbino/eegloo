@@ -55,7 +55,7 @@ module ActionView
       def slider_field(object, method, options={})
         options.merge!({ 
           :change => "$('#{object}_#{method}').value = value;#{options[:change]}",
-          :slider_value  => instance_variable_get("@#{object}").send(method)
+          :slider_value  => instance_variable_get("@#{object}").send(method) || 0
         })
         hidden_field(object, method) <<        
         #~ options[:track].nil? content_tag('div',content_tag('div', ''), 

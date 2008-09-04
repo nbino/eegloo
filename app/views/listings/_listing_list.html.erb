@@ -2,7 +2,8 @@
 <!--listings list-->
 
 <%if 0==@listings.size%>
-  No listings found
+  <h1>No listings found</h1>
+  The search criteria may be too narrow. Try unchecking some of the options.
 <%else%>
 
   <%=render_dialog 'basic_info_locked', page unless current_user.basic_access?%>

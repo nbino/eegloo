@@ -86,14 +86,16 @@ ActiveRecord::Schema.define(:version => 20080829040310) do
     t.float    "longtitude"
     t.datetime "avail_date"
     t.integer  "apt_no"
+    t.integer  "n_bedrooms"
     t.integer  "rent_range_top"
     t.integer  "rent_range_bottom"
-    t.integer  "rent_exact"
+    t.integer  "rent"
     t.integer  "bogus_flag_count",       :default => 0
     t.integer  "broker_flag_count",      :default => 0
     t.integer  "na_flag_count",          :default => 0
     t.integer  "favorites_count",        :default => 0
     t.integer  "listing_comments_count", :default => 0
+    t.integer  "livingroom"
     t.integer  "sq_footage"
     t.integer  "ceiling_height"
     t.integer  "n_bathrooms"
@@ -175,6 +177,11 @@ ActiveRecord::Schema.define(:version => 20080829040310) do
     t.string   "remember_token"
     t.string   "activation_code",           :limit => 40
     t.string   "password_reset_code",       :limit => 40
+    t.boolean  "basic_access"
+    t.boolean  "photo_access"
+    t.boolean  "video_access"
+    t.boolean  "apt_info_access"
+    t.boolean  "bld_info_access"
     t.datetime "remember_token_expires_at"
     t.datetime "activated_at"
     t.boolean  "enabled",                                 :default => true

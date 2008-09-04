@@ -51,7 +51,7 @@ module ApplicationHelper
     no_of_handles.times do |i|
       id = "#{model}_#{method}_#{i}_handle"
       
-      output << %@<div id="#{id}"><img src="images/slider-images-handle.png" style="float:left" alt=""/></div>@
+      output << %@<div id="#{id}" class="sliderHandle"><img src="images/slider-images-handle.png" style="float:left" alt=""/></div>@
       
       handles << id
     end

@@ -12,7 +12,7 @@ class CreateListings < ActiveRecord::Migration
         :n_bedrooms,
         :rent_range_top, 
         :rent_range_bottom, 
-        :rent_exact
+        :rent
       
       #counts
       t.integer :bogus_flag_count, 

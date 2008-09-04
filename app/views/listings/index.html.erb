@@ -1,17 +1,15 @@
-<!-- start leftbar render :partial=>'search_form' -->
-
 <%update_page do |page|%>
 
 <!--start left_bar-->
-	<div id="search_bar" style="width:250px;float:left;border-right:1px solid #ddd;">
+	<div id="search_bar" style="width:175px;float:left;border-right:1px solid #ddd;">
 		<%= render :partial=>'search_form'%>
 	</div>
 <!-- end leftbar -->
 
 <!-- start content -->
-	<div id="content" style="width:100%">
-    Mid column
-		<%# = render :partial => 'listing_list'%>
+	<div id="content" style="width:100%;padding:0px 10px;">
+    
+		<%= render :partial => 'listing_list'%>
 	</div>
 
 <!-- end content -->
@@ -37,35 +35,6 @@
 		</div>
     
 		
-	 </div>
-<!--end content-->
 
-<!--start rightbar-->
-<!--start map--> 
-	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAaoo2yAo-3IJSl1N4bEy_cRSKLi6oRkXMKDpxZ0UjNwoH-yv7JhTbfQ-TqXQYViGuAzLNY0JOB22bTA"
-	     type="text/javascript"></script>
-	<%= javascript_include_tag 'gmap.js' %>
-	<% javascript_tag do -%>
-		
-		function toggleMapSize() {
-			
-			if ($('map').className == 'map') { 
-				$('map').className = 'mapexpanded';
-				$('leftbar').setStyle({display:'none'});
-				$('rightbar').className = 'rightbarlarge';
-			} else {
-				$('map').className = 'map';
-				$('leftbar').setStyle({display:'block'});
-				$('rightbar').className = 'rightbar';
-			}					
-									
-		}
-  	<% end -%>	
-
-	<!--<%= javascript_include_tag 'nav.js' %>-->
-
-<!--end map-->	
-	
-
-<%end%>
 <!-- end rightbar -->
+<%end%>
