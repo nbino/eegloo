@@ -1,35 +1,21 @@
-<!--listing-->
-
 <%
   lid = listing.id
   l = listing
-  
-
 %>
+<!--listing-->
+<div id="listing_<%=lid%>">
 
-<div class="listing" id="listing_<%=lid%>">
-
-  <!--standart dialogs-->
-  <%toolbar.each do |dialog_name, title|%>
-      
-      <!--<%=dialog_name%> popup-->
-      <%=render_dialog dialog_name_popup, page, lid%>
-      <!--/<%=dialog_name%> popup-->
-
-  <%end%>
-  <!--/standart dialogs-->
+<!--lisiting_heading-->
+  <div class="listing_heading" id="listing_heading_<%=lid%>">
   
-  <div class="listing_heading" id="listing_heading_<%=lid%>>
-  
-    <!--favorites star-->
+<!--favorites star-->
                   
-    <%= render :partial=>'favorites_star' %>
+    <%= render :partial=>'favorites_star', :locals=>{:page=>page, :lit=>l.favorite?, :id=>lid, :listing=>l} %>
                   
-    <!--/favorites star-->
+<!--/favorites star-->
     
-    <!--title-->
-    <%content_tag( 
-            :span,
+<!--title-->
+    <%content_tag :span,
             :onclick => ["this.style.fontWeight='normal';", 
                           visual_effect(:toggle_slide, "listing_content_#{lid}", :duration => 0.2 ), 
                           page.hide("unread_icon_#{lid}"),
@@ -37,15 +23,14 @@
                           remote_function(:url=>listing_readings_url(listing), :method=>:post)],
             :id => "listing_title_#{lid})" do %>
 
-      <%=content_tag( 
-      :h2,
+      <%content_tag :h2,
       :style=>"#{ l.unread? ? 'font-weight:bold;':'font-weight:normal;'}", 
-      :id=>"header_#{lid}") do%>
+      :id=>"header_#{lid}" do%>
 
-        <%=l.rent%> <%=l.nhood%> <%=l.apt_type%>, avail. <%=l.avail_date.strftime("%b %d, '%y")%> 
+      <%=l.rent_range%> <%=l.nhood%> <%=l.apt_type%>, avail. <%=l.avail_date.strftime("%b %d, '%y")%> 
 
       <%end%>
-    <!--/title-->  
+<!--/title-->  
       
                 
                 
@@ -57,13 +42,11 @@
     <%=render :partial=>additional_header_content unless additional_header_content.nil?%>
     
                
-  </div><!--heading-->             
+  </div>
+<!--lisiting_heading-->             
              
-      
+<!--lisiting_content-->       
   <div id="listing_content_<%= lid %>">
-
-
-  
     
     <%if l.flag_alert?%>
     Warning: 
@@ -75,10 +58,8 @@
          This listing is likely non-existant.
       <%end%>
     <%end%>
-
    
       Apt info:
-
       <%if current_user.apt_info_access?%>
           <%if l.listing_info?%> 
               <%=render :partial => 'shared/apt_info', :locals => {:l=>l}%>
@@ -86,7 +67,7 @@
              Apt details were not provided. <a href="#">Request detailed info</a>
           <%end%>
       <%else%>
-        <%=link_to_function 'View apt details', [page.toggle("apt_info_locked_popup_#{l.id}")]%>
+        <%=link_to_function 'View apt details', [page.toggle("apt_info_locked_dialog_#{l.id}")]%>
       <%end%>
 
       Building info:
@@ -100,29 +81,44 @@
         <%=render :partial=>'shared/locked_listing_info', :locals=>{:page=>page, :listing=>listing}%>
       <%end%>
 
-
       <b>Posted By:</b> <%= l.user.username %>
       <%=render :partial=>'shared/comment_list', :locals=>{:comments=>l.comments}%>
         
-      <%=link_to_function 'See all', [page.toggle("comments_popup_#{l.id}")]%>
+      <%=link_to_function 'See all', [page.toggle("comments_dialog_#{l.id}")]%>
 
-      <!-- read checkbox-->
+<!--tool bar-->
+
+<!-- read checkbox-->
       
       <%= render :partial=>'read_checkbox' %>
     
-      <!--/read checkbox-->
-    
-    <%toolbar.each do |button_name, title|%>
-    <%=image_tag(
-                "#{button_name}_button.gif", 
-                :id=>"#{button_name}_button_#{lid}", 
-                :onclick=>[page.toggle("#{button_name}_popup_#{lid}")],
-                :style=>"cursor:pointer;",
-                :title=>title) 
-    -%><%=title%>
-      
-    <%end%>
+<!--/read checkbox-->
 
-     
-   </div><!--listing content-->
-</div><!--listing-->  
+
+    
+    <%toolbar_buttons.each do |name, title|%>
+      <%tag :span, 
+              :id=>"#{name}_button_#{lid}", 
+              :onclick=>[page.toggle("#{name}_dialog_#{lid}")],
+              :style=>"cursor:pointer;",
+              :title=>title do %>
+      <%=image_tag "#{name}_button.gif"%>
+    <%end%>
+      
+    <%=title%>
+      
+<!--<%=dialog_name%> popup-->
+
+<%=render_dialog "#{name}_dialog", page, lid%>
+
+<!--/<%=dialog_name%> popup-->
+
+      
+      <%end%>
+
+<!--/tool bar-->
+
+   </div>
+<!--/listing content-->
+</div>
+<!--/listing-->  

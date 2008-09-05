@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080829040310) do
+ActiveRecord::Schema.define(:version => 20080904172450) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -102,14 +102,13 @@ ActiveRecord::Schema.define(:version => 20080829040310) do
     t.integer  "floor_type"
     t.integer  "heat_q"
     t.integer  "ac_type"
-    t.integer  "back_yard"
+    t.integer  "private_back_yard"
     t.integer  "street_noise_level"
     t.integer  "nbors_noise_level"
     t.integer  "appliances_q"
     t.integer  "bathroom_q"
     t.integer  "cellphone_q"
     t.integer  "cellphone_provider"
-    t.boolean  "private_back_yard"
     t.integer  "maintenance_q"
     t.boolean  "broker_only"
     t.boolean  "elevator"
@@ -159,11 +158,11 @@ ActiveRecord::Schema.define(:version => 20080829040310) do
   create_table "rooms", :force => true do |t|
     t.string   "type"
     t.integer  "listing_id"
-    t.integer  "light_level_id"
-    t.integer  "exposure_id"
+    t.integer  "light_level"
+    t.integer  "exposure"
     t.integer  "length"
     t.integer  "width"
-    t.integer  "size_id"
+    t.integer  "size"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -171,7 +170,6 @@ ActiveRecord::Schema.define(:version => 20080829040310) do
   create_table "users", :force => true do |t|
     t.string   "username",                                                  :null => false
     t.string   "email",                                                     :null => false
-    t.string   "password",                                                  :null => false
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
     t.string   "remember_token"

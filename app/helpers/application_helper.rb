@@ -11,6 +11,7 @@ module ApplicationHelper
   end
   
   class ActionView::Helpers::FormBuilder
+    
     def collection_radio(method, collection, options={})
       output = ''
       collection.each {|thing| output << "#{radio_button(method, thing.id, options)} #{thing.name}"}
@@ -94,5 +95,15 @@ module ApplicationHelper
       'No'
     end
   end
+  
+  
+
+
+
+
+
 
 end
+
+
+

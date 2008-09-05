@@ -7,8 +7,8 @@ class SessionsController < ApplicationController
   # render new.rhtml
   def new
     #bipasses security
-      #self.current_user = User.find(params[:user_id])
-      #successful_login
+      self.current_user = User.find(1)
+      redirect_to listings_path
   end
 
   def create

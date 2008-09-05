@@ -1,5 +1,3 @@
-require 'attribute_literals'
-
 class Room < ActiveRecord::Base
   belongs_to :listing
   

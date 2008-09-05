@@ -8,10 +8,8 @@
 
 <!-- start content -->
 	<div id="content" style="width:100%;padding:0px 10px;">
-    
-		<%= render :partial => 'listing_list'%>
+		<%= render :partial => 'listing_list', :locals=>{:page=>page}%>
 	</div>
-
 <!-- end content -->
 
 <!-- start rightbar -->
@@ -33,8 +31,5 @@
 		</ul>
     -->
 		</div>
-    
-		
-
 <!-- end rightbar -->
 <%end%>

@@ -3,6 +3,8 @@ class Listing < ActiveRecord::Base
 #Constants
 NON_MEMBER_LIMIT = 3
 
+
+
 #Associations
 has_many :favorites  
 has_many :photos 
@@ -10,11 +12,11 @@ has_many :movies
 has_many :broker_flags 
 has_many :na_flags 
 has_many :bogus_flags 
-has_many :listing_comments 
+has_many :comments 
 has_many :contact_infos 
 has_many :bedrooms
 
-has_one :living_room
+has_one :livingroom
 
 belongs_to :user
 belongs_to :nhood
@@ -22,21 +24,21 @@ belongs_to :nhood
 has_many :listing_comments, :include=>:author
 
 #Validations
-validates_presence_of :apt_type,
-    :rent_range_top,
-    :rent_range_bottom,
-    :nhood,
-    :address, :cross_street,
+validates_presence_of :rent,
+    :address,
+    :cross_street1,
+    :cross_street2,
     :avail_date
 
-validates_numericality_of :apt_type,
-  :rent_range_top,
-  :rent_range_bottom,
-  :nhood,
+validates_numericality_of :rent,
   
   #other
   :greater_than=>0, :only_integer=>true
       
+validates_numericality_of :n_bedrooms,
+  
+  #other
+  :only_integer=>true
 
 
 #compound attributes
@@ -78,10 +80,13 @@ def add_building_info(params)
         :doorman
 
   
-  update_attributes(params)
+  update_attributes params
   
 end
 
+def rent_range
+  (rent*0.9).round..(rent*1.1).round
+end
 
 #is read by current user?
 def read?
@@ -162,8 +167,7 @@ SORT_ORDER =
 {
   'created_at' => 'listings.created_at DESC',
   'favorites_count' => 'listings.favorites_count DESC',
-  'rent' => 'listings.rent ASC'
-}
+  'rent' => 'listings.rent ASC'}
     
 def self.do_search(params, user, order_by='created_at', current_page=1)
      #expects params hash
@@ -226,41 +230,6 @@ def pests_free()
 end
 
 
-def nbors_noise
-  AttributeLiterals::NOISE_LEVELS[nbors_noise_level]
-end
-
-def street_noise
-  AttributeLiterals::NOISE_LEVELS[street_noise_level]
-end
-
-def cell_provider
-  AttributeLiterals::CELL_PROVIDERS[cellphone_q]
-end
-
-def cell_signal
-  AttributeLiterals::NHOOD_LITERALS[cellphone_q]
-end
-
-def appl_condition
-  AttributeLiterals::CONDITIONS[appliance_q]
-end
-  
-def maint_quality
-  AttributeLiterals::CONDITIONS[maintenance_q]
-end
-
-def bath_quality
-  AttributeLiterals::CONDITIONS[bathroom_q]
-end
-
-def heat
-  AttributeLiterals::CONDITIONS[heat_q]
-end
-  
-def floor_kind
-  AttributeLiterals::FLOOR_TYPES[floor_type]
-end
   
 
 end

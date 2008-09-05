@@ -1,15 +1,25 @@
-<%=image_tag(
-      'grey_star.gif', 
-      :id=>"off_star_#{lid}", 
-      :onclick=>[page.toggle("off_star_#{lid}", "on_star_#{lid}"), remote_function(:url=>listing_favorites_url(listing), :method=>:post)], 
-      :style=>"cursor:pointer;#{l.favorite? ? 'display:none;' : ''}", 
-      :title=>'Add to favorites') 
+<%
+#optional parameters
+is_lit||=false
+add_label||=false
 %>
-  
-<%=image_tag(
-  'yellow_star.png', 
-  :id=>"on_star_#{lid}", 
-  :onclick=>[page.toggle("off_star_#{lid}", "on_star_#{lid}"), remote_function(:url=>listing_favorite_url(listing, 0), :method=>:delete) ], 
-  :style=>"cursor:pointer;#{l.favorite? ? '' : 'display:none;'}", 
-  :title=>'Remove from favorites') 
-%>
+
+<%tag :span, 
+      :id=>"off_star_#{id}", 
+      :onclick=>[page.toggle("off_star_#{id}", "on_star_#{id}"), remote_function(:url=>listing_favorites_url(listing), :method=>:post)], 
+      :style=>"cursor:pointer;#{'display:none;' if is_lit}", 
+      :class=>'label',
+      :title=>'Add to favorites' do%> 
+      <%=image_tag 'grey__star.gif'-%>
+      <%='Add to favorites' if add_label-%>
+<%end%>
+        
+<%tag :span, 
+      :id=>"on_star_#{id}", 
+      :onclick=>[page.toggle("off_star_#{id}", "on_star_#{id}"), remote_function(:url=>listing_favorite_url(listing, 0), :method=>:delete) ], 
+      :style=>"cursor:pointer;#{'display:none;' unless is_lit}", 
+      :class=>'label',
+      :title=>'Remove from favorites' do%> 
+    <%=image_tag 'yellow__star.png'%>
+    <%='Add to favorites' if add_label-%>
+<%end%>

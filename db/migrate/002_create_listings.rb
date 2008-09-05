@@ -30,7 +30,7 @@ class CreateListings < ActiveRecord::Migration
         :floor_type,
         :heat_q,
         :ac_type,
-        :back_yard,
+        :private_back_yard,
         :street_noise_level,
         :nbors_noise_level,
         :appliances_q,

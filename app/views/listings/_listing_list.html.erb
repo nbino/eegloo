@@ -1,4 +1,3 @@
-<%update_page do |page|%>
 <!--listings list-->
 
 <%if 0==@listings.size%>
@@ -11,20 +10,31 @@
   <%=render_dialog 'apt_info_locked', page unless current_user.apt_info_access?%>
   
   <%=render_dialog 'bld_info_locked', page unless current_user.bld_info_access?%>
-  <span style="text:align:left">
-      <%= select "other","order_by",{'Date posted'=>'created_at', 'Price'=>'rent', 'Popularity' => 'favorites_count', selected => 'created_at'}, :on_submit=>"auto_submit('search_form')" -%>
-  </span>
-  
   <span style="text-align:left">
-    page <%=remote_paginating_links @listings, {:window_size => 5, :auto_submit_form => true, :form_name=>'search_form', :set_hidden_field=>true, :hidden_field_name=>'custom_options[page]' }%>
+      <%= select "other",
+                    "order_by",
+                    {'Date posted'=>'created_at', 
+                    'Price'=>'rent', 
+                    'Popularity' => 'favorites_count', 
+                    :selected => 'created_at'}, 
+                    :on_submit=>"auto_submit('search_form')" -%>
   </span>
   
-  <%=render :partial => '/shared/listing', 
+  <span style="text-align:right">
+    page <%=remote_paginating_links @listings, 
+                  {:window_size => 5, 
+                  :auto_submit_form => true, 
+                  :form_name=>'search_form', 
+                  :set_hidden_field=>true, 
+                  :hidden_field_name=>'custom_options[page]' }-%>
+  </span>
+  
+  <%=render :partial => 'listing', 
           :locals=>{
-            :toolbar=>[
+            :toolbar_buttons=>{
               'flag_listing'=>'Flag listing',
               'send_by_email'=>'Send to friend',
-              'add_comment'=>'Comment'], 
+              'add_comment'=>'Comment'}, 
             :page=>page},
           :collection => @listings-%>
   <%if not current_user.basics_access?%>
@@ -34,7 +44,4 @@
   <%end%>
 
 <%end%>
-
-
 <!--/listings list-->
-<%end%>
