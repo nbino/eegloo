@@ -1,5 +1,3 @@
-require 'activesupport'
-
 class AddData < ActiveRecord::Migration
   
   def self.up

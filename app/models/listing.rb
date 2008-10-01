@@ -84,6 +84,10 @@ def add_building_info(params)
   
 end
 
+def has_photos?
+  photos.size > 0
+end
+
 def rent_range
   (rent*0.9).round..(rent*1.1).round
 end
@@ -229,6 +233,9 @@ def pests_free()
   ! (roaches || rodents || ants)
 end
 
+def popularity()
+  rand 6
+end
 
   
 

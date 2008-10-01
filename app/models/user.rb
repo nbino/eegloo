@@ -175,5 +175,17 @@ class User < ActiveRecord::Base
     self.build_listing listing_info
   end
   
+  #content access
+  %w(basic 
+        apt_info 
+        bld_info 
+        room_info 
+        photo 
+        video).each_with_index do |method_name, i|
+    define_method("has_#{method_name}_access?"){access_bitmap | (2 ** i)}
+    define_method("grant_#{method_name}_access"){access_bitmap |= (2 ** i); save}
+    define_method("revoke_#{method_name}_access"){access_bitmap ^= (2 ** i); save}
+  end
+  
 end
 

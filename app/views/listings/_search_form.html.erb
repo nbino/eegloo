@@ -36,7 +36,7 @@
   <label>Rent:</label>
   <span id="show_rent">$0 to $5000+</span>
           
-  <%= slider :search_listing, :rent, 
+  <%= f.slider :rent, 
     :no_of_sliders=>2,  
     :range=>0..5000,
     :values=>[0, 200, 400, 600, 800, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3500, 4000, 4500, 5000],
@@ -49,7 +49,7 @@
   <label>Bedrooms:</label>
   <span id="show_type">studio + </span>
 
-  <%= slider :search_listing, :n_bedrooms, 
+  <%= f.slider :n_bedrooms, 
     :range=>0..5,
     :values=>[0, 1, 2, 3, 4, 5],
     :slide=>"$('show_type').innerHTML= (value[0] ? value[0] + ' bdr +' : 'studio+'); ",
@@ -59,7 +59,7 @@
 
   <label>Size:</label>
   <span id="show_sqft">0</span> ft<sup>2</sup>+
-  <%=slider :search_listing, :sq_footage, 
+  <%=f.slider :sq_footage, 
         :range=>0..2500,
         :values=>[0,200, 400, 600, 750, 1000,1250,1500,2000,2500],
         :slide=>"$('show_sqft').innerHTML=value;",
@@ -68,7 +68,7 @@
          
   <label>Ceiling height:</label>
   <span id="show_c_height">0</span> ft+
-  <%= slider :search_listing, :ceiling_height, 
+  <%= f.slider :ceiling_height, 
         :range=>8..20,
         :values=>[0, 8, 10, 12, 14, 16, 18,20],
         :slide=>"$('show_c_height').innerHTML=value;",
@@ -77,7 +77,7 @@
   
   <label>No of bathrooms:</label>
   <span id="show_bath_no">1</span>+
-  <%= slider :search_listing, :ceiling_height, 
+  <%= f.slider :ceiling_height, 
         :range=>1..3,
         :values=>[1, 2, 3],
         :slide=>"$('show_bath_no').innerHTML= value",
@@ -94,18 +94,17 @@
   <h1>apt. details</h1> 
 
   <%=f.column_of_autosubmit_checkboxes :convertable,
-         :convertable, 
           :separate_kitchen,
-          [:maintenance_q, 'Excellent maintenance'],
-          [:appliances_q, 'Excellent appliances'],
-          [:bathroom_q, 'Excellent bathroom'],
-          [:heat_q, 'Good heat'],
-          [:ac_type, 'Central A/C'],
-          [:floor_type, 'Hardwood floor'],
-          [:street_noise_level, 'Quiet street'],
-          [:nbors_noise_level, 'Quiet neighbors'],
+          [:maintenance_q, {:label=>'Excellent maintenance'}],
+          [:appliances_q, {:label=>'Excellent appliances'}],
+          [:bathroom_q, {:label=>'Excellent bathroom'}],
+          [:heat_q, {:label=>'Good heat'}],
+          [:ac_type, {:label=>'Central A/C'}],
+          [:floor_type, {:label=>'Hardwood floor'}],
+          [:street_noise_level, {:label=>'Quiet street'}],
+          [:nbors_noise_level, {:label=>'Quiet neighbors'}],
           :pests_free,
-          [:cellphone_q, 'Good cell reception'],
+          [:cellphone_q, {:label=>'Good cell reception'}],
           :rent_controlled,
           :rent_stabilized,
           :balcony, 

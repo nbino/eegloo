@@ -24,7 +24,7 @@ module ActionView
     module SliderHelper
 
       # Creates a slider control out of an element.
-      def slider_element(element_id, options={})
+      def slider_element(element_id, template=self, options={})
         prepare = "Element.cleanWhitespace('#{element_id}');"
         
         [:change, :slide].each do |k|
@@ -48,19 +48,7 @@ module ActionView
         handle = options[:handles] || "$('#{element_id}').firstChild"
         options.delete :handles
                 
-        javascript_tag("#{prepare}new Control.Slider(#{handle},'#{element_id}', #{options_for_javascript(options)})")
-      end
-      
-      # Creates a simple slider control and associates it with a hidden text field
-      def slider_field(object, method, options={})
-        options.merge!({ 
-          :change => "$('#{object}_#{method}').value = value;#{options[:change]}",
-          :slider_value  => instance_variable_get("@#{object}").send(method) || 0
-        })
-        hidden_field(object, method) <<        
-        #~ options[:track].nil? content_tag('div',content_tag('div', ''), 
-          #~ :class => 'slider', :id => "#{object}_#{method}_slider") : '' << 
-        slider_element("#{object}_#{method}_track", options)
+        template.javascript_tag("#{prepare}new Control.Slider(#{handle},'#{element_id}', #{options_for_javascript(options)})")
       end
       
       def slider_stylesheet

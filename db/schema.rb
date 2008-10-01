@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(:version => 20080904172450) do
     t.integer  "listing_id"
     t.integer  "light_level"
     t.integer  "exposure"
+    t.integer  "windows_facing"
     t.integer  "length"
     t.integer  "width"
     t.integer  "size"
@@ -175,11 +176,9 @@ ActiveRecord::Schema.define(:version => 20080904172450) do
     t.string   "remember_token"
     t.string   "activation_code",           :limit => 40
     t.string   "password_reset_code",       :limit => 40
-    t.boolean  "basic_access"
-    t.boolean  "photo_access"
-    t.boolean  "video_access"
     t.boolean  "apt_info_access"
     t.boolean  "bld_info_access"
+    t.integer  "access_bitmap",                           :default => 0
     t.datetime "remember_token_expires_at"
     t.datetime "activated_at"
     t.boolean  "enabled",                                 :default => true
