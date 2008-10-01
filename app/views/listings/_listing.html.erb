@@ -1,6 +1,7 @@
 <%
   lid = listing.id
   l = listing
+  additional_header_content ||= nil
 %>
 <!--listing-->
 <div id="listing_<%=lid%>">
@@ -23,7 +24,7 @@
                           remote_function(:url=>listing_readings_url(listing), :method=>:post)],
             :id => "listing_title_#{lid})" do %>
 
-      <%content_tag :h2,
+      <%content_tag :h1,
       :style=>"#{ l.unread? ? 'font-weight:bold;':'font-weight:normal;'}", 
       :id=>"header_#{lid}" do%>
 
@@ -36,10 +37,9 @@
                 
     <%end%>
                     
-               
-    <%=l.address%> <%=render :partial=>"listing/rating_stars", :locals=>{:rating=>calculate_popularity(l.favorites.count)}%> Posted: <%=l.created_at.strftime("%b %d, '%y")%>
+    <h2><%=l.address%> <%=image_tag "#{listing.popularity}stars.gif", :title=>"Popularity"%> Posted: <%=l.created_at.strftime("%b %d, '%y")%></h2>
      
-    <%=render :partial=>additional_header_content unless additional_header_content.nil?%>
+    <%=render :partial=>additional_header_content if additional_header_content%>
     
                
   </div>
@@ -51,37 +51,63 @@
     <%if l.flag_alert?%>
     Warning: 
       <%if l.broker_alert?%>
-        This listing is likely a broker listing.
+        This listing was likely created by a broker.
       <%elsif l.na_alert?%>
-        This apartment is probably no longer available.
+        This apartment is likely no longer available.
       <%elsif l.bogus_alert?%>
          This listing is likely non-existant.
       <%end%>
     <%end%>
    
-      Apt info:
-      <%if current_user.apt_info_access?%>
-          <%if l.listing_info?%> 
+     
+      <%if current_user.has_photo_access?%>
+          <%if l.has_photos?%> 
+              <%=render :partial => 'shared/photos', :locals => {:l=>l}%>
+          <%else%>
+             No photos yet :( <a href="#">Request apt info</a>
+          <%end%>
+      <%else%>
+        Photos:<%=link_to_function 'View photos', [page.toggle("apt_info_locked_dialog_#{l.id}")]%>
+      <%end%>
+ 
+      <span class="section_header">Basics:</span>
+      
+      <span class="section_header">Apartment:</span>
+      <%if current_user.has_apt_info_access?%>
+          <%if l.has_apt_info?%> 
               <%=render :partial => 'shared/apt_info', :locals => {:l=>l}%>
           <%else%>
-             Apt details were not provided. <a href="#">Request detailed info</a>
+             No apt info yet :( <a href="#">Request apt info</a>
           <%end%>
       <%else%>
         <%=link_to_function 'View apt details', [page.toggle("apt_info_locked_dialog_#{l.id}")]%>
       <%end%>
 
-      Building info:
-      <%if current_user.apt_info_access?%>
-          <%if l.listing_info?%> 
+      <span class="section_header">Room(s):</span>
+      <%if current_user.has_room_info_access?%>
+          <%if l.has_room_info?%> 
               <%=render :partial => 'shared/apt_info', :locals => {:l=>l}%>
           <%else%>
-             Apt details were not provided. <a href="#">Request detailed info</a>
+             No room info yet :( <a href="#">Request room info</a>
           <%end%>
       <%else%>
-        <%=render :partial=>'shared/locked_listing_info', :locals=>{:page=>page, :listing=>listing}%>
+        <%=link_to_function 'View apt details', [page.toggle("apt_info_locked_dialog_#{l.id}")]%>
+      <%end%>
+
+      
+      <span class="section_header">Building:</span>
+      <%if current_user.has_bld_info_access?%>
+          <%if l.has_bld_info?%> 
+              <%=render :partial => 'shared/bld_info', :locals => {:l=>l}%>
+          <%else%>
+             No bld ifo :( <a href="#">Request building info</a>
+          <%end%>
+      <%else%>
+        <%=link_to_function 'View apt details', [page.toggle("apt_info_locked_dialog_#{l.id}")]%>
       <%end%>
 
       <b>Posted By:</b> <%= l.user.username %>
+      
       <%=render :partial=>'shared/comment_list', :locals=>{:comments=>l.comments}%>
         
       <%=link_to_function 'See all', [page.toggle("comments_dialog_#{l.id}")]%>

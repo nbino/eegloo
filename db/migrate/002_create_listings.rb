@@ -12,7 +12,9 @@ class CreateListings < ActiveRecord::Migration
         :n_bedrooms,
         :rent_range_top, 
         :rent_range_bottom, 
-        :rent
+        :rent,
+        :sq_footage,
+        :n_bathrooms
       
       #counts
       t.integer :bogus_flag_count, 
@@ -23,10 +25,8 @@ class CreateListings < ActiveRecord::Migration
         :default=>0
         
       #apt info
-      t.integer :livingroom, 
-        :sq_footage,
+      t.integer
         :ceiling_height,
-        :n_bathrooms,
         :floor_type,
         :heat_q,
         :ac_type,
