@@ -75,7 +75,7 @@ module ActionView
 
       private
         def options_for_javascript(options)
-          '{' + options.map {|k, v| "#{k}:#{v}"}.sort.join(', ') + '}'
+          '{' + options.map {|k, v| "#{k.to_s.camelize(:lower)}:#{v}"}.sort.join(', ') + '}'
         end
 
         def array_or_string_for_javascript(option)

@@ -25,48 +25,46 @@ class CreateListings < ActiveRecord::Migration
         :default=>0
         
       #apt info
-      t.integer
-        :ceiling_height,
+      t.integer :ceiling_height,
         :floor_type,
         :heat_q,
-        :ac_type,
         :private_back_yard,
         :street_noise_level,
         :nbors_noise_level,
         :appliances_q,
         :bathroom_q,
         :cellphone_q,
-        :cellphone_provider
+        :cellphone_provider,
+        :maintenance_q
         
-      t.boolean :private_back_yard
-      
-      
-      #building info
-      t.integer :maintenance_q
-        
-      t.boolean :broker_only, 
-        :elevator, 
+      t.boolean :private_back_yard,
+        :broker_only, 
+        :dogs_allowed,
+        :cats_allowed,
         :multi_level, 
         :penthouse, 
         :private_entrance, 
-        :gym, 
-        :laundry, 
         :roaches, 
         :rodents, 
-        :ants, 
-        :broadband, 
-        :doorman, 
+        :ants,
+        :bedbugs,
         :rent_stabilized,
         :rent_controlled,
         :convertable,
         :separate_kitchen,
         :balcony,
+        :central_ac,
         :patio,
-        :loft,
+        :loft
+      
+      #building info
+      t.boolean :elevator, 
+        :gym, 
+        :laundry, 
+        :broadband, 
+        :doorman, 
         :roof_access,
-        :public_back_yard,
-        :dogs_allowed,
-        :cats_allowed
+        :common_back_yard
       
       #other
       t.string :tenant_comment  

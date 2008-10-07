@@ -1,0 +1,27 @@
+<%rooms.each_with_index do |room, i|%>
+
+  <%=%w{large mid-size small}[l.livingroom.room_size]%>, <%=%w{bright, dim, dark}[l.livingroom.light_level}%> <%=room.is_a?(Bedroom) ? 'bedroom' : 'livingroom'%> with
+  
+  <%if room.windows%>
+
+    <%=%w{garden street airshaft}[l.livingroom.windows_facing]%>  view, <%=%w{southern western northern eastern}[l.livingroom.exposure]%> exposure
+  
+  <%else%>
+  
+    no windows
+  
+  <%end%>
+     
+   
+  <%if room.room_size > 0 && room.is_a?(Bedroom)%>, 
+    
+    fits <%=%w{king queen full twin}%> size bed  
+  
+  <%end%>
+    
+  
+  <%=i < li.bedrooms.size - 1 ? ';' : ''%>
+
+<%end%>
+
+

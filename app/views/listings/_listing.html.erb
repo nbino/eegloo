@@ -3,6 +3,7 @@
   l = listing
   additional_header_content ||= nil
 %>
+
 <!--listing-->
 <div id="listing_<%=lid%>">
 
@@ -25,15 +26,13 @@
             :id => "listing_title_#{lid})" do %>
 
       <%content_tag :h1,
-      :style=>"#{ l.unread? ? 'font-weight:bold;':'font-weight:normal;'}", 
-      :id=>"header_#{lid}" do%>
+        :style=>"#{ l.unread? ? 'font-weight:bold;':'font-weight:normal;'}", 
+        :id=>"header_#{lid}" do%>
 
       <%=l.rent_range%> <%=l.nhood%> <%=l.apt_type%>, avail. <%=l.avail_date.strftime("%b %d, '%y")%> 
 
       <%end%>
 <!--/title-->  
-      
-                
                 
     <%end%>
                     
@@ -60,7 +59,7 @@
     <%end%>
    
      
-      <%if current_user.has_photo_access?%>
+      <%if current_user.has_photos_access?%>
           <%if l.has_photos?%> 
               <%=render :partial => 'shared/photos', :locals => {:l=>l}%>
           <%else%>
@@ -70,12 +69,10 @@
         Photos:<%=link_to_function 'View photos', [page.toggle("apt_info_locked_dialog_#{l.id}")]%>
       <%end%>
  
-      <span class="section_header">Basics:</span>
-      
-      <span class="section_header">Apartment:</span>
+      <span class="section_header">Apt info:</span>
       <%if current_user.has_apt_info_access?%>
           <%if l.has_apt_info?%> 
-              <%=render :partial => 'shared/apt_info', :locals => {:l=>l}%>
+              <%=render :partial => 'apt_info', :locals => {:l=>l}%>
           <%else%>
              No apt info yet :( <a href="#">Request apt info</a>
           <%end%>
@@ -86,61 +83,57 @@
       <span class="section_header">Room(s):</span>
       <%if current_user.has_room_info_access?%>
           <%if l.has_room_info?%> 
-              <%=render :partial => 'shared/apt_info', :locals => {:l=>l}%>
+              <%=render :partial => 'room_info', :locals => {:rooms=>l.rooms}%>
           <%else%>
              No room info yet :( <a href="#">Request room info</a>
           <%end%>
       <%else%>
-        <%=link_to_function 'View apt details', [page.toggle("apt_info_locked_dialog_#{l.id}")]%>
+        <%=link_to_function 'View room details', [page.toggle("room_info_locked_dialog_#{l.id}")]%>
       <%end%>
 
       
-      <span class="section_header">Building:</span>
+      <span class="section_header">Bld info:</span>
       <%if current_user.has_bld_info_access?%>
           <%if l.has_bld_info?%> 
-              <%=render :partial => 'shared/bld_info', :locals => {:l=>l}%>
+              <%=render :partial => 'bld_info', :locals => {:l=>l}%>
           <%else%>
              No bld ifo :( <a href="#">Request building info</a>
           <%end%>
       <%else%>
-        <%=link_to_function 'View apt details', [page.toggle("apt_info_locked_dialog_#{l.id}")]%>
+        <%=link_to_function 'View bld details', [page.toggle("apt_info_locked_dialog_#{l.id}")]%>
       <%end%>
 
-      <b>Posted By:</b> <%= l.user.username %>
+      <span class="section_header">Posted By:</span> <%= l.user.username %><br/>
       
-      <%=render :partial=>'shared/comment_list', :locals=>{:comments=>l.comments}%>
+      <span class="section_header">Tenant comment:</span> <%= l.tenant_comment%><br/>
+      
+    
+      
+      <%=render :partial=>'/comment_list', :locals=>{:comments=>l.comments}%>
         
       <%=link_to_function 'See all', [page.toggle("comments_dialog_#{l.id}")]%>
-
 <!--tool bar-->
 
 <!-- read checkbox-->
-      
-      <%= render :partial=>'read_checkbox' %>
-    
+    <%= render :partial=>'read_checkbox' %>
 <!--/read checkbox-->
 
 
-    
     <%toolbar_buttons.each do |name, title|%>
       <%tag :span, 
               :id=>"#{name}_button_#{lid}", 
               :onclick=>[page.toggle("#{name}_dialog_#{lid}")],
               :style=>"cursor:pointer;",
               :title=>title do %>
-      <%=image_tag "#{name}_button.gif"%>
-    <%end%>
-      
-    <%=title%>
-      
-<!--<%=dialog_name%> popup-->
+        <%=image_tag "#{name}_button.gif"-%>
+        <%=title-%>
+      <%end-%>
+        
+  <!--<%=dialog_name%> popup-->
+    <%=render_dialog "#{name}_dialog", page, lid%>
+  <!--/<%=dialog_name%> popup-->
 
-<%=render_dialog "#{name}_dialog", page, lid%>
-
-<!--/<%=dialog_name%> popup-->
-
-      
-      <%end%>
+  <%end%>
 
 <!--/tool bar-->
 

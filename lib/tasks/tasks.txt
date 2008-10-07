@@ -48,7 +48,7 @@
 38. Use gmail as mail provider via pop or imap in order to prevent getting into spam folder. Establish a business account
 39. Allow users to ask me question box on sign up. No is a no to contact others
 40. Date should be a range slider as opposed to a calendar
-  
+41. Create a tests to make sure that all listing properties are covered in access control, validation and views
 
 
 
