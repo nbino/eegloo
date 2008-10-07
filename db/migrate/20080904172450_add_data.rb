@@ -2,9 +2,13 @@ class AddData < ActiveRecord::Migration
   
   def self.up
     (1..100).each  do |i| 
-      u = User.create(:username=>"user#{i}", :password=>"padboo7", :password_confirmation =>'padboo7', :email=>"user#{i}@email.com")
+      u = User.create \
+        :username=>"user#{i}", 
+        :password=>"padboo7", 
+        :password_confirmation =>'padboo7', 
+        :email=>"user#{i}@email.com"
       
-      l = u.create_listing(
+      l = u.create_listing \
         :address=>"#{i+100} #{(i+3).ordinalize} ave", 
         :cross_street1=>"#{(i+10).ordinalize} st", 
         :cross_street2=>"#{(i+11).ordinalize} st", 
@@ -17,9 +21,9 @@ class AddData < ActiveRecord::Migration
         :n_bathrooms=>rand(4),
         :floor_type=>rand(3),
         :heat_q=>rand(3),
-        :ac_type=>rand(4),
+        :central_ac=>rand(2),
         :roof_access =>rand(2),
-        :public_back_yard=>rand(2),
+        :common_back_yard=>rand(2),
         :private_back_yard=>rand(2),
         :street_noise_level=>rand(3),
         :nbors_noise_level=>rand(3),
@@ -30,7 +34,7 @@ class AddData < ActiveRecord::Migration
         :cellphone_provider=>rand(6),
         :dogs_allowed=>rand(2), 
         :cats_allowed=>rand(2), 
-        :tenant_comment=>'This place is awesome',
+        :tenant_comment=>["Great place but very noisy. Verizon has no cellphone signal here. Floors are uneven", "Beautiful place but overpriced",  "Loud construction on the block"][rand(3)],
         :broker_only=>rand(2), 
         :elevator=>rand(2), 
         :multi_level=>rand(2), 
@@ -50,20 +54,20 @@ class AddData < ActiveRecord::Migration
         :balcony=>rand(2),
         :patio=>rand(2),
         :loft=>rand(2)
-      ) 
+       
    
-      l.create_livingroom(
+      l.create_livingroom \
         :light_level=>rand(3),
         :exposure=>rand(4),
         :windows_facing=>rand(3), 
-        :size=>rand(10) * 50 + 50)
+        :room_size=>rand(10) * 50 + 50
     
       l.n_bedrooms.times do |i|
         l.bedrooms << Bedroom.new(
           :light_level=>rand(3),
           :exposure=>rand(4),
           :windows_facing=>rand(3),           
-          :size=>rand(10) * 50 + 50)
+          :room_size=>rand(10) * 50 + 50)
       end
     
       l.comments << ListingComment.new(
@@ -72,9 +76,14 @@ class AddData < ActiveRecord::Migration
     
       #l.save!
       
+      
     end
         
-    
+    User.find(1).update_attributes \
+      :basic_access=>true, 
+      :apt_access=>true, 
+      :bld_access=>true,
+      :photos_access=>true
    
   end 
 

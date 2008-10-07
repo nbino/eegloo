@@ -147,78 +147,58 @@ def contact_alert?
   bogus_flag_count == 5
 end
 
-#if param operator is '=', no need to include them in SQL_OPERATORS as that is the default. to exlude params for special handling use operatlor '#'.
-#to compare against different field, use {operator=>field_name} hash.
-SQL_OPERATORS = 
-{
-  'apt_type_top' =>{'<='=>'apt_type'},
-  'apt_type_bottom' =>{'>='=>'apt_type'},
-  'rent_top' =>{'<='=>'rent'},
-  'rent_bottom' =>{'>='=>'rent'},
-  'avail_date'=>'<=',
-  'ac_type'=>'>=',
-  'bathroom_n'=>'>=',
-  'no_of_balconies'=>'>=',
-  'no_of_bathrooms'=>'>=',
+#if param operator is '=', no need to include them in SQL_OPERATORS as that is the default. to exlude params for special handling use operatlor '#'. For 'IN' and 'BETWEEN' operator pass array of values
+SQL_OPERATORS = {
+  'rent' =>'BETWEEN',
+  'avail_date'=>'>=',
+  'n_bedrooms'=>'>=',
+  'n_bathrooms'=>'>=',
   'sq_footage'=>'>=',
   'ceiling_height'=>'>=',
-  'rent_range_top'=>'<=',
-  'rent_range_bottom'=>'>=',
-  'nhoods'=>'#',
+  'nhoods'=>'IN',
   'comment'=>'LIKE'}
 
-SORT_ORDER =
-{
+SORT_ORDER = {
   'created_at' => 'listings.created_at DESC',
   'favorites_count' => 'listings.favorites_count DESC',
   'rent' => 'listings.rent ASC'}
     
-def self.do_search(params, user, order_by='created_at', current_page=1)
-     #expects params hash
-     
+def self.do_search(params, user, order_by='created_at', current_page=1, page_size=20)
+    #expects params hash
     conditions = []
     
-    #process params
-    
-    #emty nhoods are not ignored. 
-    if  params.nil? || params.empty? || params['nhoods'].nil? || params['nhoods'].empty?
-      conditions << 'nhood = 0' 
-    else
-      #add parans for IN operator and join array. "all" is a special value that means all
-      conditions << "nhood IN (#{params['nhoods'].join(',')})" unless params['nhoods'].include? 'all'
-    end
-      
-    
     #empty evertying else is ignored
-    unless params.nil? || params.empty?
-      
-      params["avail_date"] = Date.parse(params["avail_date"]).to_s(:db) unless params["avail_date"].nil?
-      
-      params.each {|key,val| params [key] = "%#{val}%" if val != '' && SQL_OPERATORS[key] == 'LIKE'}
-      
-      #now join params with operators. exclude IN
-      params.each {|key, val| conditions << "#{key} #{SQL_OPERATORS[key]||'='} :#{key}" unless SQL_OPERATORS[key]=='#' || SQL_OPERATORS[key]=='IN'}
-        
-    end
+    params.each do |key, val|
+        Date.parse(params[key]).to_s(:db) if params[key].is_a?(Date) && !params["avail_date"].nil? && !params["avail_date"].blank?
+        params [key] = "%#{val}%" if SQL_OPERATORS[key] == 'LIKE' && !val.blank?
+        params [key] = "#{key} BETWEEN #{params[key][0]} AND #{params[key][1]}" if SQL_OPERATORS[key] == 'BETWEEN' && !val.blank?
+        conditions << "#{key} #{SQL_OPERATORS[key]||'='} #{params[key].is_a?(Array) ? '(' + params[key] .join(',') + ')' : ':' + key}" unless SQL_OPERATORS[key]=='#'
+    end unless params.blank? 
       
     # set up associations
-    has_one :read_by_user, :class_name=>'Reading', :conditions=>"readings.user_id=#{user}"
-    has_one :user_favorite, :class_name=>'Favorite', :conditions=>"favorites.user_id = #{user}"
+    has_one :read_by_user, :class_name=>'Reading', :conditions=>"readings.user_id=#{user.id}"
+    has_one :user_favorite, :class_name=>'Favorite', :conditions=>"favorites.user_id = #{user.id}"
     
-    self.find(
-      :all,
+    #check access rights
+    unless user && user.has_basic_access?
+      page_size = 3
+      current_page = 0
+    end
+    
+    self.find :all,
       :include => [
         :listing_comments,
         :photos, 
         :read_by_user,
         :user_favorite,
-        :nhood
-      ],
+        :nhood],
       :conditions=>[conditions.join(' AND '), params],
-      :page => {:size => 20, :current => current_page},
-      :order=>SORT_ORDER[order_by])
+      :page => {:size => page_size, :current => current_page},
+      :order=>SORT_ORDER[order_by]
 
 end
+
+
 
 #attribute_values
 #~ def nhood
@@ -226,17 +206,65 @@ end
 #~ end
 
 def pests_free=(value)
-  roaches = rodents = ants = false
+  roaches = rodents = ants = false if value > 0
 end
 
 def pests_free()
-  ! (roaches || rodents || ants)
+  ! (roaches || rodents || ants) if roaches || rodents || ants
 end
 
 def popularity()
   rand 6
 end
 
+def has_apt_info?
+  ceiling_height ||
+  floor_type ||
+  heat_q ||
+  ac_type ||
+  private_back_yard ||
+  street_noise_level ||
+  nbors_noise_level ||
+  appliances_q ||
+  bathroom_q ||
+  cellphone_q ||
+  cellphone_provider
+end
   
+def has_bld_info?
+  maintenance_q ||
+  broker_only || 
+  elevator || 
+  multi_level || 
+  penthouse || 
+  private_entrance || 
+  gym || 
+  laundry || 
+  roaches || 
+  rodents || 
+  ants || 
+  broadband || 
+  doorman || 
+  rent_stabilized ||
+  rent_controlled ||
+  convertable ||
+  separate_kitchen ||
+  balcony ||
+  patio ||
+  loft ||
+  roof_access ||
+  public_back_yard ||
+  dogs_allowed ||
+  cats_allowed  
+end
+
+def has_photos?
+  photos.size > 0
+end
+
+
+def has_room_info?
+  rooms.size > 0
+end
 
 end

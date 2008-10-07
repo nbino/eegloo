@@ -1,12 +1,5 @@
 module ListingsHelper
 
-  def render_dialog(dialog_name, page, lid=nil)
-    render :partial=>"shared/dialog", 
-      :locals=>{
-        :element_id=>"#{dialog_name}_dialog#{lid.nil? ? '' : '_' + lid}", 
-        :page=>page, 
-        :content=>"listings/#{dialog_name}_dialog"}
-  end
       
   
   #~ NHOODS = [
@@ -43,7 +36,7 @@ module ListingsHelper
   
   class ::Listing
   
-    NOISE_LEVELS = %w{'quiet', 'average', 'loud'}
+    NOISE_LEVELS = %w{quiet average loud}
     
     CELL_PROVIDERS = %w{Cingular Nextel Sprint T-Mobile Verizon other}
     

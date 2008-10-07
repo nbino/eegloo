@@ -1,9 +1,0 @@
-Script started on Fri Aug 29 18:35:43 2008
-sh-3.2$ q
-sh: q: command not found
-sh-3.2$ quit
-sh: quit: command not found
-sh-3.2$ exit
-exit
-
-Script done on Fri Aug 29 18:35:59 2008

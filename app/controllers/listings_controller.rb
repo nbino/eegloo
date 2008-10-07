@@ -9,9 +9,7 @@ class ListingsController < ApplicationController
     
     
     #Need to specify all nhoods as default
-    all_nhoods = {'nhoods'=>['all']}
-    
-    @listings = Listing.do_search all_nhoods, current_user.id, 10
+    @listings = Listing.do_search nil, current_user, 1, 20 
     @search_listing = Listing.new
     
     respond_to do |format|
@@ -22,22 +20,15 @@ class ListingsController < ApplicationController
 
   def search
     #for all params 0 or blank value indicates ignore
-    params[:listing].delete_if {|key, val| val=="0" || val==""}
-    
-    #handle nhoods speratly
-    #need to copy under listing info, could not get that to work in the form
-    
-    #let's fix that
-    #params[:listing][:nhoods] = params[:nhoods]
-    #params.delete :nhoods
+    params[:listing].delete_if {|key, val| val.bank==""}
     
     #convert pests into roaches ants and mice
-    params[:listing][:roaches], params[:listing][:ants], params[:listing][:mice] = 0 unless params[:listing][:pests_free].nil?
-    params.delete :pest_free
+    #params[:listing][:roaches], params[:listing][:ants], params[:listing][:mice] = 0 unless params[:listing][:pests_free].nil?
+    #params.delete :pest_free
         
     page = params[:custom_options][:page] || 1
     
-    @listings = Listing.do_search params[:listing], current_user.id, params[:order_by], page
+    @listings = Listing.do_search params[:listing], current_user.id, params[:custom_options][:order_by], page
     @search_listing = Listing.new
 
     respond_to do |format|

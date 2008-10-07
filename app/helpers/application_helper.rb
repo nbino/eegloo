@@ -44,14 +44,13 @@ module ApplicationHelper
 
     def slider(method, options)
       returning '' do |output|
-        output  = ''
         handles = []
         track_element_id = "#{@object_name}_#{method}_track"
         
         output << %@<div id="#{track_element_id}" class="track"><div class="track-left"></div>@
         
         (options.delete(:no_of_handles) || 1).times do |i|
-          id = "#{@object_name}_#{method}_#{i}_handle"
+          id = "#{@object_name}_#{method}_handle_#{i}"
           
           output << %@<div id="#{id}" class="sliderHandle"><img src="images/slider-images-handle.png" style="float:left" alt=""/></div>@
           
@@ -61,8 +60,8 @@ module ApplicationHelper
         hidden_field(method) <<        
         slider_element(track_element_id, @template,
           options.merge( {:handles=>handles, 
-            :change => "$('#{object}_#{method}').value = value;#{options[:change]})",
-            :slider_value  => @template.instance_variable_get("@#{@object_name}").send(method) || 0}))
+            :change => "$('#{object_name}_#{method}').value = value;#{options[:change]}",
+            :slider_value  => options[:slider_value] || @template.instance_variable_get("@#{@object_name}").send(method) || 0}))
       end
     end    
   
@@ -85,6 +84,14 @@ module ApplicationHelper
   
   def auto_submit(form_name)
     "document.forms['#{form_name}'].onsubmit();"
+  end
+  
+  def render_dialog(dialog_name, page, lid=nil)
+    render :partial=>"shared/dialog", 
+      :locals=>{
+        :element_id=>"#{dialog_name}_dialog#{lid.nil? ? '' : '_' + lid}", 
+        :page=>page, 
+        :content=>"listings/#{dialog_name}_dialog"}
   end
   
   

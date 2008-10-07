@@ -1,47 +1,48 @@
 <!--listings list-->
 
-<%if 0==@listings.size%>
-  <h1>No listings found</h1>
-  The search criteria may be too narrow. Try unchecking some of the options.
-<%else%>
-
-  <%=render_dialog 'basic_info_locked', page unless current_user.has_basic_access?%>
-  
-  <%=render_dialog 'apt_info_locked', page unless current_user.has_apt_info_access?%>
-  
-  <%=render_dialog 'bld_info_locked', page unless current_user.has_bld_info_access?%>
-  <span style="text-align:left">
-      <%= select "other",
-                    "order_by",
-                    {'Date posted'=>'created_at', 
-                    'Price'=>'rent', 
-                    'Popularity' => 'favorites_count', 
-                    :selected => 'created_at'}, 
-                    :on_submit=>"auto_submit('search_form')" -%>
-  </span>
-  
-  <span style="text-align:right">
-    page <%=remote_paginating_links @listings, 
+  <div style="width:150px;float:left">
+      page <%=remote_paginating_links @listings, 
                   {:window_size => 5, 
                   :auto_submit_form => true, 
                   :form_name=>'search_form', 
                   :set_hidden_field=>true, 
                   :hidden_field_name=>'custom_options[page]' }-%>
-  </span>
+  </div>
   
-  <%=render :partial => 'listing', 
+  <div style="width:200px;float:right">
+      sort by:&nbsp;
+      <%=select "other",
+        "order_by",
+        {'Date posted'=>'created_at', 
+        'Price'=>'rent', 
+        'Popularity' => 'favorites_count'}, 
+        :selected=>'created_at',
+        :on_change=>"$(search_form[custom_options][order_by] = this.value;" + auto_submit('search_form') -%>
+  </div>
+
+<%if 0 == @listings.size%>
+  <h1>No listings found</h1>
+  The search criteria may be too narrow. Try unchecking some of the options.
+<%else%>
+  <!--dialogs-->
+  <!--do preserve the space after the first percent below, unless you're into compilation errors-->
+  <% %w(basic photos apt_info room_info bld_info).each do |access|%>
+  
+      <%=render_dialog("#{access}_locked", page) unless current_user.send("has_#{access}_access?")-%>
+  
+  <%end%>  
+  <!--/dialogs-->  
+  <%debugger%>
+  <%= render :partial=>'listing', 
+          :collection => @listings,  
           :locals=>{
             :toolbar_buttons=>{
               'flag_listing'=>'Flag listing',
               'send_by_email'=>'Send to friend',
               'add_comment'=>'Comment'}, 
-            :page=>page},
-          :collection => @listings-%>
-  <%if not current_user.has_basics_access?%>
+            :page=>page}%>
+          
+  <%= link_to_function 'View more listings', [page.toggle("basic_info_locked_popup")] unless current_user.has_basic_access?%>
   
-      <%=link_to_function 'View more listings', [page.toggle("basic_info_locked_popup")]%>
-      
-  <%end%>
-
 <%end%>
 <!--/listings list-->

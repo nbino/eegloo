@@ -1,35 +1,48 @@
 <%update_page do |page|%>
 
 <!--start left_bar-->
-	<div id="search_bar" style="width:175px;float:left;border-right:1px solid #ddd;">
+<table>
+<tr>
+
+	<td id="search_bar" style="width:185px;border-right:1px solid #ddd;vertical-align:top">
 		<%= render :partial=>'search_form'%>
-	</div>
+	</td>
 <!-- end leftbar -->
 
 <!-- start content -->
-	<div id="content" style="width:100%;padding:0px 10px;">
+	<td id="content" style="width:70%;padding:10px 15px;vertical-align: top">
+  
 		<%= render :partial => 'listing_list', :locals=>{:page=>page}%>
-	</div>
+	</td>
 <!-- end content -->
 
 <!-- start rightbar -->
-	<div id="right_bar" style="float:right;width:250px;border-left:1px solid #ddd;">
-		Right column
-		<!--
-    <div id="mapouter">
-		<ul>
-		  <li id="search">
-		    <span style="font-size:16px;margin-right:20px"><b>map</b></span>
-        
-            <span id="small_map" style="display:none"><%= link_to_function("Small map",["toggleMapSize(); moveDiv();", page.toggle("small_map", "large_map")])%></span> 
-            <span id="large_map"><%= link_to_function("Large map",["toggleMapSize(); moveDiv();", page.toggle("small_map", "large_map")])%></span>
-		    
-			<div id="map" class="map" style="text-align:right">		
-			
-			</div>
-		  </li>
-		</ul>
-    -->
-		</div>
+	<td id="right_bar" style="width:250px;border-left:1px solid #ddd;padding:10px 15px;vertical-align:top">
+		Lots of stuff
+    asd
+    asdfasdfas
+    fsadfasdf
+    asdf
+    asdf
+    asdf
+    asd
+    f
+    asdf
+    as
+    df
+    asd
+    fas
+    df
+    as
+    df
+    asd
+    fa
+    sdf
+    as
+    dfa
+    sd
+</td>
+</tr>
+</table>
 <!-- end rightbar -->
 <%end%>
