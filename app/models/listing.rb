@@ -180,7 +180,7 @@ def self.do_search(params, user, order_by='created_at', current_page=1, page_siz
     has_one :user_favorite, :class_name=>'Favorite', :conditions=>"favorites.user_id = #{user.id}"
     
     #check access rights
-    unless user && user.has_basic_access?
+    unless user && user.has_basic_info_access?
       page_size = 3
       current_page = 0
     end

@@ -176,7 +176,7 @@ class User < ActiveRecord::Base
   end
   
   #content access. storing access info in bitmap as opposed to fields allows for flexible access model
-  %w(basic 
+  %w(basic_info 
         apt_info 
         bld_info 
         room_info 

@@ -12,6 +12,9 @@ class ListingsController < ApplicationController
     @listings = Listing.do_search nil, current_user, 1, 20 
     @search_listing = Listing.new
     
+    #a hack favorite to have something to pass to routing for favorites calls
+    @hack_favorite = Favorite.new(:id=>0)
+    
     respond_to do |format|
       format.html { render :layout => 'main' }
       format.xml  { render :xml => @listings }

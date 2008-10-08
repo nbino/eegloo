@@ -1,25 +1,28 @@
-<%
-#optional parameters
-is_lit||=false
-add_label||=false
+<%#optonal parameters
+favorite? ||= false
+on_add ||=''
+on_remove ||= ''
+on_id ||= 'on_favorites_star'
+off_id ||= 'off_favorites_star'
+label? ||= true
 %>
 
 <%tag :span, 
-      :id=>"off_star_#{id}", 
-      :onclick=>[page.toggle("off_star_#{id}", "on_star_#{id}"), remote_function(:url=>listing_favorites_url(listing), :method=>:post)], 
-      :style=>"cursor:pointer;#{'display:none;' if is_lit}", 
+      :id=>on_id, 
+      :onclick=>[page.toggle(on_id, off_id), on_add], 
+      :style=>"cursor:pointer;#{'display:none;' if favorite?}", 
       :class=>'label',
       :title=>'Add to favorites' do%> 
-      <%=image_tag 'grey__star.gif'-%>
-      <%='Add to favorites' if add_label-%>
+      <%=image_tag 'grey_star'-%>
+      <%='Add to favorites' if label?-%>
 <%end%>
         
 <%tag :span, 
-      :id=>"on_star_#{id}", 
-      :onclick=>[page.toggle("off_star_#{id}", "on_star_#{id}"), remote_function(:url=>listing_favorite_url(listing, 0), :method=>:delete) ], 
-      :style=>"cursor:pointer;#{'display:none;' unless is_lit}", 
+      :id=>off_id, 
+      :onclick=>[page.toggle(on_id, off_id), on_remove], 
+      :style=>"cursor:pointer;#{'display:none;' unless favorite?}", 
       :class=>'label',
       :title=>'Remove from favorites' do%> 
-    <%=image_tag 'yellow__star.png'%>
-    <%='Add to favorites' if add_label-%>
+    <%=image_tag 'yellow_star'%>
+    <%='Add to favorites' if label?-%>
 <%end%>

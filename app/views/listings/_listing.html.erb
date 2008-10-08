@@ -12,7 +12,14 @@
   
 <!--favorites star-->
                   
-    <%= render :partial=>'favorites_star', :locals=>{:page=>page, :lit=>l.favorite?, :id=>lid, :listing=>l} %>
+    <%= render :partial=>'favorites_star', :locals=>{
+            :on_add => remote_function(:url=>listing_favorites_url(l), :method=>:post),
+            :on_remove => remote_function(:url=>listing_favorites_url(l, @hack_favorite), :method=>:delete),   
+            :on_id => "on_favorites_star_#{l.id}",
+            :off_id => "off_favorites_star_#{l.id}",
+            :favorite? => l.favorite?,
+            :label? => false, 
+            :page=>page} %>
                   
 <!--/favorites star-->
     
@@ -29,7 +36,7 @@
         :style=>"#{ l.unread? ? 'font-weight:bold;':'font-weight:normal;'}", 
         :id=>"header_#{lid}" do%>
 
-      <%=l.rent_range%> <%=l.nhood%> <%=l.apt_type%>, avail. <%=l.avail_date.strftime("%b %d, '%y")%> 
+      <%=l.rent_range%> <%=l.nhood%> <%=%w(studio 1bd, 2bd, 3bd, 4bd, 5bd)[l.n_bedrooms]%>, avail. <%=l.avail_date.strftime("%b %d, '%y")%> 
 
       <%end%>
 <!--/title-->  
@@ -109,16 +116,36 @@
       
     
       
-      <%=render :partial=>'/comment_list', :locals=>{:comments=>l.comments}%>
+      <%=render :partial=>'comment_list', :locals=>{:comments=>l.comments}%>
         
       <%=link_to_function 'See all', [page.toggle("comments_dialog_#{l.id}")]%>
 <!--tool bar-->
 
 <!-- read checkbox-->
-    <%= render :partial=>'read_checkbox' %>
+      <%= render :partial=>'read_checkbox', :locals=>{
+            :on_unread => remote_function(:url=>listing_reading_url(l, l.read_by_user), :method=>:delete) + "$('header_#{l.id}').style.fontWeight='bold';",   
+            :on_read => remote_function(:url=>listing_readings_url(l), :method=>:post) + "$('header_#{l.id}').style.fontWeight='normal';",
+            :unread_id => "unread_icon_#{l.id}",
+            :read_id => "read_icon_#{l.id}",
+            :read? => l.read?,
+            :label? => true,
+            :page => page}%>
 <!--/read checkbox-->
 
+<!--favorites star-->
+                  
+    <%= render :partial=>'favorites_star', :locals=>{
+            :on_add => remote_function(:url=>listing_favorites_url(l), :method=>:post),
+            :on_remove => remote_function(:url=>listing_favorites_url(l, l.user_favorite), :method=>:delete),   
+            :on_id => "on_favorites_star_#{l.id}",
+            :off_id => "off_favorites_star_#{l.id}",
+            :favorite? => l.favorite?,
+            :label? => true, 
+            :page=>page} %>
+                  
+<!--/favorites star-->
 
+<!-- toolbar-->
     <%toolbar_buttons.each do |name, title|%>
       <%tag :span, 
               :id=>"#{name}_button_#{lid}", 
@@ -129,13 +156,13 @@
         <%=title-%>
       <%end-%>
         
-  <!--<%=dialog_name%> popup-->
-    <%=render_dialog "#{name}_dialog", page, lid%>
-  <!--/<%=dialog_name%> popup-->
+<!--<%=dialog_name%> popup-->
+      <%=render_dialog "#{name}_dialog", page, lid%>
+<!--/<%=dialog_name%> popup-->
 
   <%end%>
 
-<!--/tool bar-->
+<!--/toolbar-->
 
    </div>
 <!--/listing content-->

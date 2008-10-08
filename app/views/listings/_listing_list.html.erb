@@ -25,14 +25,12 @@
   The search criteria may be too narrow. Try unchecking some of the options.
 <%else%>
   <!--dialogs-->
-  <!--do preserve the space after the first percent below, unless you're into compilation errors-->
-  <% %w(basic photos apt_info room_info bld_info).each do |access|%>
+  <% %w(basic_info photos apt_info room_info bld_info).each do |access|%>
   
       <%=render_dialog("#{access}_locked", page) unless current_user.send("has_#{access}_access?")-%>
   
   <%end%>  
   <!--/dialogs-->  
-  <%debugger%>
   <%= render :partial=>'listing', 
           :collection => @listings,  
           :locals=>{

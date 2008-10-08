@@ -11,8 +11,33 @@ class CreateNhoods < ActiveRecord::Migration
         
       t.timestamps
     end
-    
-    AttributeLiterals::NHOODS.each  do |name|
+ 
+    %w(Chelsea
+        Columbus\ Circle
+        East\ Village
+        Financial\ District
+        Flatiron
+        Gramercy/Flatiron
+        Greenwich\ Village
+        Harlem
+        Hell's\ Kitchen
+        Lincoln\ Center
+        Lower\ East\ Side
+        Meatpacking\ District
+        Midtown\ East
+        Midtown\ West
+        Murray\ Hill
+        NoHo
+        NoLita
+        Rockefeller\ Center
+        SoHo
+        Theater\ District
+        Times\ Square
+        TriBeCa
+        Union\ Square
+        Upper\ East Side
+        Upper\ West Side
+        West\ Village).each  do |name|
       Nhood.create :name=>name
     end
 

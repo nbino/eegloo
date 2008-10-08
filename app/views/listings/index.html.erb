@@ -1,48 +1,21 @@
 <%update_page do |page|%>
 
-<!--start left_bar-->
-<table>
-<tr>
+<!--left column-->
+<div id="left_column" style="width:200;border-right:1px solid #ddd;padding:10px;height:100%;float:left">
+  <%= render :partial=>'search_form'%>
+</div>
+<!--/left column -->
 
-	<td id="search_bar" style="width:185px;border-right:1px solid #ddd;vertical-align:top">
-		<%= render :partial=>'search_form'%>
-	</td>
-<!-- end leftbar -->
-
-<!-- start content -->
-	<td id="content" style="width:70%;padding:10px 15px;vertical-align: top">
-  
+<!--mid column -->
+<div style="left:200px;width:65%;min-width:400px;height:100%;padding:10px;float:left">
 		<%= render :partial => 'listing_list', :locals=>{:page=>page}%>
-	</td>
-<!-- end content -->
+</div>
+<!--/mid column -->
 
-<!-- start rightbar -->
-	<td id="right_bar" style="width:250px;border-left:1px solid #ddd;padding:10px 15px;vertical-align:top">
-		Lots of stuff
-    asd
-    asdfasdfas
-    fsadfasdf
-    asdf
-    asdf
-    asdf
-    asd
-    f
-    asdf
-    as
-    df
-    asd
-    fas
-    df
-    as
-    df
-    asd
-    fa
-    sdf
-    as
-    dfa
-    sd
-</td>
-</tr>
-</table>
+<!--right column -->
+<div style="width:280;border-left:1px solid;height:100%;float:left;padding:10px">
+  <%= image_tag 'fake_right_bar'%>
+</div>
+	
 <!-- end rightbar -->
 <%end%>
